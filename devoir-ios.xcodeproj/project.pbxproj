@@ -14,6 +14,10 @@
 		3219FF5B1A86C5070034C46E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3219FF5A1A86C5070034C46E /* Images.xcassets */; };
 		3219FF5E1A86C5070034C46E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3219FF5C1A86C5070034C46E /* LaunchScreen.xib */; };
 		3219FF6A1A86C5070034C46E /* devoir_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3219FF691A86C5070034C46E /* devoir_iosTests.m */; };
+		4E34579B1A9CE65E0063EE1E /* DBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E34579A1A9CE65E0063EE1E /* DBAccess.m */; };
+		4E34579E1A9CEA590063EE1E /* CourseDBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E34579D1A9CEA590063EE1E /* CourseDBAccess.m */; };
+		4E3457A01A9CEDD80063EE1E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E34579F1A9CEDD80063EE1E /* libsqlite3.dylib */; };
+		4E3457A41A9CF5BC0063EE1E /* UserDBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3457A31A9CF5BC0063EE1E /* UserDBAccess.m */; };
 		4E3960FC1A89C4DD00C0004C /* Assignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3960FB1A89C4DD00C0004C /* Assignment.m */; };
 		4ED1DF581A89935C00D9F29D /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF571A89935C00D9F29D /* Course.m */; };
 		4ED1DF5B1A89936C00D9F29D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF5A1A89936C00D9F29D /* User.m */; };
@@ -43,6 +47,13 @@
 		3219FF631A86C5070034C46E /* devoir-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "devoir-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3219FF681A86C5070034C46E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3219FF691A86C5070034C46E /* devoir_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = devoir_iosTests.m; sourceTree = "<group>"; };
+		4E3457991A9CE65E0063EE1E /* DBAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBAccess.h; sourceTree = "<group>"; };
+		4E34579A1A9CE65E0063EE1E /* DBAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBAccess.m; sourceTree = "<group>"; };
+		4E34579C1A9CEA590063EE1E /* CourseDBAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDBAccess.h; sourceTree = "<group>"; };
+		4E34579D1A9CEA590063EE1E /* CourseDBAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDBAccess.m; sourceTree = "<group>"; };
+		4E34579F1A9CEDD80063EE1E /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		4E3457A21A9CF5BC0063EE1E /* UserDBAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserDBAccess.h; sourceTree = "<group>"; };
+		4E3457A31A9CF5BC0063EE1E /* UserDBAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDBAccess.m; sourceTree = "<group>"; };
 		4E3960FA1A89C4DD00C0004C /* Assignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assignment.h; sourceTree = "<group>"; };
 		4E3960FB1A89C4DD00C0004C /* Assignment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Assignment.m; sourceTree = "<group>"; };
 		4ED1DF561A89935C00D9F29D /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
@@ -56,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E3457A01A9CEDD80063EE1E /* libsqlite3.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +84,7 @@
 		3219FF411A86C5060034C46E = {
 			isa = PBXGroup;
 			children = (
+				4E34579F1A9CEDD80063EE1E /* libsqlite3.dylib */,
 				3219FF4C1A86C5070034C46E /* devoir-ios */,
 				3219FF661A86C5070034C46E /* devoir-iosTests */,
 				3219FF4B1A86C5070034C46E /* Products */,
@@ -90,6 +103,7 @@
 		3219FF4C1A86C5070034C46E /* devoir-ios */ = {
 			isa = PBXGroup;
 			children = (
+				4E3457A11A9CF3F30063EE1E /* Database */,
 				4ED1DF5C1A89937600D9F29D /* Model */,
 				3219FF511A86C5070034C46E /* AppDelegate.h */,
 				3219FF521A86C5070034C46E /* AppDelegate.m */,
@@ -127,6 +141,19 @@
 				3219FF681A86C5070034C46E /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4E3457A11A9CF3F30063EE1E /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				4E3457991A9CE65E0063EE1E /* DBAccess.h */,
+				4E34579A1A9CE65E0063EE1E /* DBAccess.m */,
+				4E34579C1A9CEA590063EE1E /* CourseDBAccess.h */,
+				4E34579D1A9CEA590063EE1E /* CourseDBAccess.m */,
+				4E3457A21A9CF5BC0063EE1E /* UserDBAccess.h */,
+				4E3457A31A9CF5BC0063EE1E /* UserDBAccess.m */,
+			);
+			name = Database;
 			sourceTree = "<group>";
 		};
 		4ED1DF5C1A89937600D9F29D /* Model */ = {
@@ -246,6 +273,9 @@
 				4ED1DF581A89935C00D9F29D /* Course.m in Sources */,
 				3219FF561A86C5070034C46E /* ViewController.m in Sources */,
 				3219FF531A86C5070034C46E /* AppDelegate.m in Sources */,
+				4E3457A41A9CF5BC0063EE1E /* UserDBAccess.m in Sources */,
+				4E34579E1A9CEA590063EE1E /* CourseDBAccess.m in Sources */,
+				4E34579B1A9CE65E0063EE1E /* DBAccess.m in Sources */,
 				4E3960FC1A89C4DD00C0004C /* Assignment.m in Sources */,
 				3219FF501A86C5070034C46E /* main.m in Sources */,
 			);
