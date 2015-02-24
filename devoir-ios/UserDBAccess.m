@@ -22,7 +22,7 @@
 {
     if ((self = [super init]))
     {
-        dbName = @"DBNAME";
+        dbName = @"devoir-ios.sqlite";
     }
     return self;
 }

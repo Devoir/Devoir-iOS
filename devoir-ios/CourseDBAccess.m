@@ -22,7 +22,7 @@
 {
     if ((self = [super init]))
     {
-        dbName = @"DBNAME";
+        dbName = @"devoir-ios.sqlite";
     }
     return self;
 }
@@ -63,10 +63,10 @@
                 int ID =sqlite3_column_int(stmt, 0);
                 NSString* name = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 1)];
                 NSString* color = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 2)];
-                NSString* iCalFeed = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 3)];
-                NSString* iCalID = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 4)];
-                int userID = sqlite3_column_int(stmt, 5);
-                //NSDate* lastUpdated = [NSString stringWithUTF8String:(const char *)sqlite3_column_(stmt, 5)];
+                int userID = sqlite3_column_int(stmt, 3);
+                //NSDate* lastUpdated = [NSString stringWithUTF8String:(const char *)sqlite3_column_(stmt, 4)];
+                NSString* iCalFeed = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 5)];
+                NSString* iCalID = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 6)];
                 
                 course = [[Course alloc] init];
                 [course setID:ID];
@@ -114,13 +114,13 @@
             while (sqlite3_step(stmt) == SQLITE_ROW)
             {
                 //GET DATE STUFF!
-                int ID = sqlite3_column_int(stmt, 0);
+                int ID =sqlite3_column_int(stmt, 0);
                 NSString* name = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 1)];
                 NSString* color = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 2)];
-                NSString* iCalFeed = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 3)];
-                NSString* iCalID = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 4)];
-                int userID = sqlite3_column_int(stmt, 5);
-                //NSDate* lastUpdated = [NSString stringWithUTF8String:(const char *)sqlite3_column_(stmt, 5)];
+                int userID = sqlite3_column_int(stmt, 3);
+                //NSDate* lastUpdated = [NSString stringWithUTF8String:(const char *)sqlite3_column_(stmt, 4)];
+                NSString* iCalFeed = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 5)];
+                NSString* iCalID = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 6)];
                 
                 Course* course = [[Course alloc] init];
                 [course setID:ID];
@@ -163,11 +163,11 @@
     {
         NSString * query  = [NSString
                              stringWithFormat:@"INSERT INTO Course"
-                             "(Name, Color, iCalFeed, iCalID, UserID, LastUpdated)"
-                             "VALUES (\"%@\",\"%@\",\"%@\",\"%@\",%d,\"%@\")",
-                             name, color, iCalFeed, iCalID, userID, lastUpdated];
+                             "(Name, Color, UserID, LastUpdated, iCalFeed, iCalID) "
+                             "VALUES (\"%@\",\"%@\",%d,\"%@\",\"%@\",\"%@\")",
+                             name, color, userID, lastUpdated, iCalFeed, iCalID];
         
-        //NSLog(@"QUERY: %@", query);
+        NSLog(@"QUERY: %@", query);
         char * errMsg;
         rc = sqlite3_exec(db, [query UTF8String] ,NULL,NULL,&errMsg);
         if(SQLITE_OK != rc)
