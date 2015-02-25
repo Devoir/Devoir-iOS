@@ -29,13 +29,13 @@
 
 - (Course*) getCourseByID:(int)ID
 {
-    Course* course = NULL;
+    Course* course = nil;
     NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
     
-    sqlite3* db = NULL;
-    sqlite3_stmt* stmt =NULL;
+    sqlite3* db = nil;
+    sqlite3_stmt* stmt =nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath UTF8String], &db, SQLITE_OPEN_READONLY , NULL);
+    rc = sqlite3_open_v2([dbPath UTF8String], &db, SQLITE_OPEN_READONLY , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -45,7 +45,7 @@
     {
         NSString  * query = [NSString stringWithFormat:@"SELECT * from Course WHERE id = %d", ID];
         
-        rc =sqlite3_prepare_v2(db, [query UTF8String], -1, &stmt, NULL);
+        rc =sqlite3_prepare_v2(db, [query UTF8String], -1, &stmt, nil);
         if(rc == SQLITE_OK)
         {
             while (sqlite3_step(stmt) == SQLITE_ROW)
@@ -86,10 +86,10 @@
     NSMutableArray* courses = [[NSMutableArray alloc] init];
     NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
     
-    sqlite3* db = NULL;
-    sqlite3_stmt* stmt =NULL;
+    sqlite3* db = nil;
+    sqlite3_stmt* stmt =nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath UTF8String], &db, SQLITE_OPEN_READONLY , NULL);
+    rc = sqlite3_open_v2([dbPath UTF8String], &db, SQLITE_OPEN_READONLY , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -99,7 +99,7 @@
     {
         NSString  * query = [NSString stringWithFormat:@"SELECT * from Course ORDER BY Name ASC"];
         
-        rc =sqlite3_prepare_v2(db, [query UTF8String], -1, &stmt, NULL);
+        rc = sqlite3_prepare_v2(db, [query UTF8String], -1, &stmt, nil);
         if(rc == SQLITE_OK)
         {
             while (sqlite3_step(stmt) == SQLITE_ROW)
@@ -142,9 +142,9 @@
 {
     NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
     
-    sqlite3* db = NULL;
+    sqlite3* db = nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , NULL);
+    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -160,7 +160,7 @@
         
         NSLog(@"QUERY: %@", query);
         char * errMsg;
-        rc = sqlite3_exec(db, [query UTF8String] ,NULL,NULL,&errMsg);
+        rc = sqlite3_exec(db, [query UTF8String], nil, NULL, &errMsg);
         if(SQLITE_OK != rc)
         {
             NSLog(@"Failed to insert record  rc:%d, msg=%s",rc,errMsg);
@@ -185,9 +185,9 @@
 {
     NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
     
-    sqlite3* db = NULL;
+    sqlite3* db = nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , NULL);
+    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -197,7 +197,7 @@
     {
         NSString * query  = [NSString stringWithFormat:@"DELETE FROM Course WHERE id = %d", ID];
         char * errMsg;
-        rc = sqlite3_exec(db, [query UTF8String] ,NULL,NULL,&errMsg);
+        rc = sqlite3_exec(db, [query UTF8String], nil, NULL, &errMsg);
         if(SQLITE_OK != rc)
         {
             NSLog(@"Failed to delete record  rc:%d, msg=%s",rc,errMsg);
@@ -210,9 +210,9 @@
 {
     NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
     
-    sqlite3* db = NULL;
+    sqlite3* db = nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , NULL);
+    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -222,7 +222,7 @@
     {
         NSString * query  = [NSString stringWithFormat:@"DELETE FROM Course"];
         char * errMsg;
-        rc = sqlite3_exec(db, [query UTF8String] ,NULL,NULL,&errMsg);
+        rc = sqlite3_exec(db, [query UTF8String], nil, NULL, &errMsg);
         if(SQLITE_OK != rc)
         {
             NSLog(@"Failed to delete record  rc:%d, msg=%s",rc,errMsg);

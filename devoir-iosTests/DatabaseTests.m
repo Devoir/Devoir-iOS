@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
 #import "DBAccess.h"
-#import "Course.h"
 
 @interface DatabaseTests : XCTestCase
 
@@ -25,6 +24,28 @@
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+}
+
+- (void)testUserAccess
+{
+    DBAccess* dbAccess = [[DBAccess alloc] init];
+    
+    //test add user
+    [dbAccess addUserWithName: @"Brent Roberts"
+                        Email: @"brentroberts@email.com"
+                   OAuthToken: @"AXCD-5674-YSGDA"
+                       UserID:26];
+    
+    //test get user
+    User* user = [dbAccess getUser];
+    XCTAssertEqualObjects(user.name, @"Brent Roberts");
+    XCTAssertEqualObjects(user.email, @"brentroberts@email.com");
+    XCTAssertEqualObjects(user.oAuthToken, @"AXCD-5674-YSGDA");
+    XCTAssertEqual(user.userID, 26);
+    
+    [dbAccess removeUser];
+    user = [dbAccess getUser];
+    XCTAssertEqualObjects(user, nil);
 }
 
 - (void)testCourseAccess
@@ -57,25 +78,25 @@
     
     //test get course by id
     Course* course = [dbAccess getCourseByID:1];
-    XCTAssertEqualObjects([course name], @"David Foster Wallace");
-    XCTAssertEqualObjects([course color], @"BLUE");
-    XCTAssertEqual([course userID], 4);
-    XCTAssertEqualObjects([course iCalFeed], @"iCALFEEEED");
-    XCTAssertEqualObjects([course iCalID], @"IDIDID");
+    XCTAssertEqualObjects(course.name, @"David Foster Wallace");
+    XCTAssertEqualObjects(course.color, @"BLUE");
+    XCTAssertEqual(course.userID, 4);
+    XCTAssertEqualObjects(course.iCalFeed, @"iCALFEEEED");
+    XCTAssertEqualObjects(course.iCalID, @"IDIDID");
     
     course = [dbAccess getCourseByID:2];
-    XCTAssertEqualObjects([course name], @"G");
-    XCTAssertEqualObjects([course color], @"GREEN");
-    XCTAssertEqual([course userID], 3);
-    XCTAssertEqualObjects([course iCalFeed], @"iCAL");
-    XCTAssertEqualObjects([course iCalID], @"FOUR");
+    XCTAssertEqualObjects(course.name, @"G");
+    XCTAssertEqualObjects(course.color, @"GREEN");
+    XCTAssertEqual(course.userID, 3);
+    XCTAssertEqualObjects(course.iCalFeed, @"iCAL");
+    XCTAssertEqualObjects(course.iCalID, @"FOUR");
     
     course = [dbAccess getCourseByID:3];
-    XCTAssertEqualObjects([course name], @"A");
-    XCTAssertEqualObjects([course color], @"APPLE");
-    XCTAssertEqual([course userID], 1);
-    XCTAssertEqualObjects([course iCalFeed], @"iCALAPPPP");
-    XCTAssertEqualObjects([course iCalID], @"AND");
+    XCTAssertEqualObjects(course.name, @"A");
+    XCTAssertEqualObjects(course.color, @"APPLE");
+    XCTAssertEqual(course.userID, 1);
+    XCTAssertEqualObjects(course.iCalFeed, @"iCALAPPPP");
+    XCTAssertEqualObjects(course.iCalID, @"AND");
     
     
     
@@ -83,25 +104,25 @@
     NSArray* courses = [dbAccess getAllCoursesOrderedByName];
     
     course = [courses objectAtIndex:0];
-    XCTAssertEqualObjects([course name], @"A");
-    XCTAssertEqualObjects([course color], @"APPLE");
-    XCTAssertEqual([course userID], 1);
-    XCTAssertEqualObjects([course iCalFeed], @"iCALAPPPP");
-    XCTAssertEqualObjects([course iCalID], @"AND");
+    XCTAssertEqualObjects(course.name, @"A");
+    XCTAssertEqualObjects(course.color, @"APPLE");
+    XCTAssertEqual(course.userID, 1);
+    XCTAssertEqualObjects(course.iCalFeed, @"iCALAPPPP");
+    XCTAssertEqualObjects(course.iCalID, @"AND");
     
     course = [courses objectAtIndex:2];
-    XCTAssertEqualObjects([course name], @"G");
-    XCTAssertEqualObjects([course color], @"GREEN");
-    XCTAssertEqual([course userID], 3);
-    XCTAssertEqualObjects([course iCalFeed], @"iCAL");
-    XCTAssertEqualObjects([course iCalID], @"FOUR");
+    XCTAssertEqualObjects(course.name, @"G");
+    XCTAssertEqualObjects(course.color, @"GREEN");
+    XCTAssertEqual(course.userID, 3);
+    XCTAssertEqualObjects(course.iCalFeed, @"iCAL");
+    XCTAssertEqualObjects(course.iCalID, @"FOUR");
     
     course = [courses objectAtIndex:1];
-    XCTAssertEqualObjects([course name], @"David Foster Wallace");
-    XCTAssertEqualObjects([course color], @"BLUE");
-    XCTAssertEqual([course userID], 4);
-    XCTAssertEqualObjects([course iCalFeed], @"iCALFEEEED");
-    XCTAssertEqualObjects([course iCalID], @"IDIDID");
+    XCTAssertEqualObjects(course.name, @"David Foster Wallace");
+    XCTAssertEqualObjects(course.color, @"BLUE");
+    XCTAssertEqual(course.userID, 4);
+    XCTAssertEqualObjects(course.iCalFeed, @"iCALFEEEED");
+    XCTAssertEqualObjects(course.iCalID, @"IDIDID");
     
     
     
@@ -111,18 +132,18 @@
     courses = [dbAccess getAllCoursesOrderedByName];
     
     course = [courses objectAtIndex:0];
-    XCTAssertEqualObjects([course name], @"A");
-    XCTAssertEqualObjects([course color], @"APPLE");
-    XCTAssertEqual([course userID], 1);
-    XCTAssertEqualObjects([course iCalFeed], @"iCALAPPPP");
-    XCTAssertEqualObjects([course iCalID], @"AND");
+    XCTAssertEqualObjects(course.name, @"A");
+    XCTAssertEqualObjects(course.color, @"APPLE");
+    XCTAssertEqual(course.userID, 1);
+    XCTAssertEqualObjects(course.iCalFeed, @"iCALAPPPP");
+    XCTAssertEqualObjects(course.iCalID, @"AND");
     
     course = [courses objectAtIndex:1];
-    XCTAssertEqualObjects([course name], @"G");
-    XCTAssertEqualObjects([course color], @"GREEN");
-    XCTAssertEqual([course userID], 3);
-    XCTAssertEqualObjects([course iCalFeed], @"iCAL");
-    XCTAssertEqualObjects([course iCalID], @"FOUR");
+    XCTAssertEqualObjects(course.name, @"G");
+    XCTAssertEqualObjects(course.color, @"GREEN");
+    XCTAssertEqual(course.userID, 3);
+    XCTAssertEqualObjects(course.iCalFeed, @"iCAL");
+    XCTAssertEqualObjects(course.iCalID, @"FOUR");
     
     
     
@@ -131,7 +152,7 @@
     
     courses = [dbAccess getAllCoursesOrderedByName];
     
-    XCTAssertEqual(0, [courses count]);
+    XCTAssertEqual(0, courses.count);
 }
 
 
