@@ -12,7 +12,6 @@
 
 @interface CourseDBAccess : NSObject
 
-- (id) init;
 - (id) initWithDatabase:(NSString*)db;
 
 - (Course*) getCourseByID:(int)ID;

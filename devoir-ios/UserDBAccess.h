@@ -12,7 +12,6 @@
 
 @interface UserDBAccess : NSObject
 
-- (id) init;
 - (id) initWithDatabase:(NSString*)db;
 
 - (User*) getUser;

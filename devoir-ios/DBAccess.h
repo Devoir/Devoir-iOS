@@ -14,6 +14,9 @@
 
 @interface DBAccess : NSObject
 
+- (id) init;
+- (id) initWithDatabase:(NSString*)db;
+
 //User Methods
 - (User*) getUser;
 

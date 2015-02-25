@@ -18,15 +18,6 @@
 
 @synthesize dbName;
 
-- (id) init
-{
-    if ((self = [super init]))
-    {
-        dbName = @"devoir-ios.sqlite";
-    }
-    return self;
-}
-
 - (id) initWithDatabase:(NSString*)db
 {
     if ((self = [super init]))

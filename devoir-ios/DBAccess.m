@@ -8,44 +8,70 @@
 
 #import "DBAccess.h"
 
+@interface DBAccess()
+
+@property (nonatomic, retain) NSString* dbName;
+
+@end
+
 @implementation DBAccess
+
+@synthesize dbName;
+
+- (id) init
+{
+    if ((self = [super init]))
+    {
+        dbName = @"devoir-ios.sqlite";
+    }
+    return self;
+}
+
+- (id) initWithDatabase:(NSString*)db
+{
+    if ((self = [super init]))
+    {
+        dbName = db;
+    }
+    return self;
+}
 
 #pragma mark - User Methods
 - (User*) getUser
 {
-    UserDBAccess* userAccess = [[UserDBAccess alloc] init];
+    UserDBAccess* userAccess = [[UserDBAccess alloc] initWithDatabase:dbName];
     return [userAccess getUser];
 }
 
 - (User*) addUserWithName:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken UserID:(int)userID
 {
-    UserDBAccess* userAccess = [[UserDBAccess alloc] init];
+    UserDBAccess* userAccess = [[UserDBAccess alloc] initWithDatabase:dbName];
     return [userAccess addUserWithName:name Email:email OAuthToken:oAuthToken UserID:userID];
 }
 
 - (void) removeUser
 {
-    UserDBAccess* userAccess = [[UserDBAccess alloc] init];
+    UserDBAccess* userAccess = [[UserDBAccess alloc] initWithDatabase:dbName];
     return [userAccess removeUser];
 }
 
 #pragma mark - Course Methods
 - (Course*) getCourseByID:(int)ID
 {
-    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] init];
+    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:dbName];
     return [courseAccess getCourseByID:ID];
 }
 
 - (NSArray*) getAllCoursesOrderedByName
 {
-    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] init];
+    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:dbName];
     return [courseAccess getAllCoursesOrderedByName];
 }
 
 - (Course*) addCourseWithName:(NSString*)name Color:(NSString*)color UserID:(int)userID
                   LastUpdated:(NSDate*)lastUpdated ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID
 {
-    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] init];
+    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:dbName];
     return [courseAccess addCourseWithName:name
                                      Color:color
                                     UserID:userID
@@ -56,13 +82,13 @@
 
 - (void) removeCourseByID:(int)ID
 {
-    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] init];
+    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:dbName];
     return [courseAccess removeCourseByID:ID];
 }
 
 - (void) removeAllCourses
 {
-    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] init];
+    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:dbName];
     return [courseAccess removeAllCourses];
 }
 
