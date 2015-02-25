@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSString* color;
 @property int userID;
 @property (nonatomic, strong) NSDate* lastUpdated;
+@property BOOL visible;
 
 //optional
 @property (nonatomic, strong) NSString* iCalFeed;
@@ -23,7 +24,7 @@
 
 //has all properties (database)
 -(id) initWithID:(int)ID Name:(NSString*)name Color:(NSString*)color UserID:(int)userID
-     LastUpdated:(NSDate*)lastUpdated ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID;
+     LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID;
 
 //from create course page NO ICAL
 -(id) initWithName:(NSString*)name Color:(NSString*)color UserID:(int)userID;

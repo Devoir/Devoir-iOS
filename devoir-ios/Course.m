@@ -11,7 +11,7 @@
 @implementation Course
 
 -(id) initWithID:(int)ID Name:(NSString*)name Color:(NSString*)color UserID:(int)userID
-     LastUpdated:(NSDate*)lastUpdated ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID
+     LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID
 {
     if (self = [super init])
     {
@@ -20,6 +20,7 @@
         self.color = color;
         self.userID = userID;
         self.lastUpdated = lastUpdated;
+        self.visible = visible;
         self.iCalFeed = iCalFeed;
         self.iCalID = iCalID;
     }
@@ -35,6 +36,7 @@
         self.color = color;
         self.userID = userID;
         self.lastUpdated = nil;
+        self.visible = YES;
         self.iCalFeed = nil;
         self.iCalID = nil;
     }
@@ -50,6 +52,7 @@
         self.color = color;
         self.userID = userID;
         self.lastUpdated = nil;
+        self.visible = YES;
         self.iCalFeed = iCalFeed;
         self.iCalID = nil;
     }

@@ -69,13 +69,15 @@
 }
 
 - (Course*) addCourseWithName:(NSString*)name Color:(NSString*)color UserID:(int)userID
-                  LastUpdated:(NSDate*)lastUpdated ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID
+                  LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
+                     ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID
 {
     CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:dbName];
     return [courseAccess addCourseWithName:name
                                      Color:color
                                     UserID:userID
                                LastUpdated:lastUpdated
+                                   Visible:visible
                                   ICalFeed:iCalFeed
                                     ICalID:iCalID];
 }

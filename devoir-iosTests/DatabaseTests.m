@@ -57,6 +57,7 @@
                           Color:@"BLUE"
                          UserID:4
                     LastUpdated:[NSDate date]
+                        Visible:YES
                        ICalFeed:@"iCALFEEEED"
                           ICalID:@"IDIDID"];
     
@@ -64,6 +65,7 @@
                           Color:@"GREEN"
                          UserID:3
                     LastUpdated:[NSDate date]
+                        Visible:NO
                        ICalFeed:@"iCAL"
                          ICalID:@"FOUR"];
     
@@ -71,6 +73,7 @@
                           Color:@"APPLE"
                          UserID:1
                     LastUpdated:[NSDate date]
+                        Visible:YES
                        ICalFeed:@"iCALAPPPP"
                          ICalID:@"AND"];
     
@@ -81,6 +84,7 @@
     XCTAssertEqualObjects(course.name, @"David Foster Wallace");
     XCTAssertEqualObjects(course.color, @"BLUE");
     XCTAssertEqual(course.userID, 4);
+    XCTAssertEqual(course.visible, YES);
     XCTAssertEqualObjects(course.iCalFeed, @"iCALFEEEED");
     XCTAssertEqualObjects(course.iCalID, @"IDIDID");
     
@@ -88,6 +92,7 @@
     XCTAssertEqualObjects(course.name, @"G");
     XCTAssertEqualObjects(course.color, @"GREEN");
     XCTAssertEqual(course.userID, 3);
+    XCTAssertEqual(course.visible, NO);
     XCTAssertEqualObjects(course.iCalFeed, @"iCAL");
     XCTAssertEqualObjects(course.iCalID, @"FOUR");
     
@@ -95,6 +100,7 @@
     XCTAssertEqualObjects(course.name, @"A");
     XCTAssertEqualObjects(course.color, @"APPLE");
     XCTAssertEqual(course.userID, 1);
+    XCTAssertEqual(course.visible, YES);
     XCTAssertEqualObjects(course.iCalFeed, @"iCALAPPPP");
     XCTAssertEqualObjects(course.iCalID, @"AND");
     
@@ -107,6 +113,7 @@
     XCTAssertEqualObjects(course.name, @"A");
     XCTAssertEqualObjects(course.color, @"APPLE");
     XCTAssertEqual(course.userID, 1);
+    XCTAssertEqual(course.visible, YES);
     XCTAssertEqualObjects(course.iCalFeed, @"iCALAPPPP");
     XCTAssertEqualObjects(course.iCalID, @"AND");
     
@@ -114,6 +121,7 @@
     XCTAssertEqualObjects(course.name, @"G");
     XCTAssertEqualObjects(course.color, @"GREEN");
     XCTAssertEqual(course.userID, 3);
+    XCTAssertEqual(course.visible, NO);
     XCTAssertEqualObjects(course.iCalFeed, @"iCAL");
     XCTAssertEqualObjects(course.iCalID, @"FOUR");
     
@@ -121,6 +129,7 @@
     XCTAssertEqualObjects(course.name, @"David Foster Wallace");
     XCTAssertEqualObjects(course.color, @"BLUE");
     XCTAssertEqual(course.userID, 4);
+    XCTAssertEqual(course.visible, YES);
     XCTAssertEqualObjects(course.iCalFeed, @"iCALFEEEED");
     XCTAssertEqualObjects(course.iCalID, @"IDIDID");
     
@@ -135,6 +144,7 @@
     XCTAssertEqualObjects(course.name, @"A");
     XCTAssertEqualObjects(course.color, @"APPLE");
     XCTAssertEqual(course.userID, 1);
+    XCTAssertEqual(course.visible, YES);
     XCTAssertEqualObjects(course.iCalFeed, @"iCALAPPPP");
     XCTAssertEqualObjects(course.iCalID, @"AND");
     
@@ -142,6 +152,7 @@
     XCTAssertEqualObjects(course.name, @"G");
     XCTAssertEqualObjects(course.color, @"GREEN");
     XCTAssertEqual(course.userID, 3);
+    XCTAssertEqual(course.visible, NO);
     XCTAssertEqualObjects(course.iCalFeed, @"iCAL");
     XCTAssertEqualObjects(course.iCalID, @"FOUR");
     
