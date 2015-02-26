@@ -28,7 +28,7 @@
 
 - (void)testUserAccess
 {
-    DBAccess* dbAccess = [[DBAccess alloc] init];
+    DBAccess* dbAccess = [[DBAccess alloc] initWithDatabase:@"devoir-ios-test.sqlite"];
     
     //test add user
     [dbAccess addUserWithID: 16
@@ -49,7 +49,7 @@
 
 - (void)testCourseAccess
 {
-    DBAccess* dbAccess = [[DBAccess alloc] init];
+    DBAccess* dbAccess = [[DBAccess alloc] initWithDatabase:@"devoir-ios-test.sqlite"];
     
     //Test add course
     [dbAccess addCourseWithID:56

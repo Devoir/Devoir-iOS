@@ -40,7 +40,7 @@
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
-        NSLog(@"Failed to open db connection");
+        NSLog(@"Failed to open db connection: %@", dbName);
     }
     else
     {
@@ -83,7 +83,7 @@
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
-        NSLog(@"Failed to open db connection");
+        NSLog(@"Failed to open db connection: %@", dbName);
     }
     else
     {
@@ -118,7 +118,7 @@
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
-        NSLog(@"Failed to open db connection");
+        NSLog(@"Failed to open db connection: %@", dbName);
     }
     else
     {

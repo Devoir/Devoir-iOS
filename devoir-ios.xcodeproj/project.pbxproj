@@ -15,12 +15,13 @@
 		3219FF5E1A86C5070034C46E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3219FF5C1A86C5070034C46E /* LaunchScreen.xib */; };
 		3219FF6A1A86C5070034C46E /* devoir_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3219FF691A86C5070034C46E /* devoir_iosTests.m */; };
 		4E1ED7FF1A9E98A800E37759 /* AssignmentDBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1ED7FE1A9E98A800E37759 /* AssignmentDBAccess.m */; };
+		4E1ED8051A9EAE5100E37759 /* devoir-ios.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4E1ED8041A9EAE5100E37759 /* devoir-ios.sqlite */; };
 		4E34579B1A9CE65E0063EE1E /* DBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E34579A1A9CE65E0063EE1E /* DBAccess.m */; };
 		4E34579E1A9CEA590063EE1E /* CourseDBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E34579D1A9CEA590063EE1E /* CourseDBAccess.m */; };
 		4E3457A01A9CEDD80063EE1E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E34579F1A9CEDD80063EE1E /* libsqlite3.dylib */; };
 		4E3457A41A9CF5BC0063EE1E /* UserDBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3457A31A9CF5BC0063EE1E /* UserDBAccess.m */; };
 		4E3960FC1A89C4DD00C0004C /* Assignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3960FB1A89C4DD00C0004C /* Assignment.m */; };
-		4EB974DD1A9D390F00B4CDA9 /* devoir-ios.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4EB974DC1A9D390F00B4CDA9 /* devoir-ios.sqlite */; };
+		4EB974DD1A9D390F00B4CDA9 /* devoir-ios-test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4EB974DC1A9D390F00B4CDA9 /* devoir-ios-test.sqlite */; };
 		4EB974DF1A9D3B9800B4CDA9 /* DatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */; };
 		4ED1DF581A89935C00D9F29D /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF571A89935C00D9F29D /* Course.m */; };
 		4ED1DF5B1A89936C00D9F29D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF5A1A89936C00D9F29D /* User.m */; };
@@ -52,6 +53,7 @@
 		3219FF691A86C5070034C46E /* devoir_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = devoir_iosTests.m; sourceTree = "<group>"; };
 		4E1ED7FD1A9E98A800E37759 /* AssignmentDBAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentDBAccess.h; sourceTree = "<group>"; };
 		4E1ED7FE1A9E98A800E37759 /* AssignmentDBAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentDBAccess.m; sourceTree = "<group>"; };
+		4E1ED8041A9EAE5100E37759 /* devoir-ios.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "devoir-ios.sqlite"; sourceTree = "<group>"; };
 		4E3457991A9CE65E0063EE1E /* DBAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBAccess.h; sourceTree = "<group>"; };
 		4E34579A1A9CE65E0063EE1E /* DBAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBAccess.m; sourceTree = "<group>"; };
 		4E34579C1A9CEA590063EE1E /* CourseDBAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDBAccess.h; sourceTree = "<group>"; };
@@ -61,7 +63,7 @@
 		4E3457A31A9CF5BC0063EE1E /* UserDBAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDBAccess.m; sourceTree = "<group>"; };
 		4E3960FA1A89C4DD00C0004C /* Assignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assignment.h; sourceTree = "<group>"; };
 		4E3960FB1A89C4DD00C0004C /* Assignment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Assignment.m; sourceTree = "<group>"; };
-		4EB974DC1A9D390F00B4CDA9 /* devoir-ios.sqlite */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "devoir-ios.sqlite"; sourceTree = SOURCE_ROOT; };
+		4EB974DC1A9D390F00B4CDA9 /* devoir-ios-test.sqlite */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = "devoir-ios-test.sqlite"; sourceTree = SOURCE_ROOT; };
 		4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTests.m; sourceTree = "<group>"; };
 		4ED1DF561A89935C00D9F29D /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		4ED1DF571A89935C00D9F29D /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		3219FF661A86C5070034C46E /* devoir-iosTests */ = {
 			isa = PBXGroup;
 			children = (
+				4EB974DC1A9D390F00B4CDA9 /* devoir-ios-test.sqlite */,
 				4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */,
 				3219FF691A86C5070034C46E /* devoir_iosTests.m */,
 				3219FF671A86C5070034C46E /* Supporting Files */,
@@ -154,7 +157,7 @@
 		4E3457A11A9CF3F30063EE1E /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				4EB974DC1A9D390F00B4CDA9 /* devoir-ios.sqlite */,
+				4E1ED8041A9EAE5100E37759 /* devoir-ios.sqlite */,
 				4E3457991A9CE65E0063EE1E /* DBAccess.h */,
 				4E34579A1A9CE65E0063EE1E /* DBAccess.m */,
 				4E1ED7FD1A9E98A800E37759 /* AssignmentDBAccess.h */,
@@ -268,9 +271,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E1ED8051A9EAE5100E37759 /* devoir-ios.sqlite in Resources */,
 				3219FF591A86C5070034C46E /* Main.storyboard in Resources */,
 				3219FF5E1A86C5070034C46E /* LaunchScreen.xib in Resources */,
-				4EB974DD1A9D390F00B4CDA9 /* devoir-ios.sqlite in Resources */,
+				4EB974DD1A9D390F00B4CDA9 /* devoir-ios-test.sqlite in Resources */,
 				3219FF5B1A86C5070034C46E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
