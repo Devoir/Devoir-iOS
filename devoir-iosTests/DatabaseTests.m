@@ -31,17 +31,16 @@
     DBAccess* dbAccess = [[DBAccess alloc] init];
     
     //test add user
-    [dbAccess addUserWithName: @"Brent Roberts"
+    [dbAccess addUserWithID: 16
+                       Name: @"Brent Roberts"
                         Email: @"brentroberts@email.com"
-                   OAuthToken: @"AXCD-5674-YSGDA"
-                       UserID:26];
-    
+                 OAuthToken: @"AXCD-5674-YSGDA"];
     //test get user
     User* user = [dbAccess getUser];
+    XCTAssertEqual(user.ID, 16);
     XCTAssertEqualObjects(user.name, @"Brent Roberts");
     XCTAssertEqualObjects(user.email, @"brentroberts@email.com");
     XCTAssertEqualObjects(user.oAuthToken, @"AXCD-5674-YSGDA");
-    XCTAssertEqual(user.userID, 26);
     
     [dbAccess removeUser];
     user = [dbAccess getUser];
@@ -53,7 +52,8 @@
     DBAccess* dbAccess = [[DBAccess alloc] init];
     
     //Test add course
-    [dbAccess addCourseWithName:@"David Foster Wallace"
+    [dbAccess addCourseWithID:56
+                         Name:@"David Foster Wallace"
                           Color:@"BLUE"
                          UserID:4
                     LastUpdated:[NSDate date]
@@ -61,7 +61,8 @@
                        ICalFeed:@"iCALFEEEED"
                           ICalID:@"IDIDID"];
     
-    [dbAccess addCourseWithName:@"G"
+    [dbAccess addCourseWithID:24
+                         Name:@"G"
                           Color:@"GREEN"
                          UserID:3
                     LastUpdated:[NSDate date]
@@ -69,7 +70,8 @@
                        ICalFeed:@"iCAL"
                          ICalID:@"FOUR"];
     
-    [dbAccess addCourseWithName:@"A"
+    [dbAccess addCourseWithID:12
+                         Name:@"A"
                           Color:@"APPLE"
                          UserID:1
                     LastUpdated:[NSDate date]
@@ -80,7 +82,8 @@
     
     
     //test get course by id
-    Course* course = [dbAccess getCourseByID:1];
+    Course* course = [dbAccess getCourseByID:56];
+    XCTAssertEqual(course.ID, 56);
     XCTAssertEqualObjects(course.name, @"David Foster Wallace");
     XCTAssertEqualObjects(course.color, @"BLUE");
     XCTAssertEqual(course.userID, 4);
@@ -88,7 +91,8 @@
     XCTAssertEqualObjects(course.iCalFeed, @"iCALFEEEED");
     XCTAssertEqualObjects(course.iCalID, @"IDIDID");
     
-    course = [dbAccess getCourseByID:2];
+    course = [dbAccess getCourseByID:24];
+    XCTAssertEqual(course.ID, 24);
     XCTAssertEqualObjects(course.name, @"G");
     XCTAssertEqualObjects(course.color, @"GREEN");
     XCTAssertEqual(course.userID, 3);
@@ -96,7 +100,8 @@
     XCTAssertEqualObjects(course.iCalFeed, @"iCAL");
     XCTAssertEqualObjects(course.iCalID, @"FOUR");
     
-    course = [dbAccess getCourseByID:3];
+    course = [dbAccess getCourseByID:12];
+    XCTAssertEqual(course.ID, 12);
     XCTAssertEqualObjects(course.name, @"A");
     XCTAssertEqualObjects(course.color, @"APPLE");
     XCTAssertEqual(course.userID, 1);
@@ -110,6 +115,7 @@
     NSArray* courses = [dbAccess getAllCoursesOrderedByName];
     
     course = [courses objectAtIndex:0];
+    XCTAssertEqual(course.ID, 12);
     XCTAssertEqualObjects(course.name, @"A");
     XCTAssertEqualObjects(course.color, @"APPLE");
     XCTAssertEqual(course.userID, 1);
@@ -118,6 +124,7 @@
     XCTAssertEqualObjects(course.iCalID, @"AND");
     
     course = [courses objectAtIndex:2];
+    XCTAssertEqual(course.ID, 24);
     XCTAssertEqualObjects(course.name, @"G");
     XCTAssertEqualObjects(course.color, @"GREEN");
     XCTAssertEqual(course.userID, 3);
@@ -126,6 +133,7 @@
     XCTAssertEqualObjects(course.iCalID, @"FOUR");
     
     course = [courses objectAtIndex:1];
+    XCTAssertEqual(course.ID, 56);
     XCTAssertEqualObjects(course.name, @"David Foster Wallace");
     XCTAssertEqualObjects(course.color, @"BLUE");
     XCTAssertEqual(course.userID, 4);
@@ -141,6 +149,7 @@
     courses = [dbAccess getAllCoursesOrderedByName];
     
     course = [courses objectAtIndex:0];
+    XCTAssertEqual(course.ID, 12);
     XCTAssertEqualObjects(course.name, @"A");
     XCTAssertEqualObjects(course.color, @"APPLE");
     XCTAssertEqual(course.userID, 1);
@@ -149,6 +158,7 @@
     XCTAssertEqualObjects(course.iCalID, @"AND");
     
     course = [courses objectAtIndex:1];
+    XCTAssertEqual(course.ID, 24);
     XCTAssertEqualObjects(course.name, @"G");
     XCTAssertEqualObjects(course.color, @"GREEN");
     XCTAssertEqual(course.userID, 3);

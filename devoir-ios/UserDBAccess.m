@@ -51,16 +51,15 @@
         {
             if (sqlite3_step(stmt) == SQLITE_ROW)
             {
+                int ID = sqlite3_column_int(stmt, 0);
                 NSString* name = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 1)];
                 NSString* email = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 2)];
                 NSString* oAuthToken = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 3)];
-                int userID = sqlite3_column_int(stmt, 4);
                 
-                user = [[User alloc] init];
-                [user setName:name];
-                [user setEmail:email];
-                [user setOAuthToken:oAuthToken];
-                [user setUserID:userID];
+                user = [[User alloc] initWithID:ID
+                                           Name:name
+                                          Email:email
+                                     OAuthToken:oAuthToken];
             }
             sqlite3_finalize(stmt);
         }
@@ -74,7 +73,7 @@
     return user;
 }
 
-- (User*) addUserWithName:(NSString *)name Email:(NSString *)email OAuthToken:(NSString *)oAuthToken UserID:(int)userID
+- (User*) addUserWithID:(int)ID Name:(NSString *)name Email:(NSString *)email OAuthToken:(NSString *)oAuthToken
 {
     NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
     
@@ -89,10 +88,9 @@
     else
     {
         NSString * query  = [NSString
-                             stringWithFormat:@"INSERT INTO User (Name, Email, OAuthToken, UserID) VALUES (\"%@\",\"%@\",\"%@\",%d)",
-                             name, email, oAuthToken, userID];
+                             stringWithFormat:@"INSERT INTO User (id, Name, Email, OAuthToken) VALUES (%d, \"%@\",\"%@\",\"%@\")",
+                             ID, name, email, oAuthToken];
         
-        //NSLog(@"QUERY: %@", query);
         char * errMsg;
         rc = sqlite3_exec(db, [query UTF8String], nil, NULL, &errMsg);
         if(SQLITE_OK != rc)
@@ -102,7 +100,10 @@
         sqlite3_close(db);
     }
     
-    User* user = [[User alloc] initWithName:name Email:email OAuthToken:oAuthToken UserID:userID];
+    User* user = [[User alloc] initWithID: ID
+                                     Name:name
+                                    Email:email
+                               OAuthToken:oAuthToken];
     
     return user;
 }

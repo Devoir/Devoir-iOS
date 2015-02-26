@@ -50,7 +50,6 @@
         {
             while (sqlite3_step(stmt) == SQLITE_ROW)
             {
-                //GET DATE STUFF!
                 int ID =sqlite3_column_int(stmt, 0);
                 NSString* name = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 1)];
                 NSString* color = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 2)];
@@ -60,7 +59,6 @@
                 NSString* iCalFeed = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 6)];
                 NSString* iCalID = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
                 
-                //DO THE LAST UPDATED STUFF
                 course = [[Course alloc] initWithID:ID
                                                Name:name
                                               Color:color
@@ -106,7 +104,6 @@
         {
             while (sqlite3_step(stmt) == SQLITE_ROW)
             {
-                //GET DATE STUFF!
                 int ID =sqlite3_column_int(stmt, 0);
                 NSString* name = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 1)];
                 NSString* color = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 2)];
@@ -116,7 +113,6 @@
                 NSString* iCalFeed = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 6)];
                 NSString* iCalID = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
                 
-                //DO THE LAST UPDATED STUFF
                 Course* course = [[Course alloc] initWithID:ID
                                                Name:name
                                               Color:color
@@ -141,7 +137,7 @@
     return [courses copy];
 }
 
-- (Course*) addCourseWithName:(NSString*)name Color:(NSString*)color UserID:(int)userID
+- (Course*) addCourseWithID:(int)ID Name:(NSString*)name Color:(NSString*)color UserID:(int)userID
                   LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
                      ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID
 {
@@ -159,9 +155,9 @@
     {
         NSString * query  = [NSString
                              stringWithFormat:@"INSERT INTO Course"
-                             "(Name, Color, UserID, LastUpdated, Visible, iCalFeed, iCalID) "
-                             "VALUES (\"%@\",\"%@\",%d,\"%@\",%d,\"%@\",\"%@\")",
-                             name, color, userID, lastUpdated, visible, iCalFeed, iCalID];
+                             "(id, Name, Color, UserID, LastUpdated, Visible, iCalFeed, iCalID) "
+                             "VALUES (%d, \"%@\",\"%@\",%d,\"%@\",%d,\"%@\",\"%@\")",
+                             ID, name, color, userID, lastUpdated, visible, iCalFeed, iCalID];
         
         NSLog(@"QUERY: %@", query);
         char * errMsg;

@@ -43,10 +43,10 @@
     return [userAccess getUser];
 }
 
-- (User*) addUserWithName:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken UserID:(int)userID
+- (User*) addUserWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken
 {
     UserDBAccess* userAccess = [[UserDBAccess alloc] initWithDatabase:dbName];
-    return [userAccess addUserWithName:name Email:email OAuthToken:oAuthToken UserID:userID];
+    return [userAccess addUserWithID:ID Name:name Email:email OAuthToken:oAuthToken];
 }
 
 - (void) removeUser
@@ -68,18 +68,19 @@
     return [courseAccess getAllCoursesOrderedByName];
 }
 
-- (Course*) addCourseWithName:(NSString*)name Color:(NSString*)color UserID:(int)userID
+- (Course*) addCourseWithID:(int)ID Name:(NSString*)name Color:(NSString*)color UserID:(int)userID
                   LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
                      ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID
 {
     CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:dbName];
-    return [courseAccess addCourseWithName:name
-                                     Color:color
-                                    UserID:userID
-                               LastUpdated:lastUpdated
-                                   Visible:visible
-                                  ICalFeed:iCalFeed
-                                    ICalID:iCalID];
+    return [courseAccess addCourseWithID:ID
+                                    Name:name
+                                   Color:color
+                                  UserID:userID
+                             LastUpdated:lastUpdated
+                                 Visible:visible
+                                ICalFeed:iCalFeed
+                                  ICalID:iCalID];
 }
 
 - (void) removeCourseByID:(int)ID

@@ -31,8 +31,4 @@
         AssignmentDescription:(NSString*)assignmentDescription ICalEventID:(NSString*)iCalEventID
         ICalEventName:(NSString*)iCalEventName ICalDescription:(NSString*)iCalEventDescription;
 
-//from create assignment page
--(id) initWithName:(NSString*)name DueDate:(NSDate*)dueDate CourseID:(int)courseID
-        AssignmentDescription:(NSString*)assignmentDescription;
-
 @end

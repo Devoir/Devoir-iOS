@@ -11,11 +11,11 @@
 @interface User : NSObject
 
 //required
+@property int ID;
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSString* email;
 @property (nonatomic, strong) NSString* oAuthToken;
-@property int userID;
 
--(id) initWithName:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken UserID:(int)userID;
+-(id) initWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken;
 
 @end

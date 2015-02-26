@@ -32,24 +32,4 @@
     return self;
 }
 
--(id) initWithName:(NSString*)name DueDate:(NSDate*)dueDate CourseID:(int)courseID
-    AssignmentDescription:(NSString*)assignmentDescription
-{
-    if (self = [super init])
-    {
-        self.ID = -1;
-        self.name = name;
-        self.dueDate = dueDate;
-        self.complete = NO;
-        self.visible = YES;
-        self.courseID = courseID;
-        self.lastUpdated = nil;
-        self.assignmentDescription = assignmentDescription;
-        self.iCalEventID = nil;
-        self.iCalEventName = nil;
-        self.iCalEventDescription = nil;
-    }
-    return self;
-}
-
 @end

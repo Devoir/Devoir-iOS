@@ -14,6 +14,7 @@
 		3219FF5B1A86C5070034C46E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3219FF5A1A86C5070034C46E /* Images.xcassets */; };
 		3219FF5E1A86C5070034C46E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3219FF5C1A86C5070034C46E /* LaunchScreen.xib */; };
 		3219FF6A1A86C5070034C46E /* devoir_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3219FF691A86C5070034C46E /* devoir_iosTests.m */; };
+		4E1ED7FF1A9E98A800E37759 /* AssignmentDBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1ED7FE1A9E98A800E37759 /* AssignmentDBAccess.m */; };
 		4E34579B1A9CE65E0063EE1E /* DBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E34579A1A9CE65E0063EE1E /* DBAccess.m */; };
 		4E34579E1A9CEA590063EE1E /* CourseDBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E34579D1A9CEA590063EE1E /* CourseDBAccess.m */; };
 		4E3457A01A9CEDD80063EE1E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E34579F1A9CEDD80063EE1E /* libsqlite3.dylib */; };
@@ -49,6 +50,8 @@
 		3219FF631A86C5070034C46E /* devoir-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "devoir-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3219FF681A86C5070034C46E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3219FF691A86C5070034C46E /* devoir_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = devoir_iosTests.m; sourceTree = "<group>"; };
+		4E1ED7FD1A9E98A800E37759 /* AssignmentDBAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentDBAccess.h; sourceTree = "<group>"; };
+		4E1ED7FE1A9E98A800E37759 /* AssignmentDBAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentDBAccess.m; sourceTree = "<group>"; };
 		4E3457991A9CE65E0063EE1E /* DBAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBAccess.h; sourceTree = "<group>"; };
 		4E34579A1A9CE65E0063EE1E /* DBAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBAccess.m; sourceTree = "<group>"; };
 		4E34579C1A9CEA590063EE1E /* CourseDBAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDBAccess.h; sourceTree = "<group>"; };
@@ -154,6 +157,8 @@
 				4EB974DC1A9D390F00B4CDA9 /* devoir-ios.sqlite */,
 				4E3457991A9CE65E0063EE1E /* DBAccess.h */,
 				4E34579A1A9CE65E0063EE1E /* DBAccess.m */,
+				4E1ED7FD1A9E98A800E37759 /* AssignmentDBAccess.h */,
+				4E1ED7FE1A9E98A800E37759 /* AssignmentDBAccess.m */,
 				4E34579C1A9CEA590063EE1E /* CourseDBAccess.h */,
 				4E34579D1A9CEA590063EE1E /* CourseDBAccess.m */,
 				4E3457A21A9CF5BC0063EE1E /* UserDBAccess.h */,
@@ -288,6 +293,7 @@
 				4ED1DF581A89935C00D9F29D /* Course.m in Sources */,
 				3219FF561A86C5070034C46E /* ViewController.m in Sources */,
 				3219FF531A86C5070034C46E /* AppDelegate.m in Sources */,
+				4E1ED7FF1A9E98A800E37759 /* AssignmentDBAccess.m in Sources */,
 				4E3457A41A9CF5BC0063EE1E /* UserDBAccess.m in Sources */,
 				4E34579E1A9CEA590063EE1E /* CourseDBAccess.m in Sources */,
 				4E34579B1A9CE65E0063EE1E /* DBAccess.m in Sources */,

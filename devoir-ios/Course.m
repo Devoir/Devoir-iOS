@@ -27,36 +27,4 @@
     return self;
 }
 
--(id) initWithName:(NSString*)name Color:(NSString*)color UserID:(int)userID
-{
-    if (self = [super init])
-    {
-        self.ID = -1;
-        self.name = name;
-        self.color = color;
-        self.userID = userID;
-        self.lastUpdated = nil;
-        self.visible = YES;
-        self.iCalFeed = nil;
-        self.iCalID = nil;
-    }
-    return self;
-}
-
--(id) initWithName:(NSString*)name Color:(NSString*)color UserID:(int)userID ICalFeed:(NSString*)iCalFeed
-{
-    if (self = [super init])
-    {
-        self.ID = -1;
-        self.name = name;
-        self.color = color;
-        self.userID = userID;
-        self.lastUpdated = nil;
-        self.visible = YES;
-        self.iCalFeed = iCalFeed;
-        self.iCalID = nil;
-    }
-    return self;
-}
-
 @end

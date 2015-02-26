@@ -17,7 +17,7 @@
 - (Course*) getCourseByID:(int)ID;
 - (NSArray*) getAllCoursesOrderedByName;
 
-- (Course*) addCourseWithName:(NSString*)name Color:(NSString*)color UserID:(int)userID
+- (Course*) addCourseWithID:(int)ID Name:(NSString*)name Color:(NSString*)color UserID:(int)userID
                   LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
                      ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID;
 

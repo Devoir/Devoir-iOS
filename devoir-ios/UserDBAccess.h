@@ -16,7 +16,8 @@
 
 - (User*) getUser;
 
-- (User*) addUserWithName:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken UserID:(int)userID;
+- (User*) addUserWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken;
+
 - (void) removeUser;
 
 @end
