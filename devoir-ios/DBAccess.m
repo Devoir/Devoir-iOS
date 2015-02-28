@@ -95,4 +95,18 @@
     return [courseAccess removeAllCourses];
 }
 
+#pragma mark - Assignment Methods
+- (Assignment*) getAssignmentByID:(int)ID
+{
+    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:dbName];
+    return [assignmentAccess getAssignmentByID:ID];
+}
+
+- (NSArray*) getAllAssignmentsOrderedByNameForCourse:(int)courseID
+{
+    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:dbName];
+    return [assignmentAccess getAllAssignmentsOrderedByNameForCourse:courseID];
+}
+
+
 @end

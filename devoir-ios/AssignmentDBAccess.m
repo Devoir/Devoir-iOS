@@ -87,4 +87,67 @@
     return assignment;
 }
 
+- (NSArray*) getAllAssignmentsOrderedByNameForCourse:(int)courseID
+{
+    NSMutableArray* assignments = [[NSMutableArray alloc] init];
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
+    
+    sqlite3* db = nil;
+    sqlite3_stmt* stmt =nil;
+    int rc=0;
+    rc = sqlite3_open_v2([dbPath UTF8String], &db, SQLITE_OPEN_READONLY , nil);
+    if (SQLITE_OK != rc)
+    {
+        sqlite3_close(db);
+        NSLog(@"Failed to open db connection");
+    }
+    else
+    {
+        NSString  * query = [NSString stringWithFormat:@"SELECT * from Assignment WHERE CourseID = %d ORDER BY Name ASC", courseID];
+        
+        rc = sqlite3_prepare_v2(db, [query UTF8String], -1, &stmt, nil);
+        if(rc == SQLITE_OK)
+        {
+            while (sqlite3_step(stmt) == SQLITE_ROW)
+            {
+                int ID =sqlite3_column_int(stmt, 0);
+                NSString* name = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 1)];
+                //NSDate* dueDate = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 2)];
+                BOOL complete = sqlite3_column_int(stmt, 3);
+                BOOL visible = sqlite3_column_int(stmt, 4);
+                int courseID = sqlite3_column_int(stmt, 5);
+                //NSDate* lastUpdated = [NSString stringWithUTF8String:(const char *)sqlite3_column_(stmt, 6)];
+                NSString* assignmentDescription = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
+                NSString* iCalEventID = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
+                NSString* iCalEventName = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
+                NSString* iCalEventDescription = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
+                
+                
+                Assignment* assignment = [[Assignment alloc] initWithID:ID
+                                                       Name:name
+                                                    DueDate:nil
+                                                   Complete:complete
+                                                    Visible:visible
+                                                   CourseID:courseID
+                                                 LastUpated:nil
+                                      AssignmentDescription:assignmentDescription
+                                                ICalEventID:iCalEventID
+                                              ICalEventName:iCalEventName
+                                            ICalDescription:iCalEventDescription];
+                
+                [assignments addObject:assignment];
+                
+            }
+            sqlite3_finalize(stmt);
+        }
+        else
+        {
+            NSLog(@"Failed to prepare statement with rc:%d",rc);
+        }
+        sqlite3_close(db);
+    }
+    
+    return [assignments copy];
+}
+
 @end

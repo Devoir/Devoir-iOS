@@ -11,6 +11,7 @@
 #include "Course.h"
 #include "UserDBAccess.h"
 #include "CourseDBAccess.h"
+#include "AssignmentDBAccess.h"
 
 @interface DBAccess : NSObject
 
@@ -30,5 +31,9 @@
                      ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID;
 - (void) removeCourseByID:(int)ID;
 - (void) removeAllCourses;
+
+//Assignment Methods
+- (Assignment*) getAssignmentByID:(int)ID;
+- (NSArray*) getAllAssignmentsOrderedByNameForCourse:(int)courseID;
 
 @end
