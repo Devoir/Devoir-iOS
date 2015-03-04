@@ -14,20 +14,20 @@
 
 @implementation CheckboxButton
 
--(id) initWithState:(BOOL)isChecked {
-    if (isChecked) {
-        
-        
-    } else {
-        
-        
-    }
-    return self;
-}
-
-- (void) changeState:(BOOL)isChecked {
-    
-}
+//-(id) initWithState:(BOOL)isChecked {
+//    if (isChecked) {
+//        
+//        
+//    } else {
+//        
+//        
+//    }
+//    return self;
+//}
+//
+//- (void) changeState:(BOOL)isChecked {
+//    
+//}
 
 
 @end

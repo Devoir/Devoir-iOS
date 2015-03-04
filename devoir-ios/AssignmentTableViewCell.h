@@ -15,5 +15,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *courseLabel;
 @property (weak, nonatomic) IBOutlet UIView *overdueLabel;
 @property (weak, nonatomic) IBOutlet CheckboxButton *checkbox;
+@property (weak, nonatomic) IBOutlet UILabel *overdueDate;
 
 @end

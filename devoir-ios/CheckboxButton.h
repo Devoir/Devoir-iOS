@@ -11,7 +11,7 @@
 @interface CheckboxButton : UIButton
 
 @property (nonatomic, readonly) BOOL checked;
-- (void) changeState:(BOOL)isChecked;
--(id) initWithState:(BOOL)isChecked;
+//- (void) changeState:(BOOL)isChecked;
+//-(id) initWithState:(BOOL)isChecked;
 
 @end
