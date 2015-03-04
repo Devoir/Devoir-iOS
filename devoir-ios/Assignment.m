@@ -32,4 +32,11 @@
     return self;
 }
 
+- (NSString*) dueDateAsString
+{
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yyyy"];
+    return [formatter stringFromDate:self.dueDate];
+}
+
 @end

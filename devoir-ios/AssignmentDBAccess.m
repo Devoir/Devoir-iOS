@@ -52,7 +52,7 @@
             {
                 int ID =sqlite3_column_int(stmt, 0);
                 NSString* name = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 1)];
-                //NSDate* dueDate = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 2)];
+                NSString *stringDueDate = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 2)];
                 BOOL complete = sqlite3_column_int(stmt, 3);
                 BOOL visible = sqlite3_column_int(stmt, 4);
                 int courseID = sqlite3_column_int(stmt, 5);
@@ -78,10 +78,12 @@
                 if(temp)
                     iCalEventDescription = @(temp);
 
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
                 
                 assignment = [[Assignment alloc] initWithID:ID
                                                        Name:name
-                                                    DueDate:nil
+                                                    DueDate:[formatter dateFromString:stringDueDate]
                                                    Complete:complete
                                                     Visible:visible
                                                    CourseID:courseID
@@ -128,7 +130,7 @@
             {
                 int ID =sqlite3_column_int(stmt, 0);
                 NSString* name = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 1)];
-                //NSDate* dueDate = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 2)];
+                NSString *stringDueDate = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 2)];
                 BOOL complete = sqlite3_column_int(stmt, 3);
                 BOOL visible = sqlite3_column_int(stmt, 4);
                 int courseID = sqlite3_column_int(stmt, 5);
@@ -154,10 +156,12 @@
                 if(temp)
                     iCalEventDescription = @(temp);
                 
+                NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
                 
-                Assignment* assignment = [[Assignment alloc] initWithID:ID
+                Assignment *assignment = [[Assignment alloc] initWithID:ID
                                                        Name:name
-                                                    DueDate:nil
+                                                    DueDate:[formatter dateFromString:stringDueDate]
                                                    Complete:complete
                                                     Visible:visible
                                                    CourseID:courseID
