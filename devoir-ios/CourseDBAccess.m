@@ -56,8 +56,16 @@
                 int userID = sqlite3_column_int(stmt, 3);
                 //NSDate* lastUpdated = [NSString stringWithUTF8String:(const char *)sqlite3_column_(stmt, 4)];
                 BOOL visible = sqlite3_column_int(stmt, 5);
-                NSString* iCalFeed = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 6)];
-                NSString* iCalID = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
+                
+                NSString *iCalFeed;
+                const char *temp = (const char *)sqlite3_column_text(stmt, 6);
+                if(temp)
+                    iCalFeed = @(temp);
+                
+                NSString *iCalID;
+                temp = (const char *)sqlite3_column_text(stmt, 7);
+                if(temp)
+                    iCalID = @(temp);
                 
                 course = [[Course alloc] initWithID:ID
                                                Name:name
@@ -110,8 +118,16 @@
                 int userID = sqlite3_column_int(stmt, 3);
                 //NSDate* lastUpdated = [NSString stringWithUTF8String:(const char *)sqlite3_column_(stmt, 4)];
                 BOOL visible = sqlite3_column_int(stmt, 5);
-                NSString* iCalFeed = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 6)];
-                NSString* iCalID = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
+                
+                NSString *iCalFeed;
+                const char *temp = (const char *)sqlite3_column_text(stmt, 6);
+                if(temp)
+                    iCalFeed = @(temp);
+                
+                NSString *iCalID;
+                temp = (const char *)sqlite3_column_text(stmt, 7);
+                if(temp)
+                    iCalID = @(temp);
                 
                 Course* course = [[Course alloc] initWithID:ID
                                                Name:name

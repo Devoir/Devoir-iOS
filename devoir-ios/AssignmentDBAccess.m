@@ -57,10 +57,26 @@
                 BOOL visible = sqlite3_column_int(stmt, 4);
                 int courseID = sqlite3_column_int(stmt, 5);
                 //NSDate* lastUpdated = [NSString stringWithUTF8String:(const char *)sqlite3_column_(stmt, 6)];
-                NSString* assignmentDescription = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
-                NSString* iCalEventID = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
-                NSString* iCalEventName = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
-                NSString* iCalEventDescription = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
+                
+                NSString* assignmentDescription;
+                const char *temp = (const char *)sqlite3_column_text(stmt, 7);
+                if(temp)
+                    assignmentDescription = @(temp);
+                
+                NSString* iCalEventID;
+                temp = (const char *)sqlite3_column_text(stmt, 8);
+                if(temp)
+                    iCalEventID = @(temp);
+                
+                NSString* iCalEventName;
+                temp = (const char *)sqlite3_column_text(stmt, 9);
+                if(temp)
+                    iCalEventName = @(temp);
+                
+                NSString* iCalEventDescription;
+                temp = (const char *)sqlite3_column_text(stmt, 10);
+                if(temp)
+                    iCalEventDescription = @(temp);
 
                 
                 assignment = [[Assignment alloc] initWithID:ID
@@ -117,10 +133,26 @@
                 BOOL visible = sqlite3_column_int(stmt, 4);
                 int courseID = sqlite3_column_int(stmt, 5);
                 //NSDate* lastUpdated = [NSString stringWithUTF8String:(const char *)sqlite3_column_(stmt, 6)];
-                NSString* assignmentDescription = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
-                NSString* iCalEventID = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
-                NSString* iCalEventName = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
-                NSString* iCalEventDescription = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 7)];
+                
+                NSString* assignmentDescription;
+                const char *temp = (const char *)sqlite3_column_text(stmt, 7);
+                if(temp)
+                    assignmentDescription = @(temp);
+                
+                NSString* iCalEventID;
+                temp = (const char *)sqlite3_column_text(stmt, 8);
+                if(temp)
+                    iCalEventID = @(temp);
+                
+                NSString* iCalEventName;
+                temp = (const char *)sqlite3_column_text(stmt, 9);
+                if(temp)
+                    iCalEventName = @(temp);
+                
+                NSString* iCalEventDescription;
+                temp = (const char *)sqlite3_column_text(stmt, 10);
+                if(temp)
+                    iCalEventDescription = @(temp);
                 
                 
                 Assignment* assignment = [[Assignment alloc] initWithID:ID
