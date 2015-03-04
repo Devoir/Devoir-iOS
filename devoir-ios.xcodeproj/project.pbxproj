@@ -9,11 +9,19 @@
 /* Begin PBXBuildFile section */
 		3219FF501A86C5070034C46E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3219FF4F1A86C5070034C46E /* main.m */; };
 		3219FF531A86C5070034C46E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3219FF521A86C5070034C46E /* AppDelegate.m */; };
-		3219FF561A86C5070034C46E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3219FF551A86C5070034C46E /* ViewController.m */; };
 		3219FF591A86C5070034C46E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3219FF571A86C5070034C46E /* Main.storyboard */; };
 		3219FF5B1A86C5070034C46E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3219FF5A1A86C5070034C46E /* Images.xcassets */; };
 		3219FF5E1A86C5070034C46E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3219FF5C1A86C5070034C46E /* LaunchScreen.xib */; };
 		3219FF6A1A86C5070034C46E /* devoir_iosTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3219FF691A86C5070034C46E /* devoir_iosTests.m */; };
+		32B968731AA2AC6800598AD5 /* AssignmentListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B968721AA2AC6800598AD5 /* AssignmentListViewController.m */; };
+		32B968761AA2AC8000598AD5 /* AddAssignmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B968751AA2AC8000598AD5 /* AddAssignmentViewController.m */; };
+		32B9687F1AA2C5D100598AD5 /* CheckboxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B9687E1AA2C5D100598AD5 /* CheckboxButton.m */; };
+		32B968821AA2C5F800598AD5 /* AssignmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B968811AA2C5F800598AD5 /* AssignmentTableViewCell.m */; };
+		32B968851AA2DA5700598AD5 /* UIColor+DevoirColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B968841AA2DA5700598AD5 /* UIColor+DevoirColors.m */; };
+		32B968881AA38BA100598AD5 /* AssignmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B968871AA38BA100598AD5 /* AssignmentDetailViewController.m */; };
+		32B9688B1AA38BB600598AD5 /* CourseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B9688A1AA38BB600598AD5 /* CourseDetailViewController.m */; };
+		32B9688E1AA38BCA00598AD5 /* CourseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B9688D1AA38BCA00598AD5 /* CourseListViewController.m */; };
+		32B968911AA38C1300598AD5 /* AddCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B968901AA38C1300598AD5 /* AddCourseViewController.m */; };
 		4E1ED7FF1A9E98A800E37759 /* AssignmentDBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1ED7FE1A9E98A800E37759 /* AssignmentDBAccess.m */; };
 		4E1ED8051A9EAE5100E37759 /* devoir-ios.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4E1ED8041A9EAE5100E37759 /* devoir-ios.sqlite */; };
 		4E34579B1A9CE65E0063EE1E /* DBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E34579A1A9CE65E0063EE1E /* DBAccess.m */; };
@@ -43,14 +51,30 @@
 		3219FF4F1A86C5070034C46E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3219FF511A86C5070034C46E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3219FF521A86C5070034C46E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		3219FF541A86C5070034C46E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		3219FF551A86C5070034C46E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3219FF581A86C5070034C46E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3219FF5A1A86C5070034C46E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		3219FF5D1A86C5070034C46E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3219FF631A86C5070034C46E /* devoir-iosTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "devoir-iosTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3219FF681A86C5070034C46E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3219FF691A86C5070034C46E /* devoir_iosTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = devoir_iosTests.m; sourceTree = "<group>"; };
+		32B968711AA2AC6800598AD5 /* AssignmentListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentListViewController.h; sourceTree = "<group>"; };
+		32B968721AA2AC6800598AD5 /* AssignmentListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentListViewController.m; sourceTree = "<group>"; };
+		32B968741AA2AC8000598AD5 /* AddAssignmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddAssignmentViewController.h; sourceTree = "<group>"; };
+		32B968751AA2AC8000598AD5 /* AddAssignmentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddAssignmentViewController.m; sourceTree = "<group>"; };
+		32B9687D1AA2C5D100598AD5 /* CheckboxButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckboxButton.h; sourceTree = "<group>"; };
+		32B9687E1AA2C5D100598AD5 /* CheckboxButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckboxButton.m; sourceTree = "<group>"; };
+		32B968801AA2C5F800598AD5 /* AssignmentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentTableViewCell.h; sourceTree = "<group>"; };
+		32B968811AA2C5F800598AD5 /* AssignmentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentTableViewCell.m; sourceTree = "<group>"; };
+		32B968831AA2DA5700598AD5 /* UIColor+DevoirColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+DevoirColors.h"; sourceTree = "<group>"; };
+		32B968841AA2DA5700598AD5 /* UIColor+DevoirColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+DevoirColors.m"; sourceTree = "<group>"; };
+		32B968861AA38BA100598AD5 /* AssignmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentDetailViewController.h; sourceTree = "<group>"; };
+		32B968871AA38BA100598AD5 /* AssignmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentDetailViewController.m; sourceTree = "<group>"; };
+		32B968891AA38BB600598AD5 /* CourseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDetailViewController.h; sourceTree = "<group>"; };
+		32B9688A1AA38BB600598AD5 /* CourseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailViewController.m; sourceTree = "<group>"; };
+		32B9688C1AA38BCA00598AD5 /* CourseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseListViewController.h; sourceTree = "<group>"; };
+		32B9688D1AA38BCA00598AD5 /* CourseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseListViewController.m; sourceTree = "<group>"; };
+		32B9688F1AA38C1300598AD5 /* AddCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCourseViewController.h; sourceTree = "<group>"; };
+		32B968901AA38C1300598AD5 /* AddCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCourseViewController.m; sourceTree = "<group>"; };
 		4E1ED7FD1A9E98A800E37759 /* AssignmentDBAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentDBAccess.h; sourceTree = "<group>"; };
 		4E1ED7FE1A9E98A800E37759 /* AssignmentDBAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentDBAccess.m; sourceTree = "<group>"; };
 		4E1ED8041A9EAE5100E37759 /* devoir-ios.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "devoir-ios.sqlite"; sourceTree = "<group>"; };
@@ -115,9 +139,25 @@
 				4E3457A11A9CF3F30063EE1E /* Database */,
 				4ED1DF5C1A89937600D9F29D /* Model */,
 				3219FF511A86C5070034C46E /* AppDelegate.h */,
+				32B968831AA2DA5700598AD5 /* UIColor+DevoirColors.h */,
+				32B968841AA2DA5700598AD5 /* UIColor+DevoirColors.m */,
+				32B9687D1AA2C5D100598AD5 /* CheckboxButton.h */,
+				32B9687E1AA2C5D100598AD5 /* CheckboxButton.m */,
+				32B968801AA2C5F800598AD5 /* AssignmentTableViewCell.h */,
+				32B968811AA2C5F800598AD5 /* AssignmentTableViewCell.m */,
+				32B9688C1AA38BCA00598AD5 /* CourseListViewController.h */,
+				32B9688D1AA38BCA00598AD5 /* CourseListViewController.m */,
+				32B9688F1AA38C1300598AD5 /* AddCourseViewController.h */,
+				32B968901AA38C1300598AD5 /* AddCourseViewController.m */,
+				32B968891AA38BB600598AD5 /* CourseDetailViewController.h */,
+				32B9688A1AA38BB600598AD5 /* CourseDetailViewController.m */,
+				32B968711AA2AC6800598AD5 /* AssignmentListViewController.h */,
+				32B968721AA2AC6800598AD5 /* AssignmentListViewController.m */,
+				32B968741AA2AC8000598AD5 /* AddAssignmentViewController.h */,
+				32B968751AA2AC8000598AD5 /* AddAssignmentViewController.m */,
+				32B968861AA38BA100598AD5 /* AssignmentDetailViewController.h */,
+				32B968871AA38BA100598AD5 /* AssignmentDetailViewController.m */,
 				3219FF521A86C5070034C46E /* AppDelegate.m */,
-				3219FF541A86C5070034C46E /* ViewController.h */,
-				3219FF551A86C5070034C46E /* ViewController.m */,
 				3219FF571A86C5070034C46E /* Main.storyboard */,
 				3219FF5A1A86C5070034C46E /* Images.xcassets */,
 				3219FF5C1A86C5070034C46E /* LaunchScreen.xib */,
@@ -295,14 +335,22 @@
 			files = (
 				4ED1DF5B1A89936C00D9F29D /* User.m in Sources */,
 				4ED1DF581A89935C00D9F29D /* Course.m in Sources */,
-				3219FF561A86C5070034C46E /* ViewController.m in Sources */,
+				32B968851AA2DA5700598AD5 /* UIColor+DevoirColors.m in Sources */,
 				3219FF531A86C5070034C46E /* AppDelegate.m in Sources */,
 				4E1ED7FF1A9E98A800E37759 /* AssignmentDBAccess.m in Sources */,
 				4E3457A41A9CF5BC0063EE1E /* UserDBAccess.m in Sources */,
+				32B968731AA2AC6800598AD5 /* AssignmentListViewController.m in Sources */,
 				4E34579E1A9CEA590063EE1E /* CourseDBAccess.m in Sources */,
 				4E34579B1A9CE65E0063EE1E /* DBAccess.m in Sources */,
+				32B968821AA2C5F800598AD5 /* AssignmentTableViewCell.m in Sources */,
+				32B9688B1AA38BB600598AD5 /* CourseDetailViewController.m in Sources */,
 				4E3960FC1A89C4DD00C0004C /* Assignment.m in Sources */,
 				3219FF501A86C5070034C46E /* main.m in Sources */,
+				32B968881AA38BA100598AD5 /* AssignmentDetailViewController.m in Sources */,
+				32B9687F1AA2C5D100598AD5 /* CheckboxButton.m in Sources */,
+				32B968911AA38C1300598AD5 /* AddCourseViewController.m in Sources */,
+				32B9688E1AA38BCA00598AD5 /* CourseListViewController.m in Sources */,
+				32B968761AA2AC8000598AD5 /* AddAssignmentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
