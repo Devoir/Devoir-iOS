@@ -15,6 +15,7 @@
 - (id) initWithDatabase:(NSString*)db;
 
 - (Assignment*) getAssignmentByID:(int)ID;
+- (NSArray*) getAllAssignmentsOrderedByName;
 - (NSArray*) getAllAssignmentsOrderedByNameForCourse:(int)courseID;
 
 - (Assignment*) addAssignmentWithID:(int)ID Name:(NSString*)name DueDate:(NSDate*)dueDate

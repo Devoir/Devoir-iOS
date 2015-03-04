@@ -34,6 +34,7 @@
 
 //Assignment Methods
 - (Assignment*) getAssignmentByID:(int)ID;
+- (NSArray*) getAllAssignmentsOrderedByName;
 - (NSArray*) getAllAssignmentsOrderedByNameForCourse:(int)courseID;
 
 @end
