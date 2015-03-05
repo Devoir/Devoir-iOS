@@ -77,7 +77,7 @@
     // change color
     // change state
     UIButton *btn= (UIButton *)sender;
-    int num = arc4random_uniform(7);
+    int num = arc4random_uniform(8);
     if(num == 0)
         [btn setBackgroundColor:[UIColor devBlue]];
     else if (num == 1)
