@@ -23,6 +23,7 @@
 - (void) viewDidLoad {
     self.database = [[DBAccess alloc] init];
     self.assignments = [self.database getAllAssignmentsOrderedByDate];
+    //self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:1];
 }
 
 #pragma mark - tableview
