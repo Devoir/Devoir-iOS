@@ -61,6 +61,9 @@
                                                     <state key="normal">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="checkboxHit:" destination="Daq-IS-bwH" eventType="touchUpInside" id="zbT-Pm-jVH"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" id="omD-pB-cg3">
                                                     <rect key="frame" x="309" y="2" width="10" height="66"/>

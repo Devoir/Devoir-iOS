@@ -76,6 +76,25 @@
 - (IBAction)checkboxHit:(id)sender {
     // change color
     // change state
+    UIButton *btn= (UIButton *)sender;
+    int num = arc4random_uniform(7);
+    if(num == 0)
+        [btn setBackgroundColor:[UIColor devBlue]];
+    else if (num == 1)
+        [btn setBackgroundColor:[UIColor devDarkGreen]];
+    else if (num == 2)
+        [btn setBackgroundColor:[UIColor devLightGreen]];
+    else if (num == 3)
+        [btn setBackgroundColor:[UIColor devOrange]];
+    else if (num == 4)
+        [btn setBackgroundColor:[UIColor devPurple]];
+    else if (num == 5)
+        [btn setBackgroundColor:[UIColor devRed]];
+    else if (num == 6)
+        [btn setBackgroundColor:[UIColor devTurquoise]];
+    else if (num == 7)
+        [btn setBackgroundColor:[UIColor devYellow]];
+
 }
 
 @end
