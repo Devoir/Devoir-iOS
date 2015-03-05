@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface CourseTableViewCell : UITableViewCell
-
+@property (weak, nonatomic) IBOutlet UILabel *courseLabel;
 @end

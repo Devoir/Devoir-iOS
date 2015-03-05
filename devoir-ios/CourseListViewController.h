@@ -8,6 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol CourseListDelegate <NSObject>
+
+- (void)courseDidChange:(NSNumber*)courseID;
+
+@end
+
 @interface CourseListViewController : UIViewController
+
+@property (assign, nonatomic) id <CourseListDelegate> delegate;
 
 @end

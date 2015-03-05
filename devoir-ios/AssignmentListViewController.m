@@ -10,20 +10,37 @@
 #import "DBAccess.h"
 #import "AssignmentTableViewCell.h"
 #import "UIColor+DevoirColors.h"
+#import "CourseListViewController.h"
 
-@interface AssignmentListViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface AssignmentListViewController () <UITableViewDataSource, UITableViewDelegate, CourseListDelegate>
 @property (strong, nonatomic) DBAccess *database;
 @property (strong, nonatomic) NSArray *assignments;
-- (IBAction)checkboxHit:(id)sender;
+@property (retain) NSNumber *courseToShow;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+- (IBAction)checkboxHit:(id)sender;
 @end
 
 @implementation AssignmentListViewController
 
 - (void) viewDidLoad {
+    self.courseToShow = [[NSNumber alloc] initWithInt:-1];
     self.database = [[DBAccess alloc] init];
     self.assignments = [self.database getAllAssignmentsOrderedByDate];
     //self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:1];
+}
+
+- (void) courseDidChange:(NSNumber*)courseID {
+    self.courseToShow = courseID;
+    if([self.courseToShow integerValue] != -1) {
+        self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
+        [self.tableView reloadData];
+    }
+    else {
+        self.assignments = [self.database getAllAssignmentsOrderedByDate];
+        [self.tableView reloadData];
+    }
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 #pragma mark - tableview
@@ -58,7 +75,8 @@
     
     cell.overdueDate.text = [assignment dueDateAsString];
     
-    [[cell.colorLabel layer] setBackgroundColor: [UIColor devTurquoise].CGColor];
+    [[cell.colorLabel layer] setBackgroundColor: [UIColor dbColor:course.color].CGColor];
+    
     [[cell.overdueLabel layer] setBackgroundColor: [UIColor devRed].CGColor];
     
     cell.checkbox.layer.cornerRadius = cell.checkbox.bounds.size.width / 2.0;
@@ -94,6 +112,16 @@
     else if (num == 7)
         [btn setBackgroundColor:[UIColor devYellow]];
 
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    
+    CourseListViewController *transferViewController = segue.destinationViewController;
+    
+    if([segue.identifier isEqualToString:@"courseList"])
+    {
+        [transferViewController setDelegate:self];
+    }
 }
 
 @end

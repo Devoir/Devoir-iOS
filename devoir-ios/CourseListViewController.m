@@ -10,16 +10,16 @@
 #import "CourseTableViewCell.h"
 #import "DBAccess.h"
 #import "UIColor+DevoirColors.h"
+#import "AssignmentListViewController.h"
 
 @interface CourseListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) DBAccess *database;
 @property (strong, nonatomic) NSArray *courses;
-
 @end
 
 @implementation CourseListViewController
 
-- (void) viewDidLoad {
+- (void)viewDidLoad {
     self.database = [[DBAccess alloc] init];
     self.courses = [self.database getAllCoursesOrderedByName];
 }
@@ -31,26 +31,41 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.courses count];
+    return [self.courses count] + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"cell";
     CourseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    Course *course = [self.courses objectAtIndex:indexPath.row];
-    
-    cell.textLabel.text = course.name;
-    cell.backgroundColor = [UIColor dbColor:course.color];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    if(indexPath.row == 0) {
+        cell.courseLabel.text = @"Show All Courses";
+    }
+    else {
+        Course *course = [self.courses objectAtIndex:(indexPath.row -1)];
+        
+        cell.courseLabel.text = course.name;
+        cell.backgroundColor = [UIColor dbColor:course.color];
+    }
+
     
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 64;
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if(indexPath.row == 0) {
+        NSNumber *ID = [[NSNumber alloc] initWithInt:-1];
+        [self.delegate performSelector:@selector(courseDidChange:) withObject:ID];
+    }
+    else {
+        Course *course = [self.courses objectAtIndex:(indexPath.row - 1)];
+        NSNumber *ID = [[NSNumber alloc] initWithInt:course.ID];
+        [self.delegate performSelector:@selector(courseDidChange:) withObject:ID];
+    }
 }
 
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 70;
+}
 
 @end
