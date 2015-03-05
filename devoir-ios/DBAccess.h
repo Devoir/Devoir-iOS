@@ -36,5 +36,6 @@
 - (Assignment*) getAssignmentByID:(int)ID;
 - (NSArray*) getAllAssignmentsOrderedByName;
 - (NSArray*) getAllAssignmentsOrderedByNameForCourse:(int)courseID;
+- (NSArray*) getAllAssignmentsOrderedByDate;
 
 @end

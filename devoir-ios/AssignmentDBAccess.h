@@ -17,6 +17,7 @@
 - (Assignment*) getAssignmentByID:(int)ID;
 - (NSArray*) getAllAssignmentsOrderedByName;
 - (NSArray*) getAllAssignmentsOrderedByNameForCourse:(int)courseID;
+- (NSArray*) getAllAssignmentsOrderedByDate;
 
 - (Assignment*) addAssignmentWithID:(int)ID Name:(NSString*)name DueDate:(NSDate*)dueDate
                              Complete:(BOOL)complete Visible:(BOOL)visible
