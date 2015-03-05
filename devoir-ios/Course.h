@@ -7,13 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "UIColor+DevoirColors.h"
 
 @interface Course : NSObject
 
 //required
 @property int ID;
 @property (nonatomic, strong) NSString* name;
-@property (nonatomic, strong) NSString* color;
+@property DevColor color;
 @property int userID;
 @property (nonatomic, strong) NSDate* lastUpdated;
 @property BOOL visible;
@@ -22,7 +23,7 @@
 @property (nonatomic, strong) NSString* iCalFeed;
 @property (nonatomic, strong) NSString* iCalID;
 
--(id) initWithID:(int)ID Name:(NSString*)name Color:(NSString*)color UserID:(int)userID
+-(id) initWithID:(int)ID Name:(NSString*)name Color:(DevColor)color UserID:(int)userID
      LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID;
 
 @end

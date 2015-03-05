@@ -24,6 +24,7 @@
 		32B968911AA38C1300598AD5 /* AddCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B968901AA38C1300598AD5 /* AddCourseViewController.m */; };
 		4E1ED7FF1A9E98A800E37759 /* AssignmentDBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1ED7FE1A9E98A800E37759 /* AssignmentDBAccess.m */; };
 		4E1ED8051A9EAE5100E37759 /* devoir-ios.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4E1ED8041A9EAE5100E37759 /* devoir-ios.sqlite */; };
+		4E1F6DAB1AA80426006DE857 /* CourseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1F6DAA1AA80426006DE857 /* CourseTableViewCell.m */; };
 		4E34579B1A9CE65E0063EE1E /* DBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E34579A1A9CE65E0063EE1E /* DBAccess.m */; };
 		4E34579E1A9CEA590063EE1E /* CourseDBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E34579D1A9CEA590063EE1E /* CourseDBAccess.m */; };
 		4E3457A01A9CEDD80063EE1E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E34579F1A9CEDD80063EE1E /* libsqlite3.dylib */; };
@@ -78,6 +79,8 @@
 		4E1ED7FD1A9E98A800E37759 /* AssignmentDBAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentDBAccess.h; sourceTree = "<group>"; };
 		4E1ED7FE1A9E98A800E37759 /* AssignmentDBAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentDBAccess.m; sourceTree = "<group>"; };
 		4E1ED8041A9EAE5100E37759 /* devoir-ios.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "devoir-ios.sqlite"; sourceTree = "<group>"; };
+		4E1F6DA91AA80426006DE857 /* CourseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseTableViewCell.h; sourceTree = "<group>"; };
+		4E1F6DAA1AA80426006DE857 /* CourseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseTableViewCell.m; sourceTree = "<group>"; };
 		4E3457991A9CE65E0063EE1E /* DBAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DBAccess.h; sourceTree = "<group>"; };
 		4E34579A1A9CE65E0063EE1E /* DBAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DBAccess.m; sourceTree = "<group>"; };
 		4E34579C1A9CEA590063EE1E /* CourseDBAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDBAccess.h; sourceTree = "<group>"; };
@@ -145,6 +148,8 @@
 				32B9687E1AA2C5D100598AD5 /* CheckboxButton.m */,
 				32B968801AA2C5F800598AD5 /* AssignmentTableViewCell.h */,
 				32B968811AA2C5F800598AD5 /* AssignmentTableViewCell.m */,
+				4E1F6DA91AA80426006DE857 /* CourseTableViewCell.h */,
+				4E1F6DAA1AA80426006DE857 /* CourseTableViewCell.m */,
 				32B9688C1AA38BCA00598AD5 /* CourseListViewController.h */,
 				32B9688D1AA38BCA00598AD5 /* CourseListViewController.m */,
 				32B9688F1AA38C1300598AD5 /* AddCourseViewController.h */,
@@ -351,6 +356,7 @@
 				32B968911AA38C1300598AD5 /* AddCourseViewController.m in Sources */,
 				32B9688E1AA38BCA00598AD5 /* CourseListViewController.m in Sources */,
 				32B968761AA2AC8000598AD5 /* AddAssignmentViewController.m in Sources */,
+				4E1F6DAB1AA80426006DE857 /* CourseTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

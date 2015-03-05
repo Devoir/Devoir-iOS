@@ -8,6 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+typedef enum{
+    TURQOISE, RED, YELLOW, ORANGE, LIGHTGREEN, DARKGREEN, PURPLE, BLUE
+    
+} DevColor;
+
 @interface UIColor (DevoirColors)
 
 +(UIColor*) devTurquoise;
@@ -18,5 +23,7 @@
 +(UIColor*) devDarkGreen;
 +(UIColor*) devBlue;
 +(UIColor*) devPurple;
+
++(UIColor*) dbColor:(DevColor)color;
 
 @end

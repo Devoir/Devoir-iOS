@@ -42,4 +42,27 @@
     return [UIColor colorWithRed:0.3229 green:0.6045 blue:0.8807 alpha:1.0];
 }
 
++(UIColor*) dbColor:(DevColor)color {
+    switch (color) {
+        case TURQOISE:
+            return [UIColor devTurquoise];
+        case RED:
+            return [UIColor devRed];
+        case DARKGREEN:
+            return [UIColor devDarkGreen];
+        case YELLOW:
+            return [UIColor devYellow];
+        case ORANGE:
+            return [UIColor devOrange];
+        case LIGHTGREEN:
+            return [UIColor devLightGreen];
+        case PURPLE:
+            return [UIColor devPurple];
+        case BLUE:
+            return [UIColor devBlue];
+        default:
+            return [UIColor devTurquoise];
+    }
+}
+
 @end

@@ -37,8 +37,7 @@
     return [eventsOnThisDay count];
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     Assignment *assignment = [[self.assignments objectAtIndex:section] objectAtIndex:0];
     NSDate *dateRepresentingThisDay = assignment.dueDate;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -50,7 +49,7 @@
     static NSString *CellIdentifier = @"cell";
     AssignmentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    Assignment *assignment =[[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     cell.assignmentLabel.text = assignment.name;
     

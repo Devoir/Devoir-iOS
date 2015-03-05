@@ -47,7 +47,7 @@
     XCTAssertEqualObjects(user, nil);
 }
 
-- (void)testCourseAccess
+/*- (void)testCourseAccess
 {
     DBAccess* dbAccess = [[DBAccess alloc] initWithDatabase:@"devoir-ios-test.sqlite"];
     
@@ -174,7 +174,7 @@
     courses = [dbAccess getAllCoursesOrderedByName];
     
     XCTAssertEqual(0, courses.count);
-}
+}*/
 
 
 @end
