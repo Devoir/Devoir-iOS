@@ -139,33 +139,15 @@
 		3219FF4C1A86C5070034C46E /* devoir-ios */ = {
 			isa = PBXGroup;
 			children = (
-				4E3457A11A9CF3F30063EE1E /* Database */,
-				4ED1DF5C1A89937600D9F29D /* Model */,
 				3219FF511A86C5070034C46E /* AppDelegate.h */,
-				32B968831AA2DA5700598AD5 /* UIColor+DevoirColors.h */,
-				32B968841AA2DA5700598AD5 /* UIColor+DevoirColors.m */,
-				32B9687D1AA2C5D100598AD5 /* CheckboxButton.h */,
-				32B9687E1AA2C5D100598AD5 /* CheckboxButton.m */,
-				32B968801AA2C5F800598AD5 /* AssignmentTableViewCell.h */,
-				32B968811AA2C5F800598AD5 /* AssignmentTableViewCell.m */,
-				4E1F6DA91AA80426006DE857 /* CourseTableViewCell.h */,
-				4E1F6DAA1AA80426006DE857 /* CourseTableViewCell.m */,
-				32B9688C1AA38BCA00598AD5 /* CourseListViewController.h */,
-				32B9688D1AA38BCA00598AD5 /* CourseListViewController.m */,
-				32B9688F1AA38C1300598AD5 /* AddCourseViewController.h */,
-				32B968901AA38C1300598AD5 /* AddCourseViewController.m */,
-				32B968891AA38BB600598AD5 /* CourseDetailViewController.h */,
-				32B9688A1AA38BB600598AD5 /* CourseDetailViewController.m */,
-				32B968711AA2AC6800598AD5 /* AssignmentListViewController.h */,
-				32B968721AA2AC6800598AD5 /* AssignmentListViewController.m */,
-				32B968741AA2AC8000598AD5 /* AddAssignmentViewController.h */,
-				32B968751AA2AC8000598AD5 /* AddAssignmentViewController.m */,
-				32B968861AA38BA100598AD5 /* AssignmentDetailViewController.h */,
-				32B968871AA38BA100598AD5 /* AssignmentDetailViewController.m */,
 				3219FF521A86C5070034C46E /* AppDelegate.m */,
+				4E3457A11A9CF3F30063EE1E /* Database */,
+				4ED1DF5C1A89937600D9F29D /* Models */,
+				4E6AC1BA1AA8E22C00BAD7AE /* Views */,
+				4E6AC1BB1AA8E23600BAD7AE /* Controllers */,
 				3219FF571A86C5070034C46E /* Main.storyboard */,
-				3219FF5A1A86C5070034C46E /* Images.xcassets */,
 				3219FF5C1A86C5070034C46E /* LaunchScreen.xib */,
+				3219FF5A1A86C5070034C46E /* Images.xcassets */,
 				3219FF4D1A86C5070034C46E /* Supporting Files */,
 			);
 			path = "devoir-ios";
@@ -215,6 +197,40 @@
 			name = Database;
 			sourceTree = "<group>";
 		};
+		4E6AC1BA1AA8E22C00BAD7AE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				32B968831AA2DA5700598AD5 /* UIColor+DevoirColors.h */,
+				32B968841AA2DA5700598AD5 /* UIColor+DevoirColors.m */,
+				32B9687D1AA2C5D100598AD5 /* CheckboxButton.h */,
+				32B9687E1AA2C5D100598AD5 /* CheckboxButton.m */,
+				32B968801AA2C5F800598AD5 /* AssignmentTableViewCell.h */,
+				32B968811AA2C5F800598AD5 /* AssignmentTableViewCell.m */,
+				4E1F6DA91AA80426006DE857 /* CourseTableViewCell.h */,
+				4E1F6DAA1AA80426006DE857 /* CourseTableViewCell.m */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4E6AC1BB1AA8E23600BAD7AE /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				32B968711AA2AC6800598AD5 /* AssignmentListViewController.h */,
+				32B968721AA2AC6800598AD5 /* AssignmentListViewController.m */,
+				32B9688C1AA38BCA00598AD5 /* CourseListViewController.h */,
+				32B9688D1AA38BCA00598AD5 /* CourseListViewController.m */,
+				32B968861AA38BA100598AD5 /* AssignmentDetailViewController.h */,
+				32B968871AA38BA100598AD5 /* AssignmentDetailViewController.m */,
+				32B968891AA38BB600598AD5 /* CourseDetailViewController.h */,
+				32B9688A1AA38BB600598AD5 /* CourseDetailViewController.m */,
+				32B968741AA2AC8000598AD5 /* AddAssignmentViewController.h */,
+				32B968751AA2AC8000598AD5 /* AddAssignmentViewController.m */,
+				32B9688F1AA38C1300598AD5 /* AddCourseViewController.h */,
+				32B968901AA38C1300598AD5 /* AddCourseViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 		4EB974DB1A9D386500B4CDA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,7 +239,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4ED1DF5C1A89937600D9F29D /* Model */ = {
+		4ED1DF5C1A89937600D9F29D /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				4E3960FA1A89C4DD00C0004C /* Assignment.h */,
@@ -233,7 +249,7 @@
 				4ED1DF591A89936C00D9F29D /* User.h */,
 				4ED1DF5A1A89936C00D9F29D /* User.m */,
 			);
-			name = Model;
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

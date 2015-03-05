@@ -9,28 +9,24 @@
 #import "CourseDBAccess.h"
 
 @interface CourseDBAccess()
-
 @property (nonatomic, retain) NSString* dbName;
-
 @end
 
 @implementation CourseDBAccess
 
-@synthesize dbName;
-
-- (id) initWithDatabase:(NSString*)db
-{
+- (id) initWithDatabase:(NSString*)db {
     if ((self = [super init]))
     {
-        dbName = db;
+        self.dbName = db;
     }
     return self;
 }
 
-- (Course*) getCourseByID:(int)ID
-{
+#pragma mark - Retrieve from database
+
+- (Course*) getCourseByID:(int)ID {
     Course* course = nil;
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     sqlite3_stmt* stmt =nil;
@@ -89,10 +85,9 @@
     return course;
 }
 
-- (NSArray*) getAllCoursesOrderedByName
-{
+- (NSArray*) getAllCoursesOrderedByName {
     NSMutableArray* courses = [[NSMutableArray alloc] init];
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     sqlite3_stmt* stmt =nil;
@@ -153,11 +148,12 @@
     return [courses copy];
 }
 
+#pragma mark - Add to database
+
 - (Course*) addCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color UserID:(int)userID
                   LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
-                     ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID
-{
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
+                     ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID {
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
@@ -199,9 +195,10 @@
     return course;
 }
 
-- (void) removeCourseByID:(int)ID
-{
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
+#pragma mark - Remove from database
+
+- (void) removeCourseByID:(int)ID {
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
@@ -224,9 +221,8 @@
     }
 }
 
-- (void) removeAllCourses
-{
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
+- (void) removeAllCourses {
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;

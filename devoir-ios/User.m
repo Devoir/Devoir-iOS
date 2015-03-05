@@ -10,8 +10,7 @@
 
 @implementation User
 
--(id) initWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken
-{
+-(id) initWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken {
     if (self = [super init])
     {
         self.ID = ID;

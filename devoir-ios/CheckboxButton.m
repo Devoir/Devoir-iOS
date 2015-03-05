@@ -15,12 +15,15 @@
 @implementation CheckboxButton
 
 //-(id) initWithState:(BOOL)isChecked {
-//    if (isChecked) {
-//        
-//        
-//    } else {
-//        
-//        
+//    if (isChecked)
+//    {
+//
+//
+//    }
+//    else
+//    {
+//
+//
 //    }
 //    return self;
 //}

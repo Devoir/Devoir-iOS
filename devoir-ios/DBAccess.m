@@ -16,63 +16,53 @@
 
 @implementation DBAccess
 
-@synthesize dbName;
-
-- (id) init
-{
+- (id) init {
     if ((self = [super init]))
     {
-        dbName = @"devoir-ios.sqlite";
+        self.dbName = @"devoir-ios.sqlite";
     }
     return self;
 }
 
-- (id) initWithDatabase:(NSString*)db
-{
+- (id) initWithDatabase:(NSString*)db {
     if ((self = [super init]))
     {
-        dbName = db;
+        self.dbName = db;
     }
     return self;
 }
 
 #pragma mark - User Methods
-- (User*) getUser
-{
-    UserDBAccess* userAccess = [[UserDBAccess alloc] initWithDatabase:dbName];
+- (User*) getUser {
+    UserDBAccess* userAccess = [[UserDBAccess alloc] initWithDatabase:self.dbName];
     return [userAccess getUser];
 }
 
-- (User*) addUserWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken
-{
-    UserDBAccess* userAccess = [[UserDBAccess alloc] initWithDatabase:dbName];
+- (User*) addUserWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken {
+    UserDBAccess* userAccess = [[UserDBAccess alloc] initWithDatabase:self.dbName];
     return [userAccess addUserWithID:ID Name:name Email:email OAuthToken:oAuthToken];
 }
 
-- (void) removeUser
-{
-    UserDBAccess* userAccess = [[UserDBAccess alloc] initWithDatabase:dbName];
+- (void) removeUser {
+    UserDBAccess* userAccess = [[UserDBAccess alloc] initWithDatabase:self.dbName];
     return [userAccess removeUser];
 }
 
 #pragma mark - Course Methods
-- (Course*) getCourseByID:(int)ID
-{
-    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:dbName];
+- (Course*) getCourseByID:(int)ID {
+    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:self.dbName];
     return [courseAccess getCourseByID:ID];
 }
 
-- (NSArray*) getAllCoursesOrderedByName
-{
-    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:dbName];
+- (NSArray*) getAllCoursesOrderedByName {
+    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:self.dbName];
     return [courseAccess getAllCoursesOrderedByName];
 }
 
 - (Course*) addCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color UserID:(int)userID
                   LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
-                     ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID
-{
-    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:dbName];
+                     ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID {
+    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:self.dbName];
     return [courseAccess addCourseWithID:ID
                                     Name:name
                                    Color:color
@@ -83,34 +73,29 @@
                                   ICalID:iCalID];
 }
 
-- (void) removeCourseByID:(int)ID
-{
-    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:dbName];
+- (void) removeCourseByID:(int)ID {
+    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:self.dbName];
     return [courseAccess removeCourseByID:ID];
 }
 
-- (void) removeAllCourses
-{
-    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:dbName];
+- (void) removeAllCourses {
+    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:self.dbName];
     return [courseAccess removeAllCourses];
 }
 
 #pragma mark - Assignment Methods
-- (Assignment*) getAssignmentByID:(int)ID
-{
-    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:dbName];
+- (Assignment*) getAssignmentByID:(int)ID {
+    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:self.dbName];
     return [assignmentAccess getAssignmentByID:ID];
 }
 
-- (NSArray*) getAllAssignmentsOrderedByDate
-{
-    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:dbName];
+- (NSArray*) getAllAssignmentsOrderedByDate {
+    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:self.dbName];
     return [assignmentAccess getAllAssignmentsOrderedByDate];
 }
 
-- (NSArray*) getAllAssignmentsOrderedByDateForCourse:(int)courseID
-{
-    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:dbName];
+- (NSArray*) getAllAssignmentsOrderedByDateForCourse:(int)courseID {
+    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:self.dbName];
     return [assignmentAccess getAllAssignmentsOrderedByDateForCourse:courseID];
 }
 

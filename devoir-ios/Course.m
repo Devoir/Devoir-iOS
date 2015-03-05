@@ -11,8 +11,8 @@
 @implementation Course
 
 -(id) initWithID:(int)ID Name:(NSString*)name Color:(DevColor)color UserID:(int)userID
-     LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID
-{
+     LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID {
+    
     if (self = [super init])
     {
         self.ID = ID;

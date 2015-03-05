@@ -16,22 +16,20 @@
 
 @implementation UserDBAccess
 
-@synthesize dbName;
-
-- (id) initWithDatabase:(NSString*)db
-{
+- (id) initWithDatabase:(NSString*)db {
     if ((self = [super init]))
     {
-        dbName = db;
+        self.dbName = db;
     }
     return self;
 }
 
-- (User*) getUser
-{
+#pragma mark - Retrieve from database
+
+- (User*) getUser {
     User* user = nil;
     
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     sqlite3_stmt* stmt =nil;
@@ -40,7 +38,7 @@
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
-        NSLog(@"Failed to open db connection: %@", dbName);
+        NSLog(@"Failed to open db connection: %@", self.dbName);
     }
     else
     {
@@ -73,9 +71,10 @@
     return user;
 }
 
-- (User*) addUserWithID:(int)ID Name:(NSString *)name Email:(NSString *)email OAuthToken:(NSString *)oAuthToken
-{
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
+#pragma mark - Add to database
+
+- (User*) addUserWithID:(int)ID Name:(NSString *)name Email:(NSString *)email OAuthToken:(NSString *)oAuthToken {
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
@@ -83,7 +82,7 @@
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
-        NSLog(@"Failed to open db connection: %@", dbName);
+        NSLog(@"Failed to open db connection: %@", self.dbName);
     }
     else
     {
@@ -108,9 +107,10 @@
     return user;
 }
 
-- (void) removeUser
-{
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
+#pragma mark - Delete from database
+
+- (void) removeUser {
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
@@ -118,7 +118,7 @@
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
-        NSLog(@"Failed to open db connection: %@", dbName);
+        NSLog(@"Failed to open db connection: %@", self.dbName);
     }
     else
     {

@@ -9,28 +9,71 @@
 #import "AssignmentDBAccess.h"
 
 @interface AssignmentDBAccess()
-
 @property (nonatomic, retain) NSString* dbName;
-
+- (NSArray *) sortAssignmentByDate:(NSArray *)unsortedAssignments;
+- (NSDate *)dateAtBeginningOfDayForDate:(NSDate *)inputDate;
 @end
 
 @implementation AssignmentDBAccess
 
-@synthesize dbName;
-
-- (id) initWithDatabase:(NSString*)db
-{
+- (id) initWithDatabase:(NSString*)db {
     if ((self = [super init]))
     {
-        dbName = db;
+        self.dbName = db;
     }
     return self;
 }
 
-- (Assignment*) getAssignmentByID:(int)ID
-{
+#pragma mark - Utility Functions
+
+- (NSArray *) sortAssignmentByDate:(NSArray *)unsortedAssignments {
+    NSMutableArray* tempArray = [[NSMutableArray alloc] init];
+    NSMutableArray* orderedAssignments = [[NSMutableArray alloc] init];
+    NSDate *curDate = [self dateAtBeginningOfDayForDate:((Assignment*)[unsortedAssignments objectAtIndex:0]).dueDate];
+    for (Assignment *event in unsortedAssignments)
+    {
+        NSDate *dateRepresentingThisDay = [self dateAtBeginningOfDayForDate:event.dueDate];
+        if([curDate isEqual:dateRepresentingThisDay])
+        {
+            
+            [tempArray addObject:event];
+        }
+        else
+        {
+            curDate = dateRepresentingThisDay;
+            [orderedAssignments addObject:[tempArray copy]];
+            tempArray = [[NSMutableArray alloc] init];
+            [tempArray addObject:event];
+        }
+    }
+    [orderedAssignments addObject:tempArray];
+    return [orderedAssignments copy];
+}
+
+- (NSDate *)dateAtBeginningOfDayForDate:(NSDate *)inputDate {
+    // Use the user's current calendar and time zone
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSTimeZone *timeZone = [NSTimeZone systemTimeZone];
+    [calendar setTimeZone:timeZone];
+    
+    // Selectively convert the date components (year, month, day) of the input date
+    NSDateComponents *dateComps = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:inputDate];
+    
+    // Set the time components manually
+    [dateComps setHour:0];
+    [dateComps setMinute:0];
+    [dateComps setSecond:0];
+    
+    // Convert back
+    NSDate *beginningOfDay = [calendar dateFromComponents:dateComps];
+    return beginningOfDay;
+}
+
+#pragma mark - Retrieve from database
+
+- (Assignment*) getAssignmentByID:(int)ID {
     Assignment* assignment = nil;
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     sqlite3_stmt* stmt =nil;
@@ -105,10 +148,9 @@
     return assignment;
 }
 
-- (NSArray*) getAllAssignmentsOrderedByDate
-{
+- (NSArray*) getAllAssignmentsOrderedByDate {
     NSMutableArray* assignments = [[NSMutableArray alloc] init];
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     sqlite3_stmt* stmt =nil;
@@ -183,34 +225,12 @@
         sqlite3_close(db);
     }
     
-    NSMutableArray* tempArray = [[NSMutableArray alloc] init];
-    NSMutableArray* orderedAssignments = [[NSMutableArray alloc] init];
-    NSDate *curDate = [self dateAtBeginningOfDayForDate:((Assignment*)[assignments objectAtIndex:0]).dueDate];
-    for (Assignment *event in assignments)
-    {
-        NSDate *dateRepresentingThisDay = [self dateAtBeginningOfDayForDate:event.dueDate];
-        if([curDate isEqual:dateRepresentingThisDay])
-        {
-
-            [tempArray addObject:event];
-        }
-        else
-        {
-            curDate = dateRepresentingThisDay;
-            [orderedAssignments addObject:[tempArray copy]];
-            tempArray = [[NSMutableArray alloc] init];
-            [tempArray addObject:event];
-        }
-    }
-    [orderedAssignments addObject:tempArray];
-    
-    return [orderedAssignments copy];
+    return [self sortAssignmentByDate:assignments];
 }
 
-- (NSArray*) getAllAssignmentsOrderedByDateForCourse:(int)courseID
-{
+- (NSArray*) getAllAssignmentsOrderedByDateForCourse:(int)courseID {
     NSMutableArray* assignments = [[NSMutableArray alloc] init];
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:dbName];
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     sqlite3_stmt* stmt =nil;
@@ -285,48 +305,7 @@
         sqlite3_close(db);
     }
     
-    NSMutableArray* tempArray = [[NSMutableArray alloc] init];
-    NSMutableArray* orderedAssignments = [[NSMutableArray alloc] init];
-    NSDate *curDate = [self dateAtBeginningOfDayForDate:((Assignment*)[assignments objectAtIndex:0]).dueDate];
-    for (Assignment *event in assignments)
-    {
-        NSDate *dateRepresentingThisDay = [self dateAtBeginningOfDayForDate:event.dueDate];
-        if([curDate isEqual:dateRepresentingThisDay])
-        {
-            
-            [tempArray addObject:event];
-        }
-        else
-        {
-            curDate = dateRepresentingThisDay;
-            [orderedAssignments addObject:[tempArray copy]];
-            tempArray = [[NSMutableArray alloc] init];
-            [tempArray addObject:event];
-        }
-    }
-    [orderedAssignments addObject:tempArray];
-    
-    return [orderedAssignments copy];
-}
-
-- (NSDate *)dateAtBeginningOfDayForDate:(NSDate *)inputDate
-{
-    // Use the user's current calendar and time zone
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSTimeZone *timeZone = [NSTimeZone systemTimeZone];
-    [calendar setTimeZone:timeZone];
-    
-    // Selectively convert the date components (year, month, day) of the input date
-    NSDateComponents *dateComps = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:inputDate];
-    
-    // Set the time components manually
-    [dateComps setHour:0];
-    [dateComps setMinute:0];
-    [dateComps setSecond:0];
-    
-    // Convert back
-    NSDate *beginningOfDay = [calendar dateFromComponents:dateComps];
-    return beginningOfDay;
+    return [self sortAssignmentByDate:assignments];
 }
 
 @end

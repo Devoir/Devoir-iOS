@@ -38,10 +38,12 @@
     static NSString *CellIdentifier = @"cell";
     CourseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    if(indexPath.row == 0) {
+    if(indexPath.row == 0)
+    {
         cell.courseLabel.text = @"Show All Courses";
     }
-    else {
+    else
+    {
         Course *course = [self.courses objectAtIndex:(indexPath.row -1)];
         
         cell.courseLabel.text = course.name;
@@ -53,11 +55,13 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.row == 0) {
+    if(indexPath.row == 0)
+    {
         NSNumber *ID = [[NSNumber alloc] initWithInt:-1];
         [self.delegate performSelector:@selector(courseDidChange:) withObject:ID];
     }
-    else {
+    else
+    {
         Course *course = [self.courses objectAtIndex:(indexPath.row - 1)];
         NSNumber *ID = [[NSNumber alloc] initWithInt:course.ID];
         [self.delegate performSelector:@selector(courseDidChange:) withObject:ID];

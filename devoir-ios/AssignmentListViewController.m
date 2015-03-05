@@ -32,11 +32,13 @@
 
 - (void) courseDidChange:(NSNumber*)courseID {
     self.courseToShow = courseID;
-    if([self.courseToShow integerValue] != -1) {
+    if([self.courseToShow integerValue] != -1)
+    {
         self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
         [self.tableView reloadData];
     }
-    else {
+    else
+    {
         self.assignments = [self.database getAllAssignmentsOrderedByDate];
         [self.tableView reloadData];
     }

@@ -43,7 +43,8 @@
 }
 
 +(UIColor*) dbColor:(DevColor)color {
-    switch (color) {
+    switch (color)
+    {
         case TURQOISE:
             return [UIColor devTurquoise];
         case RED:

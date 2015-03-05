@@ -13,8 +13,8 @@
 -(id) initWithID:(int)ID Name:(NSString*)name DueDate:(NSDate*)dueDate Complete:(BOOL)complete
         Visible:(BOOL)visible CourseID:(int)courseID LastUpated:(NSDate*)lastUpdated
         AssignmentDescription:(NSString*)assignmentDescription ICalEventID:(NSString*)iCalEventID
-        ICalEventName:(NSString*)iCalEventName ICalDescription:(NSString*)iCalEventDescription
-{
+        ICalEventName:(NSString*)iCalEventName ICalDescription:(NSString*)iCalEventDescription {
+    
     if (self = [super init])
     {
         self.ID = ID;
@@ -32,8 +32,7 @@
     return self;
 }
 
-- (NSString*) dueDateAsString
-{
+- (NSString*) dueDateAsString {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MM/dd/yyyy"];
     return [formatter stringFromDate:self.dueDate];
