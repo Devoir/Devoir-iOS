@@ -102,11 +102,16 @@
     return [assignmentAccess getAssignmentByID:ID];
 }
 
-- (NSArray*) getAllAssignmentsOrderedByNameForCourse:(int)courseID
+- (NSArray*) getAllAssignmentsOrderedByDate
 {
     AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:dbName];
-    return [assignmentAccess getAllAssignmentsOrderedByNameForCourse:courseID];
+    return [assignmentAccess getAllAssignmentsOrderedByDate];
 }
 
+- (NSArray*) getAllAssignmentsOrderedByDateForCourse:(int)courseID
+{
+    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:dbName];
+    return [assignmentAccess getAllAssignmentsOrderedByDateForCourse:courseID];
+}
 
 @end

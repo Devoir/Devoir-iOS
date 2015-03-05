@@ -31,4 +31,6 @@
         AssignmentDescription:(NSString*)assignmentDescription ICalEventID:(NSString*)iCalEventID
         ICalEventName:(NSString*)iCalEventName ICalDescription:(NSString*)iCalEventDescription;
 
+-(NSString*) dueDateAsString;
+
 @end
