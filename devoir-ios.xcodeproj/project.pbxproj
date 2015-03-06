@@ -30,6 +30,9 @@
 		4E3457A01A9CEDD80063EE1E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E34579F1A9CEDD80063EE1E /* libsqlite3.dylib */; };
 		4E3457A41A9CF5BC0063EE1E /* UserDBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3457A31A9CF5BC0063EE1E /* UserDBAccess.m */; };
 		4E3960FC1A89C4DD00C0004C /* Assignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3960FB1A89C4DD00C0004C /* Assignment.m */; };
+		4E72FDF31AAA52F700D3A7A7 /* Plus-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FDF01AAA52F700D3A7A7 /* Plus-50.png */; };
+		4E72FDF41AAA52F700D3A7A7 /* Trash-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FDF11AAA52F700D3A7A7 /* Trash-50.png */; };
+		4E72FDF51AAA52F700D3A7A7 /* Edit-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FDF21AAA52F700D3A7A7 /* Edit-50.png */; };
 		4EB974DD1A9D390F00B4CDA9 /* devoir-ios-test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4EB974DC1A9D390F00B4CDA9 /* devoir-ios-test.sqlite */; };
 		4EB974DF1A9D3B9800B4CDA9 /* DatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */; };
 		4ED1DF581A89935C00D9F29D /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF571A89935C00D9F29D /* Course.m */; };
@@ -90,6 +93,9 @@
 		4E3457A31A9CF5BC0063EE1E /* UserDBAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDBAccess.m; sourceTree = "<group>"; };
 		4E3960FA1A89C4DD00C0004C /* Assignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assignment.h; sourceTree = "<group>"; };
 		4E3960FB1A89C4DD00C0004C /* Assignment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Assignment.m; sourceTree = "<group>"; };
+		4E72FDF01AAA52F700D3A7A7 /* Plus-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus-50.png"; sourceTree = "<group>"; };
+		4E72FDF11AAA52F700D3A7A7 /* Trash-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Trash-50.png"; sourceTree = "<group>"; };
+		4E72FDF21AAA52F700D3A7A7 /* Edit-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Edit-50.png"; sourceTree = "<group>"; };
 		4EB974DC1A9D390F00B4CDA9 /* devoir-ios-test.sqlite */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = "devoir-ios-test.sqlite"; sourceTree = SOURCE_ROOT; };
 		4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTests.m; sourceTree = "<group>"; };
 		4ED1DF561A89935C00D9F29D /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
@@ -121,9 +127,10 @@
 			isa = PBXGroup;
 			children = (
 				3219FF4C1A86C5070034C46E /* devoir-ios */,
-				3219FF661A86C5070034C46E /* devoir-iosTests */,
+				4E72FDEE1AAA527400D3A7A7 /* Resources */,
 				4EB974DB1A9D386500B4CDA9 /* Frameworks */,
 				3219FF4B1A86C5070034C46E /* Products */,
+				3219FF661A86C5070034C46E /* devoir-iosTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -231,6 +238,24 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		4E72FDEE1AAA527400D3A7A7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4E72FDEF1AAA52B500D3A7A7 /* Icons */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		4E72FDEF1AAA52B500D3A7A7 /* Icons */ = {
+			isa = PBXGroup;
+			children = (
+				4E72FDF01AAA52F700D3A7A7 /* Plus-50.png */,
+				4E72FDF11AAA52F700D3A7A7 /* Trash-50.png */,
+				4E72FDF21AAA52F700D3A7A7 /* Edit-50.png */,
+			);
+			name = Icons;
+			sourceTree = "<group>";
+		};
 		4EB974DB1A9D386500B4CDA9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -332,10 +357,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E72FDF41AAA52F700D3A7A7 /* Trash-50.png in Resources */,
 				4E1ED8051A9EAE5100E37759 /* devoir-ios.sqlite in Resources */,
 				3219FF591A86C5070034C46E /* Main.storyboard in Resources */,
+				4E72FDF31AAA52F700D3A7A7 /* Plus-50.png in Resources */,
 				3219FF5E1A86C5070034C46E /* LaunchScreen.xib in Resources */,
 				4EB974DD1A9D390F00B4CDA9 /* devoir-ios-test.sqlite in Resources */,
+				4E72FDF51AAA52F700D3A7A7 /* Edit-50.png in Resources */,
 				3219FF5B1A86C5070034C46E /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

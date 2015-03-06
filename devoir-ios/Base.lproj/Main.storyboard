@@ -148,7 +148,9 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Filter" id="7yA-jb-Cxf">
-                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qH3-lb-8va"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="qH3-lb-8va">
+                                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>

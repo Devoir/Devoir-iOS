@@ -40,16 +40,16 @@
         self.courseDeleteEditView.backgroundColor = [UIColor devGrey];
         
         //button for edit course button
-        self.editButton = [UIButton buttonWithType:UIButtonTypeContactAdd];
+        self.editButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 65, 70)];
+        [self.editButton  setImage:[UIImage imageNamed:@"Edit-50.png"] forState: UIControlStateNormal];
         self.editButton.tag = row - 1;
-        self.editButton.frame = CGRectMake(0, 0, 65, 70);
         //self.editButton.backgroundColor = [UIColor devPurple];
         [self.courseDeleteEditView addSubview:self.editButton];
         
         //button for edit course button
-        self.deleteButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        self.deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(65, 0, 65, 70)];
+        [self.deleteButton  setImage:[UIImage imageNamed:@"Trash-50.png"] forState: UIControlStateNormal];
         self.deleteButton.tag = row -1;
-        self.deleteButton.frame = CGRectMake(65, 0, 65, 70);
         //self.deleteButton.backgroundColor = [UIColor devBlue];
         [self.courseDeleteEditView addSubview:self.deleteButton];
         
