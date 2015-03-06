@@ -42,6 +42,14 @@
     return [UIColor colorWithRed:0.3229 green:0.6045 blue:0.8807 alpha:1.0];
 }
 
++(UIColor*) devTransparent {
+    return [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0];
+}
+
++(UIColor*) devGrey {
+    return [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0];
+}
+
 +(UIColor*) dbColor:(DevColor)color {
     switch (color)
     {

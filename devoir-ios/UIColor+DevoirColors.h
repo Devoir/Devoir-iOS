@@ -23,6 +23,8 @@ typedef enum{
 +(UIColor*) devDarkGreen;
 +(UIColor*) devBlue;
 +(UIColor*) devPurple;
++(UIColor*) devTransparent;
++(UIColor*) devGrey;
 
 +(UIColor*) dbColor:(DevColor)color;
 

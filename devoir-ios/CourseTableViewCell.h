@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface CourseTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *courseLabel;
+@property (strong, nonatomic)  UIScrollView *courseScrollView;
+@property (strong, nonatomic)  UIView *courseDeleteEditView;
+@property (strong, nonatomic)  UILabel *courseLabel;
+@property (strong, nonatomic) UIButton *courseFilterButton;
+@property (strong, nonatomic) UIButton *editButton;
+@property (strong, nonatomic) UIButton *deleteButton;
 @end
