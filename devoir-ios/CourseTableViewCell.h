@@ -15,4 +15,6 @@
 @property (strong, nonatomic) UIButton *courseFilterButton;
 @property (strong, nonatomic) UIButton *editButton;
 @property (strong, nonatomic) UIButton *deleteButton;
+
+- (void)setupCellWithWidth:(int)width Height:(int)height ForRow:(int)row;
 @end

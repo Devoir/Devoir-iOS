@@ -30,6 +30,8 @@
     //self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:1];
 }
 
+#pragma mark - CourseListDelegate methods
+
 - (void) courseDidChange:(NSNumber*)courseID {
     self.courseToShow = courseID;
     if([self.courseToShow integerValue] != -1)
