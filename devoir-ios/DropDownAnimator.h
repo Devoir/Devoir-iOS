@@ -11,4 +11,5 @@
 
 @interface DropDownAnimator : NSObject <UIViewControllerAnimatedTransitioning>
 
+@property int presenter;
 @end

@@ -174,11 +174,14 @@
     if(fromVC.class == self.class)
     {
         DropDownAnimator *animator = [DropDownAnimator new];
+        animator.presenter = 1;
         return animator;
     }
     else
     {
-        return nil;   
+        DropDownAnimator *animator = [DropDownAnimator new];
+        animator.presenter = 0;
+        return animator;
     }
 }
 

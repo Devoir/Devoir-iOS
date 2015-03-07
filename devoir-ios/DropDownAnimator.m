@@ -15,28 +15,42 @@
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
-    // Grab the from and to view controllers from the context
     UIViewController *fromViewController = [transitionContext viewControllerForKey:UITransitionContextFromViewControllerKey];
     UIViewController *toViewController = [transitionContext viewControllerForKey:UITransitionContextToViewControllerKey];
     
-    // Set our ending frame. We'll modify this later if we have to
-    //CGRect endFrame = CGRectMake(0, 0, toViewController.view.frame.size.width, toViewController.view.frame.size.height);
-    CGRect endFrame = [[transitionContext containerView] bounds];
-    
-    [transitionContext.containerView addSubview:fromViewController.view];
-    [transitionContext.containerView addSubview:toViewController.view];
+    if(self.presenter)
+    {
+        CGRect endFrame = [[transitionContext containerView] bounds];
         
-    CGRect startFrame = endFrame;
+        [transitionContext.containerView addSubview:fromViewController.view];
+        [transitionContext.containerView addSubview:toViewController.view];
         
-    startFrame.origin.y -= CGRectGetHeight([[transitionContext containerView] bounds]);
+        CGRect startFrame = endFrame;
         
-    toViewController.view.frame = startFrame;
+        startFrame.origin.y -= CGRectGetHeight([[transitionContext containerView] bounds]);
         
-    [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
-        toViewController.view.frame = endFrame;
-    } completion:^(BOOL finished) {
-        [transitionContext completeTransition:YES];
-    }];
+        toViewController.view.frame = startFrame;
+        [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+            toViewController.view.frame = endFrame;
+        } completion:^(BOOL finished) {
+            [transitionContext completeTransition:YES];
+        }];
+    }
+    else
+    {
+        UIView* inView = [transitionContext containerView];
+        
+        [inView insertSubview:toViewController.view belowSubview:fromViewController.view];
+        
+        CGPoint centerOffScreen = inView.center;
+        centerOffScreen.y = (-1)*inView.frame.size.height;
+        
+        [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
+            fromViewController.view.center = centerOffScreen;
+        } completion:^(BOOL finished) {
+            [transitionContext completeTransition:YES];
+        }];
+    }
 }
 
 @end
