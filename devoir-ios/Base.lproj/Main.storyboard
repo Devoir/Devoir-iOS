@@ -91,7 +91,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="0Aa-Fz-kbM">
-                        <barButtonItem key="leftBarButtonItem" systemItem="organize" id="8YH-JD-N8X">
+                        <barButtonItem key="leftBarButtonItem" image="Down4-25.png" id="8YH-JD-N8X">
                             <connections>
                                 <segue destination="Aeq-rU-6zH" kind="push" identifier="courseList" id="P8m-oS-qTG"/>
                             </connections>
@@ -238,6 +238,9 @@
             <point key="canvasLocation" x="904" y="349"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Down4-25.png" width="25" height="25"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

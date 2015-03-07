@@ -34,6 +34,9 @@
 		4E72FDF41AAA52F700D3A7A7 /* Trash-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FDF11AAA52F700D3A7A7 /* Trash-50.png */; };
 		4E72FDF51AAA52F700D3A7A7 /* Edit-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FDF21AAA52F700D3A7A7 /* Edit-50.png */; };
 		4E72FE0E1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E72FE0D1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.m */; };
+		4E72FE121AAADB7800D3A7A7 /* DropDownAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E72FE111AAADB7800D3A7A7 /* DropDownAnimator.m */; };
+		4E72FE141AAADF7500D3A7A7 /* Down4-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FE131AAADF7500D3A7A7 /* Down4-50.png */; };
+		4E72FE161AAAE1AE00D3A7A7 /* Down4-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FE151AAAE1AE00D3A7A7 /* Down4-25.png */; };
 		4EB974DD1A9D390F00B4CDA9 /* devoir-ios-test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4EB974DC1A9D390F00B4CDA9 /* devoir-ios-test.sqlite */; };
 		4EB974DF1A9D3B9800B4CDA9 /* DatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */; };
 		4ED1DF581A89935C00D9F29D /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF571A89935C00D9F29D /* Course.m */; };
@@ -99,6 +102,10 @@
 		4E72FDF21AAA52F700D3A7A7 /* Edit-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Edit-50.png"; sourceTree = "<group>"; };
 		4E72FE0C1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentListSectionHeader.h; sourceTree = "<group>"; };
 		4E72FE0D1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentListSectionHeader.m; sourceTree = "<group>"; };
+		4E72FE101AAADB7800D3A7A7 /* DropDownAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownAnimator.h; sourceTree = "<group>"; };
+		4E72FE111AAADB7800D3A7A7 /* DropDownAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownAnimator.m; sourceTree = "<group>"; };
+		4E72FE131AAADF7500D3A7A7 /* Down4-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Down4-50.png"; sourceTree = "<group>"; };
+		4E72FE151AAAE1AE00D3A7A7 /* Down4-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Down4-25.png"; sourceTree = "<group>"; };
 		4EB974DC1A9D390F00B4CDA9 /* devoir-ios-test.sqlite */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = "devoir-ios-test.sqlite"; sourceTree = SOURCE_ROOT; };
 		4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTests.m; sourceTree = "<group>"; };
 		4ED1DF561A89935C00D9F29D /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
@@ -151,6 +158,7 @@
 			children = (
 				3219FF511A86C5070034C46E /* AppDelegate.h */,
 				3219FF521A86C5070034C46E /* AppDelegate.m */,
+				4E72FE0F1AAADB2D00D3A7A7 /* Animations */,
 				4E3457A11A9CF3F30063EE1E /* Database */,
 				4ED1DF5C1A89937600D9F29D /* Models */,
 				4E6AC1BA1AA8E22C00BAD7AE /* Views */,
@@ -254,11 +262,22 @@
 		4E72FDEF1AAA52B500D3A7A7 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				4E72FE151AAAE1AE00D3A7A7 /* Down4-25.png */,
+				4E72FE131AAADF7500D3A7A7 /* Down4-50.png */,
 				4E72FDF01AAA52F700D3A7A7 /* Plus-50.png */,
 				4E72FDF11AAA52F700D3A7A7 /* Trash-50.png */,
 				4E72FDF21AAA52F700D3A7A7 /* Edit-50.png */,
 			);
 			name = Icons;
+			sourceTree = "<group>";
+		};
+		4E72FE0F1AAADB2D00D3A7A7 /* Animations */ = {
+			isa = PBXGroup;
+			children = (
+				4E72FE101AAADB7800D3A7A7 /* DropDownAnimator.h */,
+				4E72FE111AAADB7800D3A7A7 /* DropDownAnimator.m */,
+			);
+			name = Animations;
 			sourceTree = "<group>";
 		};
 		4EB974DB1A9D386500B4CDA9 /* Frameworks */ = {
@@ -362,6 +381,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E72FE141AAADF7500D3A7A7 /* Down4-50.png in Resources */,
 				4E72FDF41AAA52F700D3A7A7 /* Trash-50.png in Resources */,
 				4E1ED8051A9EAE5100E37759 /* devoir-ios.sqlite in Resources */,
 				3219FF591A86C5070034C46E /* Main.storyboard in Resources */,
@@ -370,6 +390,7 @@
 				4EB974DD1A9D390F00B4CDA9 /* devoir-ios-test.sqlite in Resources */,
 				4E72FDF51AAA52F700D3A7A7 /* Edit-50.png in Resources */,
 				3219FF5B1A86C5070034C46E /* Images.xcassets in Resources */,
+				4E72FE161AAAE1AE00D3A7A7 /* Down4-25.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +414,7 @@
 				4E72FE0E1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.m in Sources */,
 				3219FF531A86C5070034C46E /* AppDelegate.m in Sources */,
 				4E1ED7FF1A9E98A800E37759 /* AssignmentDBAccess.m in Sources */,
+				4E72FE121AAADB7800D3A7A7 /* DropDownAnimator.m in Sources */,
 				4E3457A41A9CF5BC0063EE1E /* UserDBAccess.m in Sources */,
 				32B968731AA2AC6800598AD5 /* AssignmentListViewController.m in Sources */,
 				4E34579E1A9CEA590063EE1E /* CourseDBAccess.m in Sources */,

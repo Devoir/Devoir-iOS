@@ -12,8 +12,10 @@
 #import "AssignmentListSectionHeader.h"
 #import "UIColor+DevoirColors.h"
 #import "CourseListViewController.h"
+#import "DropDownAnimator.h"
 
-@interface AssignmentListViewController () <UITableViewDataSource, UITableViewDelegate, CourseListDelegate>
+@interface AssignmentListViewController () <UITableViewDataSource, UITableViewDelegate,
+                                                CourseListDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) DBAccess *database;
 @property (strong, nonatomic) NSArray *assignments;
 @property (retain) NSNumber *courseToShow;
@@ -29,6 +31,7 @@
     [self.navigationController.navigationBar setBarTintColor:[UIColor devDarkGrey]];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    self.navigationController.delegate = self;
     
     self.tableView.backgroundColor = [UIColor devTintColor];
     
@@ -137,26 +140,7 @@
 }
 
 - (IBAction)checkboxHit:(id)sender {
-    // change color
-    // change state
-    UIButton *btn= (UIButton *)sender;
-    int num = arc4random_uniform(8);
-    if(num == 0)
-        [btn setBackgroundColor:[UIColor devBlue]];
-    else if (num == 1)
-        [btn setBackgroundColor:[UIColor devDarkGreen]];
-    else if (num == 2)
-        [btn setBackgroundColor:[UIColor devLightGreen]];
-    else if (num == 3)
-        [btn setBackgroundColor:[UIColor devOrange]];
-    else if (num == 4)
-        [btn setBackgroundColor:[UIColor devPurple]];
-    else if (num == 5)
-        [btn setBackgroundColor:[UIColor devRed]];
-    else if (num == 6)
-        [btn setBackgroundColor:[UIColor devTurquoise]];
-    else if (num == 7)
-        [btn setBackgroundColor:[UIColor devYellow]];
+
 
 }
 
@@ -166,7 +150,22 @@
     
     if([segue.identifier isEqualToString:@"courseList"])
     {
-        [transferViewController setDelegate:self];
+        [transferViewController setDelegate:self];        
+    }
+}
+
+- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
+                                  animationControllerForOperation:(UINavigationControllerOperation)operation
+                                               fromViewController:(UIViewController *)fromVC
+                                                 toViewController:(UIViewController *)toVC {
+    if(fromVC.class == self.class)
+    {
+        DropDownAnimator *animator = [DropDownAnimator new];
+        return animator;
+    }
+    else
+    {
+        return nil;   
     }
 }
 
