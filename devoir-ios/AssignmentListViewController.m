@@ -74,16 +74,28 @@
 
 -(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
+    NSString *sectionTitle;
     Assignment *assignment = [[self.assignments objectAtIndex:section] objectAtIndex:0];
+    
     NSDate *dateRepresentingThisDay = assignment.dueDate;
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"EEE, MMM d, yyyy"];
+    NSDate *today = [NSDate date];
+    
+    if([today earlierDate:dateRepresentingThisDay] == dateRepresentingThisDay)
+    {
+        sectionTitle = @"Overdue";
+    }
+    else
+    {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"EEE, MMM d, yyyy"];
+        sectionTitle = [formatter stringFromDate:dateRepresentingThisDay];
+    }
     
     return [[AssignmentListSectionHeader alloc]
             initWithWidth:tableView.frame.size.width
             Height:tableView.frame.size.height
             Section:(int)section
-            Title:[formatter stringFromDate:dateRepresentingThisDay]];
+            Title:sectionTitle];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

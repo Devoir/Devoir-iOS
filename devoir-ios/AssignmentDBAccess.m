@@ -27,12 +27,36 @@
 #pragma mark - Utility Functions
 
 - (NSArray *) sortAssignmentByDate:(NSArray *)unsortedAssignments {
-    NSMutableArray* tempArray = [[NSMutableArray alloc] init];
-    NSMutableArray* orderedAssignments = [[NSMutableArray alloc] init];
+    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
+    NSMutableArray *orderedAssignments = [[NSMutableArray alloc] init];
+    
+    NSDate *today = [NSDate date];
     NSDate *curDate = [self dateAtBeginningOfDayForDate:((Assignment*)[unsortedAssignments objectAtIndex:0]).dueDate];
+    BOOL late = 1;
+    if([today earlierDate:curDate] == today)
+    {
+        late = 0;
+    }
     for (Assignment *event in unsortedAssignments)
     {
         NSDate *dateRepresentingThisDay = [self dateAtBeginningOfDayForDate:event.dueDate];
+        if(late)
+        {
+            if([today earlierDate:dateRepresentingThisDay] == today)
+            {
+                late = 0;
+                curDate = dateRepresentingThisDay;
+                [orderedAssignments addObject:[tempArray copy]];
+                tempArray = [[NSMutableArray alloc] init];
+                [tempArray addObject:event];
+            }
+            else
+            {
+                [tempArray addObject:event];
+            }
+            continue;
+        }
+
         if([curDate isEqual:dateRepresentingThisDay])
         {
             
