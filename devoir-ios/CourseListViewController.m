@@ -23,6 +23,11 @@
 - (void)viewDidLoad {
     self.database = [[DBAccess alloc] init];
     self.courses = [self.database getAllCoursesOrderedByName];
+    
+    [self.navigationItem setHidesBackButton:YES];
+    self.navigationItem.title = @"Filter";
+    
+    self.tableView.backgroundColor = [UIColor devTintColor];
 }
 
 #pragma mark - tableview

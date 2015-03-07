@@ -33,6 +33,7 @@
 		4E72FDF31AAA52F700D3A7A7 /* Plus-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FDF01AAA52F700D3A7A7 /* Plus-50.png */; };
 		4E72FDF41AAA52F700D3A7A7 /* Trash-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FDF11AAA52F700D3A7A7 /* Trash-50.png */; };
 		4E72FDF51AAA52F700D3A7A7 /* Edit-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FDF21AAA52F700D3A7A7 /* Edit-50.png */; };
+		4E72FE0E1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E72FE0D1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.m */; };
 		4EB974DD1A9D390F00B4CDA9 /* devoir-ios-test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4EB974DC1A9D390F00B4CDA9 /* devoir-ios-test.sqlite */; };
 		4EB974DF1A9D3B9800B4CDA9 /* DatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */; };
 		4ED1DF581A89935C00D9F29D /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF571A89935C00D9F29D /* Course.m */; };
@@ -96,6 +97,8 @@
 		4E72FDF01AAA52F700D3A7A7 /* Plus-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus-50.png"; sourceTree = "<group>"; };
 		4E72FDF11AAA52F700D3A7A7 /* Trash-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Trash-50.png"; sourceTree = "<group>"; };
 		4E72FDF21AAA52F700D3A7A7 /* Edit-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Edit-50.png"; sourceTree = "<group>"; };
+		4E72FE0C1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentListSectionHeader.h; sourceTree = "<group>"; };
+		4E72FE0D1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentListSectionHeader.m; sourceTree = "<group>"; };
 		4EB974DC1A9D390F00B4CDA9 /* devoir-ios-test.sqlite */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = "devoir-ios-test.sqlite"; sourceTree = SOURCE_ROOT; };
 		4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTests.m; sourceTree = "<group>"; };
 		4ED1DF561A89935C00D9F29D /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
@@ -209,10 +212,12 @@
 			children = (
 				32B968831AA2DA5700598AD5 /* UIColor+DevoirColors.h */,
 				32B968841AA2DA5700598AD5 /* UIColor+DevoirColors.m */,
-				32B9687D1AA2C5D100598AD5 /* CheckboxButton.h */,
-				32B9687E1AA2C5D100598AD5 /* CheckboxButton.m */,
+				4E72FE0C1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.h */,
+				4E72FE0D1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.m */,
 				32B968801AA2C5F800598AD5 /* AssignmentTableViewCell.h */,
 				32B968811AA2C5F800598AD5 /* AssignmentTableViewCell.m */,
+				32B9687D1AA2C5D100598AD5 /* CheckboxButton.h */,
+				32B9687E1AA2C5D100598AD5 /* CheckboxButton.m */,
 				4E1F6DA91AA80426006DE857 /* CourseTableViewCell.h */,
 				4E1F6DAA1AA80426006DE857 /* CourseTableViewCell.m */,
 			);
@@ -385,6 +390,7 @@
 				4ED1DF5B1A89936C00D9F29D /* User.m in Sources */,
 				4ED1DF581A89935C00D9F29D /* Course.m in Sources */,
 				32B968851AA2DA5700598AD5 /* UIColor+DevoirColors.m in Sources */,
+				4E72FE0E1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.m in Sources */,
 				3219FF531A86C5070034C46E /* AppDelegate.m in Sources */,
 				4E1ED7FF1A9E98A800E37759 /* AssignmentDBAccess.m in Sources */,
 				4E3457A41A9CF5BC0063EE1E /* UserDBAccess.m in Sources */,

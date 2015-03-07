@@ -9,6 +9,7 @@
 #import "AssignmentListViewController.h"
 #import "DBAccess.h"
 #import "AssignmentTableViewCell.h"
+#import "AssignmentListSectionHeader.h"
 #import "UIColor+DevoirColors.h"
 #import "CourseListViewController.h"
 
@@ -24,10 +25,16 @@
 @implementation AssignmentListViewController
 
 - (void) viewDidLoad {
+    self.navigationItem.title = @"All Courses";
+    [self.navigationController.navigationBar setBarTintColor:[UIColor devDarkGrey]];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    
+    self.tableView.backgroundColor = [UIColor devTintColor];
+    
     self.courseToShow = [[NSNumber alloc] initWithInt:-1];
     self.database = [[DBAccess alloc] init];
     self.assignments = [self.database getAllAssignmentsOrderedByDate];
-    //self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:1];
 }
 
 #pragma mark - CourseListDelegate methods
@@ -36,15 +43,18 @@
     self.courseToShow = courseID;
     if([self.courseToShow integerValue] != -1)
     {
+        self.navigationItem.title = [self.database getCourseByID:(int)[self.courseToShow integerValue]].name;
         self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
         [self.tableView reloadData];
     }
     else
     {
+        self.navigationItem.title = @"All Courses";
         self.assignments = [self.database getAllAssignmentsOrderedByDate];
         [self.tableView reloadData];
     }
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - tableview
@@ -59,11 +69,21 @@
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    return @"I dont know why but this needs to be here";
+}
+
+-(UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+{
     Assignment *assignment = [[self.assignments objectAtIndex:section] objectAtIndex:0];
     NSDate *dateRepresentingThisDay = assignment.dueDate;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"EEE, MMM d, yyyy"];
-    return [formatter stringFromDate:dateRepresentingThisDay];
+    
+    return [[AssignmentListSectionHeader alloc]
+            initWithWidth:tableView.frame.size.width
+            Height:tableView.frame.size.height
+            Section:(int)section
+            Title:[formatter stringFromDate:dateRepresentingThisDay]];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

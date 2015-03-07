@@ -17,6 +17,7 @@
     if(row == 0)
     {
         self.courseLabel.text = @"Show All Courses";
+        self.courseLabel.backgroundColor = [UIColor devTintColor];
         [self.contentView addSubview:self.courseLabel];
     }
     else
@@ -37,7 +38,7 @@
         
         //section for edit/delete
         self.courseDeleteEditView = [[UIView alloc] initWithFrame:CGRectMake(width, 0, 500, 70)];
-        self.courseDeleteEditView.backgroundColor = [UIColor devGrey];
+        self.courseDeleteEditView.backgroundColor = [UIColor devTintColor];
         
         //button for edit course button
         self.editButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 65, 70)];
