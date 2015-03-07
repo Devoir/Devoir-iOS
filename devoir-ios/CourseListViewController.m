@@ -13,7 +13,7 @@
 #import "AssignmentListViewController.h"
 
 @interface CourseListViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) DBAccess *database;
 @property (strong, nonatomic)  UIButton *settingsButton;
 @property (strong, nonatomic) NSArray *courses;
@@ -41,10 +41,21 @@
     int navBarHeight = self.navigationController.navigationBar.frame.size.height
                         + [UIApplication sharedApplication].statusBarFrame.size.height;
     
-    self.tableView.frame = CGRectMake(0, navBarHeight, self.view.frame.size.width,
-                                      self.view.frame.size.height - navBarHeight - 70);
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, navBarHeight, self.view.frame.size.width,
+                                      self.view.frame.size.height - navBarHeight - 70) style:UITableViewStylePlain];
     
     self.tableView.backgroundColor = [UIColor devTintColor];
+    
+    self.tableView.scrollEnabled = YES;
+    self.tableView.showsVerticalScrollIndicator = YES;
+    self.tableView.userInteractionEnabled = YES;
+    self.tableView.bounces = YES;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    
+    [self.view addSubview:self.tableView];
 }
 
 - (void)setupSettingsButton {
@@ -74,6 +85,10 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *CellIdentifier = @"cell";
     CourseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[CourseTableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+    }
     
     cell.courseLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, tableView.frame.size.width, 70)];
     
