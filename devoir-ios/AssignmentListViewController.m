@@ -104,6 +104,18 @@
     
     Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
+    NSDate *dateRepresentingThisDay = assignment.dueDate;
+    NSDate *today = [NSDate date];
+    
+    if([today earlierDate:dateRepresentingThisDay] == dateRepresentingThisDay)
+    {
+        [cell setupCellWithWidth:tableView.frame.size.width Height:64 Overdue:YES];
+    }
+    else
+    {
+        [cell setupCellWithWidth:tableView.frame.size.width Height:64 Overdue:NO];
+    }
+    
     cell.assignmentLabel.text = assignment.name;
     
     Course *course = [self.database getCourseByID:assignment.courseID];
@@ -112,9 +124,7 @@
     cell.overdueDate.text = [assignment dueDateAsString];
     
     [[cell.colorLabel layer] setBackgroundColor: [UIColor dbColor:course.color].CGColor];
-    
-    [[cell.overdueLabel layer] setBackgroundColor: [UIColor devRed].CGColor];
-    
+        
     cell.checkbox.layer.cornerRadius = cell.checkbox.bounds.size.width / 2.0;
     [[cell.checkbox layer] setBorderWidth:1.0f];
     [[cell.checkbox layer] setBorderColor: [UIColor lightGrayColor].CGColor];
