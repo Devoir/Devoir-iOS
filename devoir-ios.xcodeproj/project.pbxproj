@@ -18,8 +18,6 @@
 		32B9687F1AA2C5D100598AD5 /* CheckboxButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B9687E1AA2C5D100598AD5 /* CheckboxButton.m */; };
 		32B968821AA2C5F800598AD5 /* AssignmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B968811AA2C5F800598AD5 /* AssignmentTableViewCell.m */; };
 		32B968851AA2DA5700598AD5 /* UIColor+DevoirColors.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B968841AA2DA5700598AD5 /* UIColor+DevoirColors.m */; };
-		32B968881AA38BA100598AD5 /* AssignmentDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B968871AA38BA100598AD5 /* AssignmentDetailViewController.m */; };
-		32B9688B1AA38BB600598AD5 /* CourseDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B9688A1AA38BB600598AD5 /* CourseDetailViewController.m */; };
 		32B9688E1AA38BCA00598AD5 /* CourseListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B9688D1AA38BCA00598AD5 /* CourseListViewController.m */; };
 		32B968911AA38C1300598AD5 /* AddCourseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32B968901AA38C1300598AD5 /* AddCourseViewController.m */; };
 		4E1ED7FF1A9E98A800E37759 /* AssignmentDBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E1ED7FE1A9E98A800E37759 /* AssignmentDBAccess.m */; };
@@ -75,10 +73,6 @@
 		32B968811AA2C5F800598AD5 /* AssignmentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentTableViewCell.m; sourceTree = "<group>"; };
 		32B968831AA2DA5700598AD5 /* UIColor+DevoirColors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+DevoirColors.h"; sourceTree = "<group>"; };
 		32B968841AA2DA5700598AD5 /* UIColor+DevoirColors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+DevoirColors.m"; sourceTree = "<group>"; };
-		32B968861AA38BA100598AD5 /* AssignmentDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentDetailViewController.h; sourceTree = "<group>"; };
-		32B968871AA38BA100598AD5 /* AssignmentDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentDetailViewController.m; sourceTree = "<group>"; };
-		32B968891AA38BB600598AD5 /* CourseDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseDetailViewController.h; sourceTree = "<group>"; };
-		32B9688A1AA38BB600598AD5 /* CourseDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseDetailViewController.m; sourceTree = "<group>"; };
 		32B9688C1AA38BCA00598AD5 /* CourseListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseListViewController.h; sourceTree = "<group>"; };
 		32B9688D1AA38BCA00598AD5 /* CourseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseListViewController.m; sourceTree = "<group>"; };
 		32B9688F1AA38C1300598AD5 /* AddCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCourseViewController.h; sourceTree = "<group>"; };
@@ -239,10 +233,6 @@
 				32B968721AA2AC6800598AD5 /* AssignmentListViewController.m */,
 				32B9688C1AA38BCA00598AD5 /* CourseListViewController.h */,
 				32B9688D1AA38BCA00598AD5 /* CourseListViewController.m */,
-				32B968861AA38BA100598AD5 /* AssignmentDetailViewController.h */,
-				32B968871AA38BA100598AD5 /* AssignmentDetailViewController.m */,
-				32B968891AA38BB600598AD5 /* CourseDetailViewController.h */,
-				32B9688A1AA38BB600598AD5 /* CourseDetailViewController.m */,
 				32B968741AA2AC8000598AD5 /* AddAssignmentViewController.h */,
 				32B968751AA2AC8000598AD5 /* AddAssignmentViewController.m */,
 				32B9688F1AA38C1300598AD5 /* AddCourseViewController.h */,
@@ -420,10 +410,8 @@
 				4E34579E1A9CEA590063EE1E /* CourseDBAccess.m in Sources */,
 				4E34579B1A9CE65E0063EE1E /* DBAccess.m in Sources */,
 				32B968821AA2C5F800598AD5 /* AssignmentTableViewCell.m in Sources */,
-				32B9688B1AA38BB600598AD5 /* CourseDetailViewController.m in Sources */,
 				4E3960FC1A89C4DD00C0004C /* Assignment.m in Sources */,
 				3219FF501A86C5070034C46E /* main.m in Sources */,
-				32B968881AA38BA100598AD5 /* AssignmentDetailViewController.m in Sources */,
 				32B9687F1AA2C5D100598AD5 /* CheckboxButton.m in Sources */,
 				32B968911AA38C1300598AD5 /* AddCourseViewController.m in Sources */,
 				32B9688E1AA38BCA00598AD5 /* CourseListViewController.m in Sources */,

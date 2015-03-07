@@ -10,12 +10,13 @@
 #import "DBAccess.h"
 #import "AssignmentTableViewCell.h"
 #import "AssignmentListSectionHeader.h"
+#import "AddAssignmentViewController.h"
 #import "UIColor+DevoirColors.h"
 #import "CourseListViewController.h"
 #import "DropDownAnimator.h"
 
 @interface AssignmentListViewController () <UITableViewDataSource, UITableViewDelegate,
-                                                CourseListDelegate, UINavigationControllerDelegate>
+                                                CourseListDelegate, AddAssignmentDelegate, UINavigationControllerDelegate>
 @property (strong, nonatomic) DBAccess *database;
 @property (strong, nonatomic) NSArray *assignments;
 @property (retain) NSNumber *courseToShow;
@@ -150,6 +151,10 @@
     return 64;
 }
 
+
+- (void) setHighlighted:(BOOL)highlighted animated:(BOOL)animated {
+}
+
 - (IBAction)checkboxHit:(id)sender {
 
 
@@ -157,13 +162,22 @@
 
 #pragma mark - Segue/Animations
 
--(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     CourseListViewController *transferViewController = segue.destinationViewController;
     
-    if([segue.identifier isEqualToString:@"courseList"])
-    {
+    if([segue.identifier isEqualToString:@"courseList"]) {
         [transferViewController setDelegate:self];        
+    }
+    if ([segue.identifier isEqualToString:@"toAddAssignment"]) {
+        [transferViewController setDelegate:self];
+    }
+    if ([segue.identifier isEqualToString:@"toEditAssignment"]) {
+        AddAssignmentViewController *vc = (AddAssignmentViewController *)segue.destinationViewController;
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        vc.assignment = assignment;
+        [transferViewController setDelegate:self];  
     }
 }
 
@@ -183,6 +197,20 @@
         animator.presenter = 0;
         return animator;
     }
+}
+
+#pragma mark - AddAssignment Delegate Methods
+
+- (void) didEditAssignment:(NSNumber *)assignmentID {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) didAddAssignment:(Assignment *)assignment {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) didCancelAssignment {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

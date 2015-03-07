@@ -7,7 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Assignment.h"
+
+@protocol AddAssignmentDelegate <NSObject>
+
+- (void) didEditAssignment:(Assignment *)assignment;
+- (void) didAddAssignment:(Assignment *)assignment;
+- (void) didCancelAssignment;
+
+@end
 
 @interface AddAssignmentViewController : UIViewController
+
+@property (strong, nonatomic) Assignment *assignment;
+@property (assign, nonatomic) id <AddAssignmentDelegate> delegate;
 
 @end
