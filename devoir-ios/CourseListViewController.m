@@ -15,19 +15,50 @@
 @interface CourseListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (strong, nonatomic) DBAccess *database;
+@property (strong, nonatomic)  UIButton *settingsButton;
 @property (strong, nonatomic) NSArray *courses;
 @end
 
 @implementation CourseListViewController
 
 - (void)viewDidLoad {
+    [self setupNavBar];
+    [self setupTableView];
+    [self setupSettingsButton];
+    
     self.database = [[DBAccess alloc] init];
     self.courses = [self.database getAllCoursesOrderedByName];
-    
+}
+
+#pragma mark - UI setup
+
+- (void)setupNavBar {
     [self.navigationItem setHidesBackButton:YES];
     self.navigationItem.title = @"Filter";
+}
+
+- (void)setupTableView {
+    int navBarHeight = self.navigationController.navigationBar.frame.size.height
+                        + [UIApplication sharedApplication].statusBarFrame.size.height;
+    
+    self.tableView.frame = CGRectMake(0, navBarHeight, self.view.frame.size.width,
+                                      self.view.frame.size.height - navBarHeight - 70);
     
     self.tableView.backgroundColor = [UIColor devTintColor];
+}
+
+- (void)setupSettingsButton {
+    self.settingsButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 70, self.view.frame.size.width, 70)];
+    UILabel *settingsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 70)];
+    settingsLabel.backgroundColor = [UIColor devSettingsBar];
+    settingsLabel.text = @"Settings";
+    settingsLabel.textAlignment = NSTextAlignmentCenter;
+    settingsLabel.textColor = [UIColor whiteColor];
+    [self.settingsButton addTarget:self
+                          action:@selector(settingsButtonPressed:)
+                forControlEvents:UIControlEventTouchUpInside];
+    [self.settingsButton addSubview:settingsLabel];
+    [self.view addSubview:self.settingsButton];
 }
 
 #pragma mark - tableview
@@ -94,6 +125,10 @@
 }
 
 #pragma mark - Button pressed actions
+
+- (void)settingsButtonPressed:(id)sender {
+    NSLog(@"SETTINGS");
+}
 
 - (void)courseFilterButtonPressed:(id)sender {
     UIButton *senderButton = (UIButton*)sender;

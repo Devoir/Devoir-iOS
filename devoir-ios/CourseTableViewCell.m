@@ -39,6 +39,8 @@
         //section for edit/delete
         self.courseDeleteEditView = [[UIView alloc] initWithFrame:CGRectMake(width, 0, 500, 70)];
         self.courseDeleteEditView.backgroundColor = [UIColor devTintColor];
+        [[self.courseDeleteEditView layer] setBorderWidth:1.2f];
+        [[self.courseDeleteEditView layer] setBorderColor: [UIColor lightGrayColor].CGColor];
         
         //button for edit course button
         self.editButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 65, 70)];

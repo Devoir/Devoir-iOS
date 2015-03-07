@@ -249,6 +249,9 @@
         sqlite3_close(db);
     }
     
+    if(assignments.count == 0)
+        return assignments;
+    
     return [self sortAssignmentByDate:assignments];
 }
 
@@ -328,6 +331,9 @@
         }
         sqlite3_close(db);
     }
+    
+    if(assignments.count == 0)
+        return assignments;
     
     return [self sortAssignmentByDate:assignments];
 }

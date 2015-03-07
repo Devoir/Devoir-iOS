@@ -27,17 +27,28 @@
 @implementation AssignmentListViewController
 
 - (void) viewDidLoad {
+
+    [self setupNavBar];
+    [self setupTableView];
+    
+    self.database = [[DBAccess alloc] init];
+    self.assignments = [self.database getAllAssignmentsOrderedByDate];
+}
+
+#pragma mark - UI setup
+
+- (void)setupNavBar {
     self.navigationItem.title = @"All Courses";
     [self.navigationController.navigationBar setBarTintColor:[UIColor devDarkGrey]];
+    self.navigationController.navigationBar.backgroundColor = [UIColor devDarkGrey];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     self.navigationController.delegate = self;
-    
+}
+
+- (void)setupTableView {
     self.tableView.backgroundColor = [UIColor devTintColor];
-    
     self.courseToShow = [[NSNumber alloc] initWithInt:-1];
-    self.database = [[DBAccess alloc] init];
-    self.assignments = [self.database getAllAssignmentsOrderedByDate];
 }
 
 #pragma mark - CourseListDelegate methods
@@ -143,6 +154,8 @@
 
 
 }
+
+#pragma mark - Segue/Animations
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     
