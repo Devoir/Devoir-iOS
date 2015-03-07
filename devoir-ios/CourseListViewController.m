@@ -11,6 +11,7 @@
 #import "DBAccess.h"
 #import "UIColor+DevoirColors.h"
 #import "AssignmentListViewController.h"
+#import "AddCourseViewController.h"
 
 @interface CourseListViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (strong, nonatomic) UITableView *tableView;
@@ -155,6 +156,8 @@
 - (void)editButtonPressed:(id)sender {
     UIButton *senderButton = (UIButton*)sender;
     Course *course = [self.courses objectAtIndex:senderButton.tag];
+    AddCourseViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addCourseViewController"];
+    [self.navigationController pushViewController:toViewController animated:YES];
     NSLog(@"PLEASE EDIT COURSE: %d", course.ID);
 }
 
