@@ -11,7 +11,7 @@
 @implementation DropDownAnimator
 
 - (NSTimeInterval)transitionDuration:(id <UIViewControllerContextTransitioning>)transitionContext {
-    return 0.5f;
+    return 0.45f;
 }
 
 - (void)animateTransition:(id <UIViewControllerContextTransitioning>)transitionContext {
@@ -27,7 +27,9 @@
         
         CGRect startFrame = endFrame;
         
-        startFrame.origin.y -= CGRectGetHeight([[transitionContext containerView] bounds]);
+        int navBarHeight = fromViewController.navigationController.navigationBar.frame.size.height
+                        + [UIApplication sharedApplication].statusBarFrame.size.height;
+        startFrame.origin.y -= CGRectGetHeight([[transitionContext containerView] bounds]) - navBarHeight;
         
         toViewController.view.frame = startFrame;
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
@@ -44,6 +46,7 @@
         
         CGPoint centerOffScreen = inView.center;
         centerOffScreen.y = (-1)*inView.frame.size.height;
+        
         
         [UIView animateWithDuration:[self transitionDuration:transitionContext] animations:^{
             fromViewController.view.center = centerOffScreen;

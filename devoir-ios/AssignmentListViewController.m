@@ -185,17 +185,21 @@
                                   animationControllerForOperation:(UINavigationControllerOperation)operation
                                                fromViewController:(UIViewController *)fromVC
                                                  toViewController:(UIViewController *)toVC {
-    if(fromVC.class == self.class)
+    if(fromVC.class == self.class && toVC.class == NSClassFromString(@"CourseListViewController"))
     {
         DropDownAnimator *animator = [DropDownAnimator new];
         animator.presenter = 1;
         return animator;
     }
-    else
+    else if(toVC.class == self.class && fromVC.class == NSClassFromString(@"CourseListViewController"))
     {
         DropDownAnimator *animator = [DropDownAnimator new];
         animator.presenter = 0;
         return animator;
+    }
+    else
+    {
+        return nil;
     }
 }
 
