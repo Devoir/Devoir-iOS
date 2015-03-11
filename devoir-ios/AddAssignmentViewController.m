@@ -41,12 +41,10 @@
 - (IBAction)DoneButtonTapped:(id)sender {
     if(self.isNew) {
         [self.delegate didEditAssignment: self.assignment];
-        [self dismissViewControllerAnimated:YES completion:nil];
     }
     else {
         
         [self.delegate didAddAssignment: self.assignment];
-        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
