@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *reminderLabel;
 @property (weak, nonatomic) IBOutlet UITextView *noteText;
+@property (weak, nonatomic) IBOutlet UILabel *courseLabel;
 
 @end
 
@@ -33,8 +34,9 @@
         self.dateLabel.text = self.assignment.dueDateAsString;
         Course *course = [self.database getCourseByID:self.assignment.courseID];
         [[self.colorButton layer] setBackgroundColor: [UIColor dbColor:course.color].CGColor];
-        self.colorButton.layer.cornerRadius = self.colorButton.bounds.size.width / 2.0;
+        self.courseLabel.text = course.name;
     }
+    self.colorButton.layer.cornerRadius = self.colorButton.bounds.size.width / 2.0;
     
 }
 
