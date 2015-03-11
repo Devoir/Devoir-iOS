@@ -8,15 +8,33 @@
 
 #import "AddAssignmentViewController.h"
 #import "Assignment.h"
+#import "Course.h"
+#import "DBAccess.h"
 
 @interface AddAssignmentViewController ()
+@property (strong, nonatomic) DBAccess *database;
 @property (nonatomic, assign) BOOL isNew;
+@property (weak, nonatomic) IBOutlet UIButton *colorButton;
+@property (weak, nonatomic) IBOutlet UITextField *assignmentText;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *reminderLabel;
+@property (weak, nonatomic) IBOutlet UITextView *noteText;
+
 @end
 
 @implementation AddAssignmentViewController
 
 - (void)viewDidLoad {
+    self.database = [[DBAccess alloc] init];
+    
     [self setupNavBar];
+    if(self.assignment != nil) {
+        self.assignmentText.text = self.assignment.name;
+        self.dateLabel.text = self.assignment.dueDateAsString;
+        Course *course = [self.database getCourseByID:self.assignment.courseID];
+        [[self.colorButton layer] setBackgroundColor: [UIColor dbColor:course.color].CGColor];
+        self.colorButton.layer.cornerRadius = self.colorButton.bounds.size.width / 2.0;
+    }
     
 }
 
