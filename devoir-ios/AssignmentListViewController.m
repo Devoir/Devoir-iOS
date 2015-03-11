@@ -52,26 +52,6 @@
     self.courseToShow = [[NSNumber alloc] initWithInt:-1];
 }
 
-#pragma mark - CourseListDelegate methods
-
-- (void) courseDidChange:(NSNumber*)courseID {
-    self.courseToShow = courseID;
-    if([self.courseToShow integerValue] != -1)
-    {
-        self.navigationItem.title = [self.database getCourseByID:(int)[self.courseToShow integerValue]].name;
-        self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
-        [self.tableView reloadData];
-    }
-    else
-    {
-        self.navigationItem.title = @"All Courses";
-        self.assignments = [self.database getAllAssignmentsOrderedByDate];
-        [self.tableView reloadData];
-    }
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
 #pragma mark - tableview
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -201,6 +181,26 @@
     {
         return nil;
     }
+}
+
+#pragma mark - CourseListDelegate methods
+
+- (void) courseDidChange:(NSNumber*)courseID {
+    self.courseToShow = courseID;
+    if([self.courseToShow integerValue] != -1)
+    {
+        self.navigationItem.title = [self.database getCourseByID:(int)[self.courseToShow integerValue]].name;
+        self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
+        [self.tableView reloadData];
+    }
+    else
+    {
+        self.navigationItem.title = @"All Courses";
+        self.assignments = [self.database getAllAssignmentsOrderedByDate];
+        [self.tableView reloadData];
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - AddAssignment Delegate Methods

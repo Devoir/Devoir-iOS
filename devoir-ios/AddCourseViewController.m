@@ -7,7 +7,21 @@
 //
 
 #import "AddCourseViewController.h"
+#import "UIColor+DevoirColors.h"
+
+@interface AddCourseViewController()
+
+@end
 
 @implementation AddCourseViewController
 
+- (void)viewDidLoad {
+    if(self.course)
+    {
+        self.url.text = self.course.iCalFeed;
+        self.name.text = self.course.name;
+        self.color.backgroundColor = [UIColor dbColor:self.course.color];
+        
+    }
+}
 @end

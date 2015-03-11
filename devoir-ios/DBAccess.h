@@ -26,6 +26,7 @@
 //Course Methods
 - (Course*) getCourseByID:(int)ID;
 - (NSArray*) getAllCoursesOrderedByName;
+- (void)updateCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color;
 - (Course*) addCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color UserID:(int)userID
                   LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
                      ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID;

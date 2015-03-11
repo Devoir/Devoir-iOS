@@ -39,9 +39,6 @@
 		4EB974DF1A9D3B9800B4CDA9 /* DatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */; };
 		4ED1DF581A89935C00D9F29D /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF571A89935C00D9F29D /* Course.m */; };
 		4ED1DF5B1A89936C00D9F29D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF5A1A89936C00D9F29D /* User.m */; };
-		AB03E25F1AB0D0C900BF1317 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = AB03E25E1AB0D0C900BF1317 /* clock.png */; };
-		AB03E2621AB0D0D800BF1317 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = AB03E2601AB0D0D800BF1317 /* calendar.png */; };
-		AB03E2631AB0D0D800BF1317 /* notes.png in Resources */ = {isa = PBXBuildFile; fileRef = AB03E2611AB0D0D800BF1317 /* notes.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,9 +106,6 @@
 		4ED1DF571A89935C00D9F29D /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		4ED1DF591A89936C00D9F29D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		4ED1DF5A1A89936C00D9F29D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		AB03E25E1AB0D0C900BF1317 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock.png; path = ../../Desktop/clock.png; sourceTree = "<group>"; };
-		AB03E2601AB0D0D800BF1317 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar.png; path = ../../Desktop/calendar.png; sourceTree = "<group>"; };
-		AB03E2611AB0D0D800BF1317 /* notes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = notes.png; path = ../../Desktop/notes.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,9 +252,6 @@
 		4E72FDEF1AAA52B500D3A7A7 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				AB03E25E1AB0D0C900BF1317 /* clock.png */,
-				AB03E2601AB0D0D800BF1317 /* calendar.png */,
-				AB03E2611AB0D0D800BF1317 /* notes.png */,
 				4E72FE151AAAE1AE00D3A7A7 /* Down4-25.png */,
 				4E72FE131AAADF7500D3A7A7 /* Down4-50.png */,
 				4E72FDF01AAA52F700D3A7A7 /* Plus-50.png */,
@@ -382,15 +373,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E72FE141AAADF7500D3A7A7 /* Down4-50.png in Resources */,
-				AB03E2621AB0D0D800BF1317 /* calendar.png in Resources */,
-				AB03E2631AB0D0D800BF1317 /* notes.png in Resources */,
 				4E72FDF41AAA52F700D3A7A7 /* Trash-50.png in Resources */,
 				4E1ED8051A9EAE5100E37759 /* devoir-ios.sqlite in Resources */,
 				3219FF591A86C5070034C46E /* Main.storyboard in Resources */,
 				4E72FDF31AAA52F700D3A7A7 /* Plus-50.png in Resources */,
 				3219FF5E1A86C5070034C46E /* LaunchScreen.xib in Resources */,
 				4EB974DD1A9D390F00B4CDA9 /* devoir-ios-test.sqlite in Resources */,
-				AB03E25F1AB0D0C900BF1317 /* clock.png in Resources */,
 				4E72FDF51AAA52F700D3A7A7 /* Edit-50.png in Resources */,
 				3219FF5B1A86C5070034C46E /* Images.xcassets in Resources */,
 				4E72FE161AAAE1AE00D3A7A7 /* Down4-25.png in Resources */,

@@ -25,6 +25,8 @@
     }
     self.colorLabel.frame = CGRectMake(0, 0, 15, height);
     self.overdueDate.backgroundColor = [UIColor clearColor];
+    
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 @end

@@ -21,6 +21,8 @@
                   LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
                      ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID;
 
+- (void)updateCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color;
+
 - (void) removeCourseByID:(int)ID;
 - (void) removeAllCourses;
 

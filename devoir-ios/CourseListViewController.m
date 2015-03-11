@@ -34,6 +34,11 @@
 #pragma mark - UI setup
 
 - (void)setupNavBar {
+    UIBarButtonItem *addCourseButton = [[UIBarButtonItem alloc]
+                                        initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                        target:self
+                                        action:@selector(addCourseButtonPressed:)];
+    self.navigationItem.rightBarButtonItem = addCourseButton;
     [self.navigationItem setHidesBackButton:YES];
     self.navigationItem.title = @"Filter";
 }
@@ -60,17 +65,17 @@
 }
 
 - (void)setupSettingsButton {
-    self.settingsButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 70, self.view.frame.size.width, 70)];
+    UIButton *settingsButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 70, self.view.frame.size.width, 70)];
     UILabel *settingsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 70)];
     settingsLabel.backgroundColor = [UIColor devSettingsBar];
     settingsLabel.text = @"Settings";
     settingsLabel.textAlignment = NSTextAlignmentCenter;
     settingsLabel.textColor = [UIColor whiteColor];
-    [self.settingsButton addTarget:self
+    [settingsButton addTarget:self
                           action:@selector(settingsButtonPressed:)
                 forControlEvents:UIControlEventTouchUpInside];
-    [self.settingsButton addSubview:settingsLabel];
-    [self.view addSubview:self.settingsButton];
+    [settingsButton addSubview:settingsLabel];
+    [self.view addSubview:settingsButton];
 }
 
 #pragma mark - tableview
@@ -142,6 +147,12 @@
 
 #pragma mark - Button pressed actions
 
+- (void)addCourseButtonPressed:(id)sender {
+    AddCourseViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addCourseViewController"];
+    toViewController.course = nil;
+    [self.navigationController pushViewController:toViewController animated:YES];
+}
+
 - (void)settingsButtonPressed:(id)sender {
     NSLog(@"SETTINGS");
 }
@@ -158,7 +169,7 @@
     Course *course = [self.courses objectAtIndex:senderButton.tag];
     AddCourseViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addCourseViewController"];
     [self.navigationController pushViewController:toViewController animated:YES];
-    NSLog(@"PLEASE EDIT COURSE: %d", course.ID);
+    toViewController.course = course;
 }
 
 - (void)deleteButtonPressed:(id)sender {

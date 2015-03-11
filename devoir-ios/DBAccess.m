@@ -59,6 +59,11 @@
     return [courseAccess getAllCoursesOrderedByName];
 }
 
+- (void)updateCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color {
+    CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:self.dbName];
+    return [courseAccess updateCourseWithID:ID Name:name Color:color];
+}
+
 - (Course*) addCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color UserID:(int)userID
                   LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
                      ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID {
