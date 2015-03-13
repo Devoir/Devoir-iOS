@@ -12,20 +12,20 @@
 
 @interface AssignmentDBAccess : NSObject
 
-- (id) initWithDatabase:(NSString*)db;
+- (id)initWithDatabase:(NSString*)db;
 
-- (Assignment*) getAssignmentByID:(int)ID;
-- (NSArray*) getAllAssignmentsOrderedByDate;
-- (NSArray*) getAllAssignmentsOrderedByDateForCourse:(int)courseID;
+- (Assignment*)getAssignmentByID:(int)ID;
+- (NSArray*)getAllAssignmentsOrderedByDate;
+- (NSArray*)getAllAssignmentsOrderedByDateForCourse:(int)courseID;
 
-- (Assignment*) addAssignmentWithID:(int)ID Name:(NSString*)name DueDate:(NSDate*)dueDate
-                             Complete:(BOOL)complete Visible:(BOOL)visible
-                             CourseID:(int)courseID LastUpdated:(NSDate*)lastUpdated
-                AssignmentDescription:(NSString*)assignmentDescription ICalEventID:(NSString*)iCalEventID
-                        ICalEventName:(NSString*)iCalEventName iCalEventDescription:(NSString*)iCalEventDescription;
+- (Assignment*)addAssignmentWithID:(int)ID Name:(NSString*)name DueDate:(NSDate*)dueDate
+                          Complete:(BOOL)complete Visible:(BOOL)visible
+                          CourseID:(int)courseID LastUpdated:(NSDate*)lastUpdated
+             AssignmentDescription:(NSString*)assignmentDescription ICalEventID:(NSString*)iCalEventID
+                     ICalEventName:(NSString*)iCalEventName iCalEventDescription:(NSString*)iCalEventDescription;
 
-- (void) removeAssignmentByID:(int)ID;
-- (void) removeAllAssignmentsForCourse:(int)courseID;
-- (void) removeAllAssignments;
+- (void)removeAssignmentByID:(int)ID;
+- (void)removeAllAssignmentsForCourse:(int)courseID;
+- (void)removeAllAssignments;
 
 @end

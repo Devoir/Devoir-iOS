@@ -23,11 +23,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mJF-lH-y5V" id="q1h-PS-fQw">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" id="9n6-1M-VRk">
-                                                    <rect key="frame" x="274" y="10" width="160" height="33"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                </view>
                                                 <view contentMode="scaleToFill" id="BhF-z4-wfF">
                                                     <rect key="frame" x="0.0" y="0.0" width="15" height="66"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -239,7 +234,7 @@
         <scene sceneID="dL5-fW-kNx">
             <objects>
                 <navigationController id="RHg-ew-d1G" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7hQ-V2-LjF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7hQ-V2-LjF" customClass="NavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -253,6 +248,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bpt-GP-fu7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-338" y="349"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="NQu-P4-hD4">
+            <objects>
+                <viewController storyboardIdentifier="settingsViewController" id="zHX-Z3-Ajs" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hka-xZ-BvZ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="5Fi-oR-Hea">
+                                <rect key="frame" x="91" y="236" width="138" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Toggle Color Theme">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="toggleColorTheme:" destination="zHX-Z3-Ajs" eventType="touchUpInside" id="U7s-Vv-9ee"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Xxt-Ti-mn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="489" y="-967"/>
         </scene>
         <!--Course List View Controller-->
         <scene sceneID="Tz8-ri-oQH">
@@ -338,6 +359,6 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="5TO-g4-Amr"/>
+        <segue reference="QRY-p3-17h"/>
     </inferredMetricsTieBreakers>
 </document>

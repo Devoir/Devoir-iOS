@@ -10,13 +10,15 @@
 
 @implementation User
 
--(id) initWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken {
+-(id) initWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken
+      ThemeColor:(UIThemeColor)themeColor{
     if (self = [super init])
     {
         self.ID = ID;
         self.name = name;
         self.email = email;
         self.oAuthToken = oAuthToken;
+        self.themeColor = themeColor;
     }
     return self;
 }

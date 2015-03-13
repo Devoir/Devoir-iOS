@@ -15,27 +15,29 @@
 
 @interface DBAccess : NSObject
 
-- (id) init;
-- (id) initWithDatabase:(NSString*)db;
+- (id)init;
+- (id)initWithDatabase:(NSString*)db;
 
 //User Methods
-- (User*) getUser;
-- (User*) addUserWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken;
-- (void) removeUser;
+- (User*)getUser;
+- (User*)addUserWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken
+            ThemeColor:(UIThemeColor)themeColor;
+- (void)updateUser:(User*)user;
+- (void)removeUser;
 
 //Course Methods
-- (Course*) getCourseByID:(int)ID;
-- (NSArray*) getAllCoursesOrderedByName;
+- (Course*)getCourseByID:(int)ID;
+- (NSArray*)getAllCoursesOrderedByName;
 - (void)updateCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color;
-- (Course*) addCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color UserID:(int)userID
-                  LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
-                     ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID;
-- (void) removeCourseByID:(int)ID;
-- (void) removeAllCourses;
+- (Course*)addCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color UserID:(int)userID
+               LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
+                  ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID;
+- (void)removeCourseByID:(int)ID;
+- (void)removeAllCourses;
 
 //Assignment Methods
-- (Assignment*) getAssignmentByID:(int)ID;
-- (NSArray*) getAllAssignmentsOrderedByDate;
-- (NSArray*) getAllAssignmentsOrderedByDateForCourse:(int)courseID;
+- (Assignment*)getAssignmentByID:(int)ID;
+- (NSArray*)getAllAssignmentsOrderedByDate;
+- (NSArray*)getAllAssignmentsOrderedByDateForCourse:(int)courseID;
 
 @end

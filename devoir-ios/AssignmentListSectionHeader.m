@@ -15,7 +15,7 @@
     if (self = [super init])
     {
         self.frame = CGRectMake(0, 0, 45, 18);
-        self.backgroundColor = [UIColor devTintColor];
+        self.backgroundColor = [UIColor devAccentColor];
         
         UILabel *tempLabel;
         if(section == 0) {
@@ -29,6 +29,7 @@
         
         tempLabel.text = title;
         tempLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
+        tempLabel.textColor = [UIColor devMainTextColor];
         
         [self addSubview:tempLabel];
     }

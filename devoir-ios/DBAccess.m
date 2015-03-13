@@ -38,9 +38,15 @@
     return [userAccess getUser];
 }
 
-- (User*) addUserWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken {
+- (User*) addUserWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken
+             ThemeColor:(UIThemeColor)themeColor {
     UserDBAccess* userAccess = [[UserDBAccess alloc] initWithDatabase:self.dbName];
-    return [userAccess addUserWithID:ID Name:name Email:email OAuthToken:oAuthToken];
+    return [userAccess addUserWithID:ID Name:name Email:email OAuthToken:oAuthToken ThemeColor:themeColor];
+}
+
+- (void)updateUser:(User*)user {
+    UserDBAccess* userAccess = [[UserDBAccess alloc] initWithDatabase:self.dbName];
+    return [userAccess updateUser:user];
 }
 
 - (void) removeUser {
@@ -65,8 +71,8 @@
 }
 
 - (Course*) addCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color UserID:(int)userID
-                  LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
-                     ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID {
+                LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
+                   ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID {
     CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:self.dbName];
     return [courseAccess addCourseWithID:ID
                                     Name:name

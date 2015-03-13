@@ -26,7 +26,7 @@
     [super tearDown];
 }
 
-- (void)testUserAccess
+/*- (void)testUserAccess
 {
     DBAccess* dbAccess = [[DBAccess alloc] initWithDatabase:@"devoir-ios-test.sqlite"];
     
@@ -45,7 +45,7 @@
     [dbAccess removeUser];
     user = [dbAccess getUser];
     XCTAssertEqualObjects(user, nil);
-}
+}*/
 
 /*- (void)testCourseAccess
 {

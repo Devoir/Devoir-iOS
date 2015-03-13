@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "VariableStore.h"
 @interface User : NSObject
 
 //required
@@ -15,7 +15,9 @@
 @property (nonatomic, strong) NSString* name;
 @property (nonatomic, strong) NSString* email;
 @property (nonatomic, strong) NSString* oAuthToken;
+@property UIThemeColor themeColor;
 
--(id) initWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken;
+-(id) initWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken
+      ThemeColor:(UIThemeColor)themeColor;
 
 @end

@@ -169,7 +169,6 @@
                              "WHERE id = %d",
                              name, color, ID];
         
-        NSLog(@"QUERY: %@", query);
         char * errMsg;
         rc = sqlite3_exec(db, [query UTF8String], nil, NULL, &errMsg);
         if(SQLITE_OK != rc)

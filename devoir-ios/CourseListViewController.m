@@ -12,8 +12,9 @@
 #import "UIColor+DevoirColors.h"
 #import "AssignmentListViewController.h"
 #import "AddCourseViewController.h"
+#import "SettingsViewController.h"
 
-@interface CourseListViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface CourseListViewController () <UITableViewDataSource, UITableViewDelegate, AddCourseDelegate>
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) DBAccess *database;
 @property (strong, nonatomic)  UIButton *settingsButton;
@@ -50,7 +51,7 @@
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, navBarHeight, self.view.frame.size.width,
                                       self.view.frame.size.height - navBarHeight - 70) style:UITableViewStylePlain];
     
-    self.tableView.backgroundColor = [UIColor devTintColor];
+    self.tableView.backgroundColor = [UIColor devAccentColor];
     
     self.tableView.scrollEnabled = YES;
     self.tableView.showsVerticalScrollIndicator = YES;
@@ -67,10 +68,10 @@
 - (void)setupSettingsButton {
     UIButton *settingsButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 70, self.view.frame.size.width, 70)];
     UILabel *settingsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 70)];
-    settingsLabel.backgroundColor = [UIColor devSettingsBar];
+    settingsLabel.backgroundColor = [UIColor devMainColor];
     settingsLabel.text = @"Settings";
     settingsLabel.textAlignment = NSTextAlignmentCenter;
-    settingsLabel.textColor = [UIColor whiteColor];
+    settingsLabel.textColor = [UIColor devMainTextColor];
     [settingsButton addTarget:self
                           action:@selector(settingsButtonPressed:)
                 forControlEvents:UIControlEventTouchUpInside];
@@ -150,11 +151,22 @@
 - (void)addCourseButtonPressed:(id)sender {
     AddCourseViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addCourseViewController"];
     toViewController.course = nil;
+    toViewController.delegate = self;
+    [self.navigationController pushViewController:toViewController animated:YES];
+}
+
+- (void)editButtonPressed:(id)sender {
+    UIButton *senderButton = (UIButton*)sender;
+    Course *course = [self.courses objectAtIndex:senderButton.tag];
+    AddCourseViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addCourseViewController"];
+    toViewController.course = course;
+    toViewController.delegate = self;
     [self.navigationController pushViewController:toViewController animated:YES];
 }
 
 - (void)settingsButtonPressed:(id)sender {
-    NSLog(@"SETTINGS");
+    SettingsViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsViewController"];
+    [self.navigationController pushViewController:toViewController animated:YES];
 }
 
 - (void)courseFilterButtonPressed:(id)sender {
@@ -164,18 +176,24 @@
     [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
 }
 
-- (void)editButtonPressed:(id)sender {
-    UIButton *senderButton = (UIButton*)sender;
-    Course *course = [self.courses objectAtIndex:senderButton.tag];
-    AddCourseViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addCourseViewController"];
-    [self.navigationController pushViewController:toViewController animated:YES];
-    toViewController.course = course;
-}
-
 - (void)deleteButtonPressed:(id)sender {
     UIButton *senderButton = (UIButton*)sender;
     Course *course = [self.courses objectAtIndex:senderButton.tag];
     NSLog(@"PLEASE DELETE COURSE: %d", course.ID);
+}
+
+#pragma mark - AddCourseDelegate methods
+
+- (void) didEditCourse:(Course *)course {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) didAddCourse:(Course *)course {
+    [self.navigationController popViewControllerAnimated:YES];    
+}
+
+- (void) didCancelCourse {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 @end

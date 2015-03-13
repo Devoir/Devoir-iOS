@@ -14,6 +14,9 @@
 #import "UIColor+DevoirColors.h"
 #import "CourseListViewController.h"
 #import "DropDownAnimator.h"
+#import "SlideAcrossAnimation.h"
+#import "VariableStore.h"
+#import "NavigationBar.h"
 
 @interface AssignmentListViewController () <UITableViewDataSource, UITableViewDelegate,
                                                 CourseListDelegate, AddAssignmentDelegate, UINavigationControllerDelegate>
@@ -40,15 +43,12 @@
 
 - (void)setupNavBar {
     self.navigationItem.title = @"All Courses";
-    [self.navigationController.navigationBar setBarTintColor:[UIColor devDarkGrey]];
-    self.navigationController.navigationBar.backgroundColor = [UIColor devDarkGrey];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     self.navigationController.delegate = self;
 }
 
 - (void)setupTableView {
-    self.tableView.backgroundColor = [UIColor devTintColor];
+    self.tableView.backgroundColor = [UIColor devAccentColor];
+    self.tableView.separatorColor = [UIColor devAccentColor];
     self.courseToShow = [[NSNumber alloc] initWithInt:-1];
 }
 
@@ -97,6 +97,8 @@
     static NSString *CellIdentifier = @"cell";
     AssignmentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+    cell.backgroundColor = [UIColor devMainColor];
+    
     Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     NSDate *dateRepresentingThisDay = assignment.dueDate;
@@ -119,7 +121,8 @@
     cell.overdueDate.text = [assignment dueDateAsString];
     
     [[cell.colorLabel layer] setBackgroundColor: [UIColor dbColor:course.color].CGColor];
-        
+    
+    cell.checkbox.backgroundColor = [UIColor devAccentTextColor];
     cell.checkbox.layer.cornerRadius = cell.checkbox.bounds.size.width / 2.0;
     [[cell.checkbox layer] setBorderWidth:1.0f];
     [[cell.checkbox layer] setBorderColor: [UIColor lightGrayColor].CGColor];
@@ -140,7 +143,7 @@
 
 }
 
-#pragma mark - Segue/Animations
+#pragma mark - Segue
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -161,6 +164,8 @@
     }
 }
 
+#pragma mark - ANIMATIONS: !!!!!THIS SECTION SHOULD GO IN THE NAVIGATION CONTROLLER ROOT VIEW!!!!!
+
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                   animationControllerForOperation:(UINavigationControllerOperation)operation
                                                fromViewController:(UIViewController *)fromVC
@@ -174,6 +179,12 @@
     else if(toVC.class == self.class && fromVC.class == NSClassFromString(@"CourseListViewController"))
     {
         DropDownAnimator *animator = [DropDownAnimator new];
+        animator.presenter = 0;
+        return animator;
+    }
+    else if (toVC.class == NSClassFromString(@"CourseListViewController"))
+    {
+        SlideAcrossAnimation *animator = [SlideAcrossAnimation new];
         animator.presenter = 0;
         return animator;
     }
@@ -203,7 +214,7 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - AddAssignment Delegate Methods
+#pragma mark - AddAssignmentDelegate Methods
 
 - (void) didEditAssignment:(NSNumber *)assignmentID {
     [self.navigationController popViewControllerAnimated:YES];

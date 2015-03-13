@@ -17,7 +17,8 @@
     if(row == 0)
     {
         self.courseLabel.text = @"Show All Courses";
-        self.courseLabel.backgroundColor = [UIColor devTintColor];
+        self.courseLabel.backgroundColor = [UIColor devAccentColor];
+        self.courseLabel.textColor = [UIColor devMainTextColor];
         [self.contentView addSubview:self.courseLabel];
     }
     else
@@ -32,13 +33,13 @@
         
         //tansparent button to cover the filter by course section
         self.courseFilterButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, width, 70)];
-        self.courseFilterButton.backgroundColor = [UIColor devTransparent];
+        self.courseFilterButton.backgroundColor = [UIColor clearColor];
         self.courseFilterButton.tag = row;
         [self.courseScrollView addSubview:self.courseFilterButton];
         
         //section for edit/delete
         self.courseDeleteEditView = [[UIView alloc] initWithFrame:CGRectMake(width, 0, 500, 70)];
-        self.courseDeleteEditView.backgroundColor = [UIColor devTintColor];
+        self.courseDeleteEditView.backgroundColor = [UIColor devAccentColor];
         [[self.courseDeleteEditView layer] setBorderWidth:1.2f];
         [[self.courseDeleteEditView layer] setBorderColor: [UIColor lightGrayColor].CGColor];
         
