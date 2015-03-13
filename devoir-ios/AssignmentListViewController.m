@@ -60,12 +60,17 @@
     {
         self.navigationItem.title = [self.database getCourseByID:(int)[self.courseToShow integerValue]].name;
         self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
+        Course *course = [self.database getCourseByID:(int)self.courseToShow];
+        [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:course.color]];
+        self.navigationController.navigationBar.backgroundColor = [UIColor dbColor:course.color];
         [self.tableView reloadData];
     }
     else
     {
         self.navigationItem.title = @"All Courses";
         self.assignments = [self.database getAllAssignmentsOrderedByDate];
+        [self.navigationController.navigationBar setBarTintColor:[UIColor devDarkGrey]];
+        self.navigationController.navigationBar.backgroundColor = [UIColor devDarkGrey];
         [self.tableView reloadData];
     }
     
@@ -214,6 +219,10 @@
 }
 
 - (void) didCancelAssignment {
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void) didDeleteAssignment:(NSNumber *)assignmentID {
     [self.navigationController popViewControllerAnimated:YES];
 }
 

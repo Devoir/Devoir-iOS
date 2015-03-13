@@ -12,6 +12,7 @@
 @protocol AddAssignmentDelegate <NSObject>
 
 - (void) didEditAssignment:(Assignment *)assignment;
+- (void) didDeleteAssignment:(Assignment *)assignment;
 - (void) didAddAssignment:(Assignment *)assignment;
 - (void) didCancelAssignment;
 
