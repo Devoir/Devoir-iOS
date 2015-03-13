@@ -61,8 +61,8 @@
         self.navigationItem.title = [self.database getCourseByID:(int)[self.courseToShow integerValue]].name;
         self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
         Course *course = [self.database getCourseByID:(int)self.courseToShow];
-        [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:course.color]];
-        self.navigationController.navigationBar.backgroundColor = [UIColor dbColor:course.color];
+//        [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:course.color]];
+//        self.navigationController.navigationBar.backgroundColor = [UIColor dbColor:course.color];
         [self.tableView reloadData];
     }
     else
