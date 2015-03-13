@@ -7,6 +7,7 @@
 //
 
 #import "UIColor+DevoirColors.h"
+#import "VariableStore.h"
 
 @implementation UIColor (DevoirColors)
 
@@ -42,10 +43,6 @@
     return [UIColor colorWithRed:0.3229 green:0.6045 blue:0.8807 alpha:1.0];
 }
 
-+(UIColor*) devTransparent {
-    return [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0];
-}
-
 +(UIColor*) devLightGrey {
     return [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0];
 }
@@ -54,15 +51,57 @@
     return [UIColor colorWithRed:0.200 green:0.200 blue:0.200 alpha:1.0];
 }
 
-+(UIColor*) devSettingsBar {
-    return [UIColor colorWithRed:0.318 green:0.318 blue:0.318 alpha:1.0];
++(UIColor*) devMainColor {
+    //return [UIColor colorWithRed:0.200 green:0.200 blue:0.200 alpha:1];
+    switch ([VariableStore sharedInstance].themeColor)
+    {
+        case LIGHT:
+            return [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1];
+        case DARK:
+            return [UIColor colorWithRed:0.200 green:0.200 blue:0.200 alpha:1];
+        default:
+            return [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1];
+    }
 }
 
-
-+(UIColor*) devTintColor {
-    return [UIColor colorWithRed:0.9 green:0.9 blue:0.9 alpha:1.0];
++(UIColor*) devAccentColor {
+    //return [UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1];
+    switch ([VariableStore sharedInstance].themeColor)
+    {
+        case LIGHT:
+            return [UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1];
+        case DARK:
+            return [UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1];
+        default:
+            return [UIColor colorWithRed:0.902 green:0.902 blue:0.902 alpha:1];
+    }
 }
 
++(UIColor*) devMainTextColor {
+    // return [UIColor whiteColor];
+    switch ([VariableStore sharedInstance].themeColor)
+    {
+        case LIGHT:
+            return [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1];
+        case DARK:
+            return [UIColor whiteColor];
+        default:
+            return [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1];
+    }
+}
+
++(UIColor*) devAccentTextColor {
+    // return [UIColor lightTextColor];
+    switch ([VariableStore sharedInstance].themeColor)
+    {
+        case LIGHT:
+            return [UIColor darkGrayColor];
+        case DARK:
+            return [UIColor lightTextColor];
+        default:
+            return [UIColor darkGrayColor];
+    }
+}
 
 +(UIColor*) dbColor:(DevColor)color {
     switch (color)

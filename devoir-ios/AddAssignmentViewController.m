@@ -69,6 +69,8 @@
 
 }
 
+#pragma mark - Button pressed actions
+
 - (IBAction)cancelButtonTapped:(id)sender {
     [self.delegate didCancelAssignment];
 }

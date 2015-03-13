@@ -53,11 +53,12 @@
                 NSString* name = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 1)];
                 NSString* email = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 2)];
                 NSString* oAuthToken = [NSString stringWithUTF8String:(const char *)sqlite3_column_text(stmt, 3)];
-                
+                int themeColor = sqlite3_column_int(stmt, 4);
                 user = [[User alloc] initWithID:ID
                                            Name:name
                                           Email:email
-                                     OAuthToken:oAuthToken];
+                                     OAuthToken:oAuthToken
+                                     ThemeColor:themeColor];
             }
             sqlite3_finalize(stmt);
         }
@@ -73,7 +74,8 @@
 
 #pragma mark - Add to database
 
-- (User*) addUserWithID:(int)ID Name:(NSString *)name Email:(NSString *)email OAuthToken:(NSString *)oAuthToken {
+- (User*) addUserWithID:(int)ID Name:(NSString *)name Email:(NSString *)email OAuthToken:(NSString *)oAuthToken
+             ThemeColor:(UIThemeColor)themeColor{
     NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
@@ -87,8 +89,9 @@
     else
     {
         NSString * query  = [NSString
-                             stringWithFormat:@"INSERT INTO User (id, Name, Email, OAuthToken) VALUES (%d, \"%@\",\"%@\",\"%@\")",
-                             ID, name, email, oAuthToken];
+                             stringWithFormat:@"INSERT INTO User (id, Name, Email, OAuthToken, ThemeColor) "
+                             "VALUES (%d, \"%@\",\"%@\",\"%@\", %d)",
+                             ID, name, email, oAuthToken, themeColor];
         
         char * errMsg;
         rc = sqlite3_exec(db, [query UTF8String], nil, NULL, &errMsg);
@@ -102,10 +105,43 @@
     User* user = [[User alloc] initWithID: ID
                                      Name:name
                                     Email:email
-                               OAuthToken:oAuthToken];
+                               OAuthToken:oAuthToken
+                               ThemeColor:themeColor];
     
     return user;
 }
+
+#pragma mark - Update
+
+- (void)updateUser:(User*)user {
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
+    
+    sqlite3* db = nil;
+    int rc=0;
+    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    if (SQLITE_OK != rc)
+    {
+        sqlite3_close(db);
+        NSLog(@"Failed to open db connection");
+    }
+    else
+    {
+        NSString * query  = [NSString
+                             stringWithFormat:@"UPDATE User SET "
+                             "Name = \"%@\", Email = \"%@\", OAuthToken = \"%@\", ThemeColor = %d "
+                             "WHERE id = %d",
+                             user.name, user.email, user.oAuthToken, user.themeColor, user.ID];
+        
+        char * errMsg;
+        rc = sqlite3_exec(db, [query UTF8String], nil, NULL, &errMsg);
+        if(SQLITE_OK != rc)
+        {
+            NSLog(@"Failed to insert record  rc:%d, msg=%s",rc,errMsg);
+        }
+        sqlite3_close(db);
+    }
+}
+
 
 #pragma mark - Delete from database
 

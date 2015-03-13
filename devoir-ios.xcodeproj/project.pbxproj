@@ -35,13 +35,15 @@
 		4E72FE121AAADB7800D3A7A7 /* DropDownAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E72FE111AAADB7800D3A7A7 /* DropDownAnimator.m */; };
 		4E72FE141AAADF7500D3A7A7 /* Down4-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FE131AAADF7500D3A7A7 /* Down4-50.png */; };
 		4E72FE161AAAE1AE00D3A7A7 /* Down4-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FE151AAAE1AE00D3A7A7 /* Down4-25.png */; };
+		4E77571F1AB2B74C0023F2F0 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E77571E1AB2B74C0023F2F0 /* SettingsViewController.m */; };
+		4E7757221AB2B7A20023F2F0 /* SlideAcrossAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7757211AB2B7A20023F2F0 /* SlideAcrossAnimation.m */; };
+		4E7757251AB2B9010023F2F0 /* VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7757241AB2B9010023F2F0 /* VariableStore.m */; };
+		4E7757281AB2BB9A0023F2F0 /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7757271AB2BB9A0023F2F0 /* NavigationBar.m */; };
+		4E77572B1AB2BF5F0023F2F0 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E77572A1AB2BF5F0023F2F0 /* NavigationController.m */; };
 		4EB974DD1A9D390F00B4CDA9 /* devoir-ios-test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4EB974DC1A9D390F00B4CDA9 /* devoir-ios-test.sqlite */; };
 		4EB974DF1A9D3B9800B4CDA9 /* DatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */; };
 		4ED1DF581A89935C00D9F29D /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF571A89935C00D9F29D /* Course.m */; };
 		4ED1DF5B1A89936C00D9F29D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF5A1A89936C00D9F29D /* User.m */; };
-		AB03E25F1AB0D0C900BF1317 /* clock.png in Resources */ = {isa = PBXBuildFile; fileRef = AB03E25E1AB0D0C900BF1317 /* clock.png */; };
-		AB03E2621AB0D0D800BF1317 /* calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = AB03E2601AB0D0D800BF1317 /* calendar.png */; };
-		AB03E2631AB0D0D800BF1317 /* notes.png in Resources */ = {isa = PBXBuildFile; fileRef = AB03E2611AB0D0D800BF1317 /* notes.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,15 +105,22 @@
 		4E72FE111AAADB7800D3A7A7 /* DropDownAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownAnimator.m; sourceTree = "<group>"; };
 		4E72FE131AAADF7500D3A7A7 /* Down4-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Down4-50.png"; sourceTree = "<group>"; };
 		4E72FE151AAAE1AE00D3A7A7 /* Down4-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Down4-25.png"; sourceTree = "<group>"; };
+		4E77571D1AB2B74C0023F2F0 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		4E77571E1AB2B74C0023F2F0 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		4E7757201AB2B7A20023F2F0 /* SlideAcrossAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideAcrossAnimation.h; sourceTree = "<group>"; };
+		4E7757211AB2B7A20023F2F0 /* SlideAcrossAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SlideAcrossAnimation.m; sourceTree = "<group>"; };
+		4E7757231AB2B9000023F2F0 /* VariableStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VariableStore.h; sourceTree = "<group>"; };
+		4E7757241AB2B9010023F2F0 /* VariableStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableStore.m; sourceTree = "<group>"; };
+		4E7757261AB2BB9A0023F2F0 /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBar.h; sourceTree = "<group>"; };
+		4E7757271AB2BB9A0023F2F0 /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBar.m; sourceTree = "<group>"; };
+		4E7757291AB2BF5F0023F2F0 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		4E77572A1AB2BF5F0023F2F0 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		4EB974DC1A9D390F00B4CDA9 /* devoir-ios-test.sqlite */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = "devoir-ios-test.sqlite"; sourceTree = SOURCE_ROOT; };
 		4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTests.m; sourceTree = "<group>"; };
 		4ED1DF561A89935C00D9F29D /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		4ED1DF571A89935C00D9F29D /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		4ED1DF591A89936C00D9F29D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		4ED1DF5A1A89936C00D9F29D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
-		AB03E25E1AB0D0C900BF1317 /* clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = clock.png; path = ../../Desktop/clock.png; sourceTree = "<group>"; };
-		AB03E2601AB0D0D800BF1317 /* calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = calendar.png; path = ../../Desktop/calendar.png; sourceTree = "<group>"; };
-		AB03E2611AB0D0D800BF1317 /* notes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = notes.png; path = ../../Desktop/notes.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +167,8 @@
 			children = (
 				3219FF511A86C5070034C46E /* AppDelegate.h */,
 				3219FF521A86C5070034C46E /* AppDelegate.m */,
+				4E7757231AB2B9000023F2F0 /* VariableStore.h */,
+				4E7757241AB2B9010023F2F0 /* VariableStore.m */,
 				4E72FE0F1AAADB2D00D3A7A7 /* Animations */,
 				4E3457A11A9CF3F30063EE1E /* Database */,
 				4ED1DF5C1A89937600D9F29D /* Models */,
@@ -228,6 +239,8 @@
 				32B9687E1AA2C5D100598AD5 /* CheckboxButton.m */,
 				4E1F6DA91AA80426006DE857 /* CourseTableViewCell.h */,
 				4E1F6DAA1AA80426006DE857 /* CourseTableViewCell.m */,
+				4E7757261AB2BB9A0023F2F0 /* NavigationBar.h */,
+				4E7757271AB2BB9A0023F2F0 /* NavigationBar.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -243,6 +256,10 @@
 				32B968751AA2AC8000598AD5 /* AddAssignmentViewController.m */,
 				32B9688F1AA38C1300598AD5 /* AddCourseViewController.h */,
 				32B968901AA38C1300598AD5 /* AddCourseViewController.m */,
+				4E77571D1AB2B74C0023F2F0 /* SettingsViewController.h */,
+				4E77571E1AB2B74C0023F2F0 /* SettingsViewController.m */,
+				4E7757291AB2BF5F0023F2F0 /* NavigationController.h */,
+				4E77572A1AB2BF5F0023F2F0 /* NavigationController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -258,9 +275,6 @@
 		4E72FDEF1AAA52B500D3A7A7 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				AB03E25E1AB0D0C900BF1317 /* clock.png */,
-				AB03E2601AB0D0D800BF1317 /* calendar.png */,
-				AB03E2611AB0D0D800BF1317 /* notes.png */,
 				4E72FE151AAAE1AE00D3A7A7 /* Down4-25.png */,
 				4E72FE131AAADF7500D3A7A7 /* Down4-50.png */,
 				4E72FDF01AAA52F700D3A7A7 /* Plus-50.png */,
@@ -275,6 +289,8 @@
 			children = (
 				4E72FE101AAADB7800D3A7A7 /* DropDownAnimator.h */,
 				4E72FE111AAADB7800D3A7A7 /* DropDownAnimator.m */,
+				4E7757201AB2B7A20023F2F0 /* SlideAcrossAnimation.h */,
+				4E7757211AB2B7A20023F2F0 /* SlideAcrossAnimation.m */,
 			);
 			name = Animations;
 			sourceTree = "<group>";
@@ -382,15 +398,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E72FE141AAADF7500D3A7A7 /* Down4-50.png in Resources */,
-				AB03E2621AB0D0D800BF1317 /* calendar.png in Resources */,
-				AB03E2631AB0D0D800BF1317 /* notes.png in Resources */,
 				4E72FDF41AAA52F700D3A7A7 /* Trash-50.png in Resources */,
 				4E1ED8051A9EAE5100E37759 /* devoir-ios.sqlite in Resources */,
 				3219FF591A86C5070034C46E /* Main.storyboard in Resources */,
 				4E72FDF31AAA52F700D3A7A7 /* Plus-50.png in Resources */,
 				3219FF5E1A86C5070034C46E /* LaunchScreen.xib in Resources */,
 				4EB974DD1A9D390F00B4CDA9 /* devoir-ios-test.sqlite in Resources */,
-				AB03E25F1AB0D0C900BF1317 /* clock.png in Resources */,
 				4E72FDF51AAA52F700D3A7A7 /* Edit-50.png in Resources */,
 				3219FF5B1A86C5070034C46E /* Images.xcassets in Resources */,
 				4E72FE161AAAE1AE00D3A7A7 /* Down4-25.png in Resources */,
@@ -418,16 +431,21 @@
 				3219FF531A86C5070034C46E /* AppDelegate.m in Sources */,
 				4E1ED7FF1A9E98A800E37759 /* AssignmentDBAccess.m in Sources */,
 				4E72FE121AAADB7800D3A7A7 /* DropDownAnimator.m in Sources */,
+				4E77571F1AB2B74C0023F2F0 /* SettingsViewController.m in Sources */,
 				4E3457A41A9CF5BC0063EE1E /* UserDBAccess.m in Sources */,
+				4E7757221AB2B7A20023F2F0 /* SlideAcrossAnimation.m in Sources */,
 				32B968731AA2AC6800598AD5 /* AssignmentListViewController.m in Sources */,
 				4E34579E1A9CEA590063EE1E /* CourseDBAccess.m in Sources */,
 				4E34579B1A9CE65E0063EE1E /* DBAccess.m in Sources */,
 				32B968821AA2C5F800598AD5 /* AssignmentTableViewCell.m in Sources */,
 				4E3960FC1A89C4DD00C0004C /* Assignment.m in Sources */,
+				4E7757251AB2B9010023F2F0 /* VariableStore.m in Sources */,
 				3219FF501A86C5070034C46E /* main.m in Sources */,
 				32B9687F1AA2C5D100598AD5 /* CheckboxButton.m in Sources */,
 				32B968911AA38C1300598AD5 /* AddCourseViewController.m in Sources */,
+				4E7757281AB2BB9A0023F2F0 /* NavigationBar.m in Sources */,
 				32B9688E1AA38BCA00598AD5 /* CourseListViewController.m in Sources */,
+				4E77572B1AB2BF5F0023F2F0 /* NavigationController.m in Sources */,
 				32B968761AA2AC8000598AD5 /* AddAssignmentViewController.m in Sources */,
 				4E1F6DAB1AA80426006DE857 /* CourseTableViewCell.m in Sources */,
 			);

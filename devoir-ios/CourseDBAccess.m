@@ -148,6 +148,37 @@
     return [courses copy];
 }
 
+#pragma mark - Update database
+
+- (void)updateCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color {
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
+    
+    sqlite3* db = nil;
+    int rc=0;
+    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    if (SQLITE_OK != rc)
+    {
+        sqlite3_close(db);
+        NSLog(@"Failed to open db connection");
+    }
+    else
+    {
+        NSString * query  = [NSString
+                             stringWithFormat:@"UPDATE Course SET "
+                             "Name = \"%@\", Color = %d "
+                             "WHERE id = %d",
+                             name, color, ID];
+        
+        char * errMsg;
+        rc = sqlite3_exec(db, [query UTF8String], nil, NULL, &errMsg);
+        if(SQLITE_OK != rc)
+        {
+            NSLog(@"Failed to insert record  rc:%d, msg=%s",rc,errMsg);
+        }
+        sqlite3_close(db);
+    }
+}
+
 #pragma mark - Add to database
 
 - (Course*) addCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color UserID:(int)userID

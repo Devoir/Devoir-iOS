@@ -13,10 +13,9 @@
 #import "AddAssignmentViewController.h"
 #import "UIColor+DevoirColors.h"
 #import "CourseListViewController.h"
-#import "DropDownAnimator.h"
 
 @interface AssignmentListViewController () <UITableViewDataSource, UITableViewDelegate,
-                                                CourseListDelegate, AddAssignmentDelegate, UINavigationControllerDelegate>
+                                                CourseListDelegate, AddAssignmentDelegate>
 @property (strong, nonatomic) DBAccess *database;
 @property (strong, nonatomic) NSArray *assignments;
 @property (retain) NSNumber *courseToShow;
@@ -40,18 +39,15 @@
 
 - (void)setupNavBar {
     self.navigationItem.title = @"All Courses";
-    [self.navigationController.navigationBar setBarTintColor:[UIColor devDarkGrey]];
-    self.navigationController.navigationBar.backgroundColor = [UIColor devDarkGrey];
-    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
-    self.navigationController.delegate = self;
 }
 
 - (void)setupTableView {
-    self.tableView.backgroundColor = [UIColor devTintColor];
+    self.tableView.backgroundColor = [UIColor devAccentColor];
+    self.tableView.separatorColor = [UIColor devAccentColor];
     self.courseToShow = [[NSNumber alloc] initWithInt:-1];
 }
 
+<<<<<<< HEAD
 #pragma mark - CourseListDelegate methods
 
 - (void) courseDidChange:(NSNumber*)courseID {
@@ -77,6 +73,8 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+=======
+>>>>>>> 3f8713efbdad07b7860135456ddb0c50c50a6b3d
 #pragma mark - tableview
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -122,6 +120,8 @@
     static NSString *CellIdentifier = @"cell";
     AssignmentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+    cell.backgroundColor = [UIColor devMainColor];
+    
     Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
     NSDate *dateRepresentingThisDay = assignment.dueDate;
@@ -144,7 +144,8 @@
     cell.overdueDate.text = [assignment dueDateAsString];
     
     [[cell.colorLabel layer] setBackgroundColor: [UIColor dbColor:course.color].CGColor];
-        
+    
+    cell.checkbox.backgroundColor = [UIColor devAccentTextColor];
     cell.checkbox.layer.cornerRadius = cell.checkbox.bounds.size.width / 2.0;
     [[cell.checkbox layer] setBorderWidth:1.0f];
     [[cell.checkbox layer] setBorderColor: [UIColor lightGrayColor].CGColor];
@@ -165,7 +166,7 @@
 
 }
 
-#pragma mark - Segue/Animations
+#pragma mark - Segue
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -186,29 +187,27 @@
     }
 }
 
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
-                                  animationControllerForOperation:(UINavigationControllerOperation)operation
-                                               fromViewController:(UIViewController *)fromVC
-                                                 toViewController:(UIViewController *)toVC {
-    if(fromVC.class == self.class && toVC.class == NSClassFromString(@"CourseListViewController"))
+#pragma mark - CourseListDelegate methods
+
+- (void) courseDidChange:(NSNumber*)courseID {
+    self.courseToShow = courseID;
+    if([self.courseToShow integerValue] != -1)
     {
-        DropDownAnimator *animator = [DropDownAnimator new];
-        animator.presenter = 1;
-        return animator;
-    }
-    else if(toVC.class == self.class && fromVC.class == NSClassFromString(@"CourseListViewController"))
-    {
-        DropDownAnimator *animator = [DropDownAnimator new];
-        animator.presenter = 0;
-        return animator;
+        self.navigationItem.title = [self.database getCourseByID:(int)[self.courseToShow integerValue]].name;
+        self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
+        [self.tableView reloadData];
     }
     else
     {
-        return nil;
+        self.navigationItem.title = @"All Courses";
+        self.assignments = [self.database getAllAssignmentsOrderedByDate];
+        [self.tableView reloadData];
     }
+    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - AddAssignment Delegate Methods
+#pragma mark - AddAssignmentDelegate Methods
 
 - (void) didEditAssignment:(NSNumber *)assignmentID {
     [self.navigationController popViewControllerAnimated:YES];

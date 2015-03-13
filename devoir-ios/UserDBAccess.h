@@ -12,12 +12,15 @@
 
 @interface UserDBAccess : NSObject
 
-- (id) initWithDatabase:(NSString*)db;
+- (id)initWithDatabase:(NSString*)db;
 
-- (User*) getUser;
+- (User*)getUser;
 
-- (User*) addUserWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken;
+- (User*)addUserWithID:(int)ID Name:(NSString*)name Email:(NSString*)email OAuthToken:(NSString*)oAuthToken
+            ThemeColor:(UIThemeColor)themeColor;
 
-- (void) removeUser;
+- (void)updateUser:(User*)user;
+
+- (void)removeUser;
 
 @end
