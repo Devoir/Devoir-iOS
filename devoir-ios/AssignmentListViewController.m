@@ -13,13 +13,9 @@
 #import "AddAssignmentViewController.h"
 #import "UIColor+DevoirColors.h"
 #import "CourseListViewController.h"
-#import "DropDownAnimator.h"
-#import "SlideAcrossAnimation.h"
-#import "VariableStore.h"
-#import "NavigationBar.h"
 
 @interface AssignmentListViewController () <UITableViewDataSource, UITableViewDelegate,
-                                                CourseListDelegate, AddAssignmentDelegate, UINavigationControllerDelegate>
+                                                CourseListDelegate, AddAssignmentDelegate>
 @property (strong, nonatomic) DBAccess *database;
 @property (strong, nonatomic) NSArray *assignments;
 @property (retain) NSNumber *courseToShow;
@@ -43,7 +39,6 @@
 
 - (void)setupNavBar {
     self.navigationItem.title = @"All Courses";
-    self.navigationController.delegate = self;
 }
 
 - (void)setupTableView {
@@ -161,36 +156,6 @@
         Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
         vc.assignment = assignment;
         [transferViewController setDelegate:self];  
-    }
-}
-
-#pragma mark - ANIMATIONS: !!!!!THIS SECTION SHOULD GO IN THE NAVIGATION CONTROLLER ROOT VIEW!!!!!
-
-- (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
-                                  animationControllerForOperation:(UINavigationControllerOperation)operation
-                                               fromViewController:(UIViewController *)fromVC
-                                                 toViewController:(UIViewController *)toVC {
-    if(fromVC.class == self.class && toVC.class == NSClassFromString(@"CourseListViewController"))
-    {
-        DropDownAnimator *animator = [DropDownAnimator new];
-        animator.presenter = 1;
-        return animator;
-    }
-    else if(toVC.class == self.class && fromVC.class == NSClassFromString(@"CourseListViewController"))
-    {
-        DropDownAnimator *animator = [DropDownAnimator new];
-        animator.presenter = 0;
-        return animator;
-    }
-    else if (toVC.class == NSClassFromString(@"CourseListViewController"))
-    {
-        SlideAcrossAnimation *animator = [SlideAcrossAnimation new];
-        animator.presenter = 0;
-        return animator;
-    }
-    else
-    {
-        return nil;
     }
 }
 

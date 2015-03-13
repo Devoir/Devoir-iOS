@@ -39,6 +39,7 @@
 		4E7757221AB2B7A20023F2F0 /* SlideAcrossAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7757211AB2B7A20023F2F0 /* SlideAcrossAnimation.m */; };
 		4E7757251AB2B9010023F2F0 /* VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7757241AB2B9010023F2F0 /* VariableStore.m */; };
 		4E7757281AB2BB9A0023F2F0 /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7757271AB2BB9A0023F2F0 /* NavigationBar.m */; };
+		4E77572B1AB2BF5F0023F2F0 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E77572A1AB2BF5F0023F2F0 /* NavigationController.m */; };
 		4EB974DD1A9D390F00B4CDA9 /* devoir-ios-test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4EB974DC1A9D390F00B4CDA9 /* devoir-ios-test.sqlite */; };
 		4EB974DF1A9D3B9800B4CDA9 /* DatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */; };
 		4ED1DF581A89935C00D9F29D /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF571A89935C00D9F29D /* Course.m */; };
@@ -112,6 +113,8 @@
 		4E7757241AB2B9010023F2F0 /* VariableStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VariableStore.m; sourceTree = "<group>"; };
 		4E7757261AB2BB9A0023F2F0 /* NavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationBar.h; sourceTree = "<group>"; };
 		4E7757271AB2BB9A0023F2F0 /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBar.m; sourceTree = "<group>"; };
+		4E7757291AB2BF5F0023F2F0 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
+		4E77572A1AB2BF5F0023F2F0 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
 		4EB974DC1A9D390F00B4CDA9 /* devoir-ios-test.sqlite */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = "devoir-ios-test.sqlite"; sourceTree = SOURCE_ROOT; };
 		4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTests.m; sourceTree = "<group>"; };
 		4ED1DF561A89935C00D9F29D /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
@@ -255,6 +258,8 @@
 				32B968901AA38C1300598AD5 /* AddCourseViewController.m */,
 				4E77571D1AB2B74C0023F2F0 /* SettingsViewController.h */,
 				4E77571E1AB2B74C0023F2F0 /* SettingsViewController.m */,
+				4E7757291AB2BF5F0023F2F0 /* NavigationController.h */,
+				4E77572A1AB2BF5F0023F2F0 /* NavigationController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -440,6 +445,7 @@
 				32B968911AA38C1300598AD5 /* AddCourseViewController.m in Sources */,
 				4E7757281AB2BB9A0023F2F0 /* NavigationBar.m in Sources */,
 				32B9688E1AA38BCA00598AD5 /* CourseListViewController.m in Sources */,
+				4E77572B1AB2BF5F0023F2F0 /* NavigationController.m in Sources */,
 				32B968761AA2AC8000598AD5 /* AddAssignmentViewController.m in Sources */,
 				4E1F6DAB1AA80426006DE857 /* CourseTableViewCell.m in Sources */,
 			);
