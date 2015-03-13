@@ -47,34 +47,29 @@
     self.courseToShow = [[NSNumber alloc] initWithInt:-1];
 }
 
-<<<<<<< HEAD
-#pragma mark - CourseListDelegate methods
+//- (void) courseDidChange:(NSNumber*)courseID {
+//    self.courseToShow = courseID;
+//    if([self.courseToShow integerValue] != -1)
+//    {
+//        self.navigationItem.title = [self.database getCourseByID:(int)[self.courseToShow integerValue]].name;
+//        self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
+//        Course *course = [self.database getCourseByID:(int)self.courseToShow];
+////        [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:course.color]];
+////        self.navigationController.navigationBar.backgroundColor = [UIColor dbColor:course.color];
+//        [self.tableView reloadData];
+//    }
+//    else
+//    {
+//        self.navigationItem.title = @"All Courses";
+//        self.assignments = [self.database getAllAssignmentsOrderedByDate];
+//        [self.navigationController.navigationBar setBarTintColor:[UIColor devDarkGrey]];
+//        self.navigationController.navigationBar.backgroundColor = [UIColor devDarkGrey];
+//        [self.tableView reloadData];
+//    }
+//    
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
 
-- (void) courseDidChange:(NSNumber*)courseID {
-    self.courseToShow = courseID;
-    if([self.courseToShow integerValue] != -1)
-    {
-        self.navigationItem.title = [self.database getCourseByID:(int)[self.courseToShow integerValue]].name;
-        self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
-        Course *course = [self.database getCourseByID:(int)self.courseToShow];
-//        [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:course.color]];
-//        self.navigationController.navigationBar.backgroundColor = [UIColor dbColor:course.color];
-        [self.tableView reloadData];
-    }
-    else
-    {
-        self.navigationItem.title = @"All Courses";
-        self.assignments = [self.database getAllAssignmentsOrderedByDate];
-        [self.navigationController.navigationBar setBarTintColor:[UIColor devDarkGrey]];
-        self.navigationController.navigationBar.backgroundColor = [UIColor devDarkGrey];
-        [self.tableView reloadData];
-    }
-    
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-=======
->>>>>>> 3f8713efbdad07b7860135456ddb0c50c50a6b3d
 #pragma mark - tableview
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
