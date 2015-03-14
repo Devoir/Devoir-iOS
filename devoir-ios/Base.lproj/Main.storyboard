@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="RHg-ew-d1G">
-=======
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="RHg-ew-d1G">
->>>>>>> 3f8713efbdad07b7860135456ddb0c50c50a6b3d
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -154,7 +150,6 @@
                                     <outlet property="delegate" destination="bUN-KO-0wi" id="MRu-bq-vj9"/>
                                 </connections>
                             </textView>
-<<<<<<< HEAD
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar.png" id="Wnb-7L-Ag6">
                                 <rect key="frame" x="16" y="252" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
@@ -165,19 +160,6 @@
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notes.png" id="iWo-up-IYU">
                                 <rect key="frame" x="16" y="308" width="20" height="20"/>
-=======
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Trash-50.png" id="Wnb-7L-Ag6">
-                                <rect key="frame" x="16" y="287" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Trash-50.png" id="XHh-vt-U8S">
-                                <rect key="frame" x="176" y="286" width="18" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Trash-50.png" id="iWo-up-IYU">
-                                <rect key="frame" x="16" y="343" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
->>>>>>> 3f8713efbdad07b7860135456ddb0c50c50a6b3d
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="haK-jw-M6P">
                                 <rect key="frame" x="16" y="182" width="25" height="25"/>

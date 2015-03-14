@@ -35,6 +35,8 @@
 #pragma mark - UI setup
 
 - (void)setupNavBar {
+    [self.navigationController.navigationBar setBarTintColor:[UIColor devMainColor]];
+
     UIBarButtonItem *addCourseButton = [[UIBarButtonItem alloc]
                                         initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                         target:self

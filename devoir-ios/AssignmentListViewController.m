@@ -39,6 +39,7 @@
 
 - (void)setupNavBar {
     self.navigationItem.title = @"All Courses";
+    [self.navigationController.navigationBar setBarTintColor:[UIColor devMainColor]];
 }
 
 - (void)setupTableView {
@@ -46,29 +47,6 @@
     self.tableView.separatorColor = [UIColor devAccentColor];
     self.courseToShow = [[NSNumber alloc] initWithInt:-1];
 }
-
-//- (void) courseDidChange:(NSNumber*)courseID {
-//    self.courseToShow = courseID;
-//    if([self.courseToShow integerValue] != -1)
-//    {
-//        self.navigationItem.title = [self.database getCourseByID:(int)[self.courseToShow integerValue]].name;
-//        self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
-//        Course *course = [self.database getCourseByID:(int)self.courseToShow];
-////        [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:course.color]];
-////        self.navigationController.navigationBar.backgroundColor = [UIColor dbColor:course.color];
-//        [self.tableView reloadData];
-//    }
-//    else
-//    {
-//        self.navigationItem.title = @"All Courses";
-//        self.assignments = [self.database getAllAssignmentsOrderedByDate];
-//        [self.navigationController.navigationBar setBarTintColor:[UIColor devDarkGrey]];
-//        self.navigationController.navigationBar.backgroundColor = [UIColor devDarkGrey];
-//        [self.tableView reloadData];
-//    }
-//    
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
 
 #pragma mark - tableview
 
@@ -186,15 +164,16 @@
 
 - (void) courseDidChange:(NSNumber*)courseID {
     self.courseToShow = courseID;
+    
+    [self updateStatusBar];
+    
     if([self.courseToShow integerValue] != -1)
     {
-        self.navigationItem.title = [self.database getCourseByID:(int)[self.courseToShow integerValue]].name;
         self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
         [self.tableView reloadData];
     }
     else
     {
-        self.navigationItem.title = @"All Courses";
         self.assignments = [self.database getAllAssignmentsOrderedByDate];
         [self.tableView reloadData];
     }
@@ -205,19 +184,37 @@
 #pragma mark - AddAssignmentDelegate Methods
 
 - (void) didEditAssignment:(NSNumber *)assignmentID {
+    [self updateStatusBar];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) didAddAssignment:(Assignment *)assignment {
+    [self updateStatusBar];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) didCancelAssignment {
+    [self updateStatusBar];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) didDeleteAssignment:(NSNumber *)assignmentID {
+    [self updateStatusBar];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)updateStatusBar {
+    if([self.courseToShow integerValue] == -1)
+    {
+        [self.navigationController.navigationBar setBarTintColor:[UIColor devMainColor]];
+        self.navigationItem.title = @"All Courses";
+    }
+    else
+    {
+        Course *course = [self.database getCourseByID:(int)[self.courseToShow integerValue]];
+        [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:course.color]];
+        self.navigationItem.title = course.name;
+    }
 }
 
 @end
