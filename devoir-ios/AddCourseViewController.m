@@ -36,6 +36,9 @@
 #pragma mark - UI setup
 
 - (void)setupNavBar {
+    [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:self.course.color]];
+    self.navigationItem.title = self.course.name;
+
     [self.navigationItem setHidesBackButton:YES];
     
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]

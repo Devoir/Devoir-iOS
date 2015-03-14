@@ -35,6 +35,10 @@
     self.assignments = [self.database getAllAssignmentsOrderedByDate];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self updateStatusBar];
+}
+
 #pragma mark - UI setup
 
 - (void)setupNavBar {
@@ -165,8 +169,6 @@
 - (void) courseDidChange:(NSNumber*)courseID {
     self.courseToShow = courseID;
     
-    [self updateStatusBar];
-    
     if([self.courseToShow integerValue] != -1)
     {
         self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
@@ -184,22 +186,18 @@
 #pragma mark - AddAssignmentDelegate Methods
 
 - (void) didEditAssignment:(NSNumber *)assignmentID {
-    [self updateStatusBar];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) didAddAssignment:(Assignment *)assignment {
-    [self updateStatusBar];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) didCancelAssignment {
-    [self updateStatusBar];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) didDeleteAssignment:(NSNumber *)assignmentID {
-    [self updateStatusBar];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

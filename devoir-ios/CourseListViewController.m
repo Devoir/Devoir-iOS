@@ -32,6 +32,10 @@
     self.courses = [self.database getAllCoursesOrderedByName];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController.navigationBar setBarTintColor:[UIColor devMainColor]];
+}
+
 #pragma mark - UI setup
 
 - (void)setupNavBar {
