@@ -11,7 +11,7 @@
 
 @interface AddCourseViewController() <UITextFieldDelegate, UITextViewDelegate>
 @property (nonatomic, assign) BOOL isNew;
-//@property (weak, nonatomic) IBOutlet UIButton *colorButton;
+@property (strong, nonatomic)  NSArray *colorButtons;
 @property (weak, nonatomic) IBOutlet UITextField *assignmentText;
 @property (weak, nonatomic) IBOutlet UITextField *iCalURLText;
 @end
@@ -39,9 +39,28 @@
     }
 }
 
+- (void)ColorButtonPressed:(id)sender {
+    for(UIButton *colorButton in self.colorButtons)
+    {
+        if(colorButton == (UIButton*)sender)
+        {
+            [[colorButton layer] setBorderWidth:1.0f];
+            [[colorButton layer] setBorderColor: [UIColor blackColor].CGColor];
+            [self.navigationController.navigationBar setBarTintColor:colorButton.backgroundColor];
+        }
+        else
+        {
+            [[colorButton layer] setBorderWidth:0.0f];
+            [[colorButton layer] setBorderColor: [UIColor clearColor].CGColor];
+        }
+    }
+}
+
 #pragma mark - UI setup
 
 - (void)setupColorButtons {
+    NSMutableArray *buttons = [[NSMutableArray alloc] init];
+    self.colorButtons = [[NSArray alloc] init];
     for(int i = 0; i < 8; i ++)
     {
         UIButton *colorButton;
@@ -52,9 +71,23 @@
             colorButton = [[UIButton alloc] initWithFrame:CGRectMake(i * 47, 350, 40, 40)];
             
         [[colorButton layer] setBackgroundColor: [UIColor dbColor:i].CGColor];
+        
+        if(self.course && i == self.course.color)
+        {
+            [[colorButton layer] setBorderWidth:1.0f];
+            [[colorButton layer] setBorderColor: [UIColor blackColor].CGColor];
+        }
+        
         colorButton.layer.cornerRadius = colorButton.bounds.size.width / 2.0;
+        
+        [colorButton addTarget:self
+                   action:@selector(ColorButtonPressed:)
+              forControlEvents:UIControlEventTouchUpInside];
+        
         [self.view addSubview:colorButton];
+        buttons[i] = colorButton;
     }
+    self.colorButtons = [buttons copy];
 }
 
 - (void)setupNavBar {
@@ -98,7 +131,6 @@
     }
     else
     {
-        
         [self.delegate didAddCourse: self.course];
     }
 }
