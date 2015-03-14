@@ -11,7 +11,7 @@
 
 @interface AddCourseViewController() <UITextFieldDelegate, UITextViewDelegate>
 @property (nonatomic, assign) BOOL isNew;
-@property (weak, nonatomic) IBOutlet UIButton *colorButton;
+//@property (weak, nonatomic) IBOutlet UIButton *colorButton;
 @property (weak, nonatomic) IBOutlet UITextField *assignmentText;
 @property (weak, nonatomic) IBOutlet UITextField *iCalURLText;
 @end
@@ -21,14 +21,13 @@
 - (void)viewDidLoad {
     [self setupNavBar];
     
+    [self setupColorButtons];
+    
     if(self.course)
     {
         self.isNew = NO;
         
         self.assignmentText.text = self.course.name;
-        
-        [[self.colorButton layer] setBackgroundColor: [UIColor dbColor:self.course.color].CGColor];
-        self.colorButton.layer.cornerRadius = self.colorButton.bounds.size.width / 2.0;
         
         self.iCalURLText.text = self.course.iCalFeed;
         
@@ -41,6 +40,22 @@
 }
 
 #pragma mark - UI setup
+
+- (void)setupColorButtons {
+    for(int i = 0; i < 8; i ++)
+    {
+        UIButton *colorButton;
+        
+        if(i == 0)
+            colorButton = [[UIButton alloc] initWithFrame:CGRectMake(4, 350, 40, 40)];
+        else
+            colorButton = [[UIButton alloc] initWithFrame:CGRectMake(i * 47, 350, 40, 40)];
+            
+        [[colorButton layer] setBackgroundColor: [UIColor dbColor:i].CGColor];
+        colorButton.layer.cornerRadius = colorButton.bounds.size.width / 2.0;
+        [self.view addSubview:colorButton];
+    }
+}
 
 - (void)setupNavBar {
     if(self.course)
