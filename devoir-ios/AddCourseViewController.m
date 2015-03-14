@@ -9,8 +9,11 @@
 #import "AddCourseViewController.h"
 #import "UIColor+DevoirColors.h"
 
-@interface AddCourseViewController()
+@interface AddCourseViewController() <UITextFieldDelegate, UITextViewDelegate>
 @property (nonatomic, assign) BOOL isNew;
+@property (weak, nonatomic) IBOutlet UIButton *colorButton;
+@property (weak, nonatomic) IBOutlet UITextField *assignmentText;
+@property (weak, nonatomic) IBOutlet UITextField *iCalURLText;
 @end
 
 @implementation AddCourseViewController
@@ -22,10 +25,14 @@
     {
         self.isNew = NO;
         
-        self.url.text = self.course.iCalFeed;
-        self.name.text = self.course.name;
-        self.color.backgroundColor = [UIColor dbColor:self.course.color];
+        self.assignmentText.text = self.course.name;
         
+        [[self.colorButton layer] setBackgroundColor: [UIColor dbColor:self.course.color].CGColor];
+        self.colorButton.layer.cornerRadius = self.colorButton.bounds.size.width / 2.0;
+        
+        self.iCalURLText.text = self.course.iCalFeed;
+        
+        [self setupNavBar];
     }
     else
     {
@@ -36,19 +43,28 @@
 #pragma mark - UI setup
 
 - (void)setupNavBar {
-    [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:self.course.color]];
-    self.navigationItem.title = self.course.name;
+    if(self.course)
+    {
+        [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:self.course.color]];
+        self.navigationItem.title = self.course.name;
+    }
+    else
+    {
+        [self.navigationController.navigationBar setBarTintColor:[UIColor devMainColor]];
+        self.navigationItem.title = @"Add Course";
+    }
+    
 
     [self.navigationItem setHidesBackButton:YES];
     
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]
-                                   initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                   initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                    target:self
                                    action:@selector(DoneButtonPressed:)];
     self.navigationItem.rightBarButtonItem = doneButton;
     
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
-                                     initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                     initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
                                      target:self
                                      action:@selector(cancelButtonPressed:)];
     self.navigationItem.leftBarButtonItem = cancelButton;
