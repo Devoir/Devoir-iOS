@@ -184,10 +184,24 @@
 
 - (void)deleteButtonPressed:(id)sender {
     UIButton *senderButton = (UIButton*)sender;
-    Course *course = [self.courses objectAtIndex:senderButton.tag];
-    [self.database removeCourseByID:course.ID];
-    self.courses = [self.database getAllCoursesOrderedByName];
-    [self.tableView reloadData];
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete Course"
+                                                    message:@"Are you sure you want to permanently delete this course?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Delete", nil];
+    alert.tag = senderButton.tag;
+    [alert show];
+
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 1)
+    {
+        Course *course = [self.courses objectAtIndex:alertView.tag];
+        [self.database removeCourseByID:course.ID];
+        self.courses = [self.database getAllCoursesOrderedByName];
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - AddCourseDelegate methods
