@@ -14,6 +14,8 @@
 @property (strong, nonatomic)  NSArray *colorButtons;
 @property (weak, nonatomic) IBOutlet UITextField *courseNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *iCalURLText;
+
+@property DevColor origColor;
 @end
 
 @implementation AddCourseViewController
@@ -26,31 +28,41 @@
         self.courseNameTextField.text = self.course.name;
         self.iCalURLText.text = self.course.iCalFeed;
         [self.iCalURLText setEnabled:NO];
+        
+        self.origColor = self.course.color;
     }
     else
     {
         self.isNew = YES;
         self.course = [[Course alloc] init];
     }
-    
+    self.view.backgroundColor = [UIColor devAccentColor];
+    self.courseNameTextField.textColor = [UIColor devAccentTextColor];
+    self.iCalURLText.textColor = [UIColor devAccentTextColor];
+
     [self setupNavBar];
-    
     [self setupColorButtons];
+}
+
+- (void)drawPlaceholderInRect:(CGRect)rect {
+    [[UIColor blueColor] setFill];
+    NSLog(@"HERERE");
+    [self.courseNameTextField.placeholder drawInRect:rect withAttributes:nil];
 }
 
 #pragma mark - UI setup
 
 - (void)setupColorButtons {
-    NSMutableArray *buttons = [[NSMutableArray alloc] init];
+    NSMutableArray *buttons = [[NSMutableArray alloc] initWithCapacity:7];
     self.colorButtons = [[NSArray alloc] init];
-    for(int i = 0; i < 8; i ++)
+    for(int i = 1; i < 8; i++)
     {
         UIButton *colorButton;
         
-        if(i == 0)
+        if(i == 1)
             colorButton = [[UIButton alloc] initWithFrame:CGRectMake(4, 350, 40, 40)];
         else
-            colorButton = [[UIButton alloc] initWithFrame:CGRectMake(i * 47, 350, 40, 40)];
+            colorButton = [[UIButton alloc] initWithFrame:CGRectMake((i - 1) * 55, 350, 40, 40)];
             
         [[colorButton layer] setBackgroundColor: [UIColor dbColor:i].CGColor];
         
@@ -69,7 +81,7 @@
               forControlEvents:UIControlEventTouchUpInside];
         
         [self.view addSubview:colorButton];
-        buttons[i] = colorButton;
+        buttons[i - 1] = colorButton;
     }
     self.colorButtons = [buttons copy];
 }
@@ -102,15 +114,6 @@
     self.navigationItem.leftBarButtonItem = cancelButton;
 }
 
-#pragma mark - UITextFieldDelegate methods
-
-//- (void)textFieldDidEndEditing:(UITextField *)textField {
-//    if(textField == self.courseNameTextField)
-//    {
-//        self.course.name = self.courseNameTextField.text;
-//    }
-//}
-
 #pragma mark - Button pressed actions
 
 - (void)ColorButtonPressed:(id)sender {
@@ -132,6 +135,7 @@
 }
 
 - (void)cancelButtonPressed:(id)sender {
+    self.course.color = self.origColor;
     [self.delegate didCancelCourse];
 }
 

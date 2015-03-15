@@ -44,14 +44,14 @@
         [[self.courseDeleteEditView layer] setBorderColor: [UIColor lightGrayColor].CGColor];
         
         //button for edit course button
-        self.editButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 65, 70)];
+        self.editButton = [[UIButton alloc] initWithFrame:CGRectMake(65, 0, 65, 70)];
         [self.editButton  setImage:[UIImage imageNamed:@"Edit-50.png"] forState: UIControlStateNormal];
         self.editButton.tag = row - 1;
         //self.editButton.backgroundColor = [UIColor devPurple];
         [self.courseDeleteEditView addSubview:self.editButton];
         
-        //button for edit course button
-        self.deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(65, 0, 65, 70)];
+        //button for delete course button
+        self.deleteButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 65, 70)];
         [self.deleteButton  setImage:[UIImage imageNamed:@"Trash-50.png"] forState: UIControlStateNormal];
         self.deleteButton.tag = row -1;
         //self.deleteButton.backgroundColor = [UIColor devBlue];
