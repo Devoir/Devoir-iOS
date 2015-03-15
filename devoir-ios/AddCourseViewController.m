@@ -39,23 +39,6 @@
     }
 }
 
-- (void)ColorButtonPressed:(id)sender {
-    for(UIButton *colorButton in self.colorButtons)
-    {
-        if(colorButton == (UIButton*)sender)
-        {
-            [[colorButton layer] setBorderWidth:1.0f];
-            [[colorButton layer] setBorderColor: [UIColor blackColor].CGColor];
-            [self.navigationController.navigationBar setBarTintColor:colorButton.backgroundColor];
-        }
-        else
-        {
-            [[colorButton layer] setBorderWidth:0.0f];
-            [[colorButton layer] setBorderColor: [UIColor clearColor].CGColor];
-        }
-    }
-}
-
 #pragma mark - UI setup
 
 - (void)setupColorButtons {
@@ -79,6 +62,8 @@
         }
         
         colorButton.layer.cornerRadius = colorButton.bounds.size.width / 2.0;
+        
+        colorButton.tag = i;
         
         [colorButton addTarget:self
                    action:@selector(ColorButtonPressed:)
@@ -118,6 +103,27 @@
     self.navigationItem.leftBarButtonItem = cancelButton;
 }
 
+#pragma mark - Form changes
+
+- (void)ColorButtonPressed:(id)sender {
+    for(UIButton *colorButton in self.colorButtons)
+    {
+        if(colorButton == (UIButton*)sender)
+        {
+            [[colorButton layer] setBorderWidth:1.0f];
+            [[colorButton layer] setBorderColor: [UIColor blackColor].CGColor];
+            [self.navigationController.navigationBar setBarTintColor:colorButton.backgroundColor];
+            if(self.course)
+                self.course.color = (int)colorButton.tag;
+        }
+        else
+        {
+            [[colorButton layer] setBorderWidth:0.0f];
+            [[colorButton layer] setBorderColor: [UIColor clearColor].CGColor];
+        }
+    }
+}
+
 #pragma mark - Button pressed actions
 
 - (void)cancelButtonPressed:(id)sender {
@@ -127,11 +133,11 @@
 - (void)DoneButtonPressed:(id)sender {
     if(self.isNew)
     {
-        [self.delegate didEditCourse: self.course];
+        [self.delegate didAddCourse: self.course];
     }
     else
     {
-        [self.delegate didAddCourse: self.course];
+        [self.delegate didEditCourse: self.course];
     }
 }
 

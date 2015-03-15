@@ -17,11 +17,8 @@
 - (Course*)getCourseByID:(int)ID;
 - (NSArray*)getAllCoursesOrderedByName;
 
-- (Course*)addCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color UserID:(int)userID
-               LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
-                  ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID;
-
-- (void)updateCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color;
+- (Course*)addCourse:(Course*)course;
+- (void)updateCourse:(Course*)course;
 
 - (void)removeCourseByID:(int)ID;
 - (void)removeAllCourses;

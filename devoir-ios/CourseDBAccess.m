@@ -150,7 +150,7 @@
 
 #pragma mark - Update database
 
-- (void)updateCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color {
+- (void)updateCourse:(Course*)course {
     NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
@@ -167,7 +167,7 @@
                              stringWithFormat:@"UPDATE Course SET "
                              "Name = \"%@\", Color = %d "
                              "WHERE id = %d",
-                             name, color, ID];
+                             course.name, course.color, course.ID];
         
         char * errMsg;
         rc = sqlite3_exec(db, [query UTF8String], nil, NULL, &errMsg);
@@ -181,9 +181,7 @@
 
 #pragma mark - Add to database
 
-- (Course*) addCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color UserID:(int)userID
-                  LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
-                     ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID {
+- (Course*) addCourse:(Course*)course {
     NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
@@ -200,7 +198,8 @@
                              stringWithFormat:@"INSERT INTO Course"
                              "(id, Name, Color, UserID, LastUpdated, Visible, iCalFeed, iCalID) "
                              "VALUES (%d, \"%@\",\"%d\",%d,\"%@\",%d,\"%@\",\"%@\")",
-                             ID, name, color, userID, lastUpdated, visible, iCalFeed, iCalID];
+                             course.ID, course.name, course.color, course.userID,
+                             course.lastUpdated, course.visible, course.iCalFeed, course.iCalID];
         
         NSLog(@"QUERY: %@", query);
         char * errMsg;
@@ -214,14 +213,7 @@
     
     int insertedID = (int)sqlite3_last_insert_rowid(db);
     
-    Course* course = [[Course alloc] initWithID:insertedID
-                                           Name:name
-                                          Color:color
-                                         UserID:userID
-                                    LastUpdated:lastUpdated
-                                        Visible:visible
-                                       ICalFeed:iCalFeed
-                                         ICalID:iCalID];
+    course.ID = insertedID;
     
     return course;
 }

@@ -191,6 +191,8 @@
 #pragma mark - AddCourseDelegate methods
 
 - (void) didEditCourse:(Course *)course {
+    [self.database updateCourse:course];
+    [self.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

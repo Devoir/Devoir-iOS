@@ -27,4 +27,20 @@
     return self;
 }
 
+- (id)initWithName:(NSString*)name Color:(DevColor)color ICalFeed:(NSString*)iCalFeed {
+    if (self = [super init])
+    {
+        self.ID = -1;
+        self.name = name;
+        self.color = color;
+        self.userID = -1;
+        self.lastUpdated = nil;
+        self.visible = nil;
+        self.iCalFeed = iCalFeed;
+        self.iCalID = nil;
+    }
+    return self;
+}
+
+
 @end
