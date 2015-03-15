@@ -9,34 +9,33 @@
 #import "AddCourseViewController.h"
 #import "UIColor+DevoirColors.h"
 
-@interface AddCourseViewController() <UITextFieldDelegate, UITextViewDelegate>
+@interface AddCourseViewController() <UITextFieldDelegate>
 @property (nonatomic, assign) BOOL isNew;
 @property (strong, nonatomic)  NSArray *colorButtons;
-@property (weak, nonatomic) IBOutlet UITextField *assignmentText;
+@property (weak, nonatomic) IBOutlet UITextField *courseNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *iCalURLText;
 @end
 
 @implementation AddCourseViewController
 
 - (void)viewDidLoad {
-    [self setupNavBar];
-    
-    [self setupColorButtons];
-    
     if(self.course)
     {
         self.isNew = NO;
         
-        self.assignmentText.text = self.course.name;
-        
+        self.courseNameTextField.text = self.course.name;
         self.iCalURLText.text = self.course.iCalFeed;
-        
-        [self setupNavBar];
+        [self.iCalURLText setEnabled:NO];
     }
     else
     {
         self.isNew = YES;
+        self.course = [[Course alloc] init];
     }
+    
+    [self setupNavBar];
+    
+    [self setupColorButtons];
 }
 
 #pragma mark - UI setup
@@ -55,7 +54,7 @@
             
         [[colorButton layer] setBackgroundColor: [UIColor dbColor:i].CGColor];
         
-        if(self.course && i == self.course.color)
+        if(i == self.course.color)
         {
             [[colorButton layer] setBorderWidth:1.0f];
             [[colorButton layer] setBorderColor: [UIColor blackColor].CGColor];
@@ -76,15 +75,15 @@
 }
 
 - (void)setupNavBar {
-    if(self.course)
-    {
-        [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:self.course.color]];
-        self.navigationItem.title = self.course.name;
-    }
-    else
+    if(self.isNew)
     {
         [self.navigationController.navigationBar setBarTintColor:[UIColor devMainColor]];
         self.navigationItem.title = @"Add Course";
+    }
+    else
+    {
+        [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:self.course.color]];
+        self.navigationItem.title = self.course.name;
     }
     
 
@@ -103,7 +102,16 @@
     self.navigationItem.leftBarButtonItem = cancelButton;
 }
 
-#pragma mark - Form changes
+#pragma mark - UITextFieldDelegate methods
+
+//- (void)textFieldDidEndEditing:(UITextField *)textField {
+//    if(textField == self.courseNameTextField)
+//    {
+//        self.course.name = self.courseNameTextField.text;
+//    }
+//}
+
+#pragma mark - Button pressed actions
 
 - (void)ColorButtonPressed:(id)sender {
     for(UIButton *colorButton in self.colorButtons)
@@ -113,8 +121,7 @@
             [[colorButton layer] setBorderWidth:1.0f];
             [[colorButton layer] setBorderColor: [UIColor blackColor].CGColor];
             [self.navigationController.navigationBar setBarTintColor:colorButton.backgroundColor];
-            if(self.course)
-                self.course.color = (int)colorButton.tag;
+            self.course.color = (int)colorButton.tag;
         }
         else
         {
@@ -124,8 +131,6 @@
     }
 }
 
-#pragma mark - Button pressed actions
-
 - (void)cancelButtonPressed:(id)sender {
     [self.delegate didCancelCourse];
 }
@@ -133,10 +138,13 @@
 - (void)DoneButtonPressed:(id)sender {
     if(self.isNew)
     {
+        self.course.name = self.courseNameTextField.text;
+        self.course.iCalFeed = self.iCalURLText.text;
         [self.delegate didAddCourse: self.course];
     }
     else
     {
+        self.course.name = self.courseNameTextField.text;
         [self.delegate didEditCourse: self.course];
     }
 }

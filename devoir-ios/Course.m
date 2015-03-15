@@ -10,7 +10,22 @@
 
 @implementation Course
 
--(id) initWithID:(int)ID Name:(NSString*)name Color:(DevColor)color UserID:(int)userID
+- (id)init {
+    if (self = [super init])
+    {
+        self.ID = -1;
+        self.name = nil;
+        self.color = -1;
+        self.userID = -1;
+        self.lastUpdated = nil;
+        self.visible = nil;
+        self.iCalFeed = nil;
+        self.iCalID = nil;
+    }
+    return self;
+}
+
+- (id)initWithID:(int)ID Name:(NSString*)name Color:(DevColor)color UserID:(int)userID
      LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID {
     
     if (self = [super init])

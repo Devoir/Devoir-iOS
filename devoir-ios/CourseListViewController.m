@@ -185,22 +185,29 @@
 - (void)deleteButtonPressed:(id)sender {
     UIButton *senderButton = (UIButton*)sender;
     Course *course = [self.courses objectAtIndex:senderButton.tag];
-    NSLog(@"PLEASE DELETE COURSE: %d", course.ID);
+    [self.database removeCourseByID:course.ID];
+    self.courses = [self.database getAllCoursesOrderedByName];
+    [self.tableView reloadData];
 }
 
 #pragma mark - AddCourseDelegate methods
 
 - (void) didEditCourse:(Course *)course {
     [self.database updateCourse:course];
+    self.courses = [self.database getAllCoursesOrderedByName];
     [self.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) didAddCourse:(Course *)course {
-    [self.navigationController popViewControllerAnimated:YES];    
+    [self.database addCourse:course];
+    self.courses = [self.database getAllCoursesOrderedByName];
+    [self.tableView reloadData];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) didCancelCourse {
+    [self.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

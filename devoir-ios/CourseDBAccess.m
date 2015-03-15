@@ -201,7 +201,7 @@
                              course.ID, course.name, course.color, course.userID,
                              course.lastUpdated, course.visible, course.iCalFeed, course.iCalID];
         
-        NSLog(@"QUERY: %@", query);
+        //NSLog(@"QUERY: %@", query);
         char * errMsg;
         rc = sqlite3_exec(db, [query UTF8String], nil, NULL, &errMsg);
         if(SQLITE_OK != rc)

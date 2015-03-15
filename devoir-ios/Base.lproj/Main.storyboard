@@ -380,7 +380,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="assignmentText" destination="89f-OR-xGs" id="Fxg-hq-1vu"/>
+                        <outlet property="courseNameTextField" destination="89f-OR-xGs" id="ovf-7T-5T2"/>
                         <outlet property="iCalURLText" destination="oDw-ZX-Bfk" id="mOP-BU-1uW"/>
                     </connections>
                 </viewController>
