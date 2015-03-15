@@ -101,4 +101,9 @@
     return [assignmentAccess getAllAssignmentsOrderedByDateForCourse:courseID];
 }
 
+- (Assignment*)addAssignment:(Assignment*)assignment {
+    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:self.dbName];
+    return [assignmentAccess addAssignment:assignment];
+}
+
 @end

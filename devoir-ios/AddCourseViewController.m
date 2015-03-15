@@ -36,18 +36,13 @@
         self.isNew = YES;
         self.course = [[Course alloc] init];
     }
+    
     self.view.backgroundColor = [UIColor devAccentColor];
     self.courseNameTextField.textColor = [UIColor devAccentTextColor];
     self.iCalURLText.textColor = [UIColor devAccentTextColor];
 
     [self setupNavBar];
     [self setupColorButtons];
-}
-
-- (void)drawPlaceholderInRect:(CGRect)rect {
-    [[UIColor blueColor] setFill];
-    NSLog(@"HERERE");
-    [self.courseNameTextField.placeholder drawInRect:rect withAttributes:nil];
 }
 
 #pragma mark - UI setup
