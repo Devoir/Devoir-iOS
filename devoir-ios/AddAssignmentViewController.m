@@ -43,7 +43,7 @@
 //        self.assignmentText.textColor = [UIColor dbColor:course.color];
         self.dateLabel.text = self.assignment.dueDateAsString;
         [[self.colorButton layer] setBackgroundColor: [UIColor dbColor:course.color].CGColor];
-        [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:course.color]];
+//        [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:course.color]];
         self.courseLabel.text = course.name;
         [[self.deleteButton layer] setBorderWidth:1.0f];
         [self.deleteButton.layer setCornerRadius:5.0f];
