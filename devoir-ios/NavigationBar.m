@@ -25,7 +25,6 @@
 
 - (void)setupNavigationBar {
     [self setBarTintColor:[UIColor devMainColor]];
-    self.backgroundColor = [UIColor devMainColor];
     self.translucent = NO;
     self.tintColor = [UIColor devMainTextColor];
     self.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor devMainTextColor]};

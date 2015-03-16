@@ -35,12 +35,15 @@
     self.assignments = [self.database getAllAssignmentsOrderedByDate];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self updateStatusBar];
+}
+
 #pragma mark - UI setup
 
 - (void)setupNavBar {
     self.navigationItem.title = @"All Courses";
-    [self.navigationController.navigationBar setBarTintColor:[UIColor devDarkGrey]];
-    self.navigationController.navigationBar.backgroundColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor devMainColor]];
 }
 
 - (void)setupTableView {
@@ -118,8 +121,6 @@
     cell.overdueDate.text = [assignment dueDateAsString];
     
     [[cell.colorLabel layer] setBackgroundColor: [UIColor dbColor:course.color].CGColor];
-    
-    cell.checkbox.backgroundColor = [UIColor devAccentTextColor];
     cell.checkbox.layer.cornerRadius = cell.checkbox.bounds.size.width / 2.0;
     [[cell.checkbox layer] setBorderWidth:1.0f];
     [[cell.checkbox layer] setBorderColor: [UIColor lightGrayColor].CGColor];
@@ -161,15 +162,14 @@
 
 - (void) courseDidChange:(NSNumber*)courseID {
     self.courseToShow = courseID;
+    
     if([self.courseToShow integerValue] != -1)
     {
-        self.navigationItem.title = [self.database getCourseByID:(int)[self.courseToShow integerValue]].name;
         self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
         [self.tableView reloadData];
     }
     else
     {
-        self.navigationItem.title = @"All Courses";
         self.assignments = [self.database getAllAssignmentsOrderedByDate];
         [self.tableView reloadData];
     }
@@ -179,20 +179,42 @@
 
 #pragma mark - AddAssignmentDelegate Methods
 
-- (void) didEditAssignment:(NSNumber *)assignmentID {
+- (void) didEditAssignment:(Assignment *)assignment {
+    [self.database updateAssignment:assignment];
+    self.assignments = [self.database getAllAssignmentsOrderedByDate];
+    [self.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) didAddAssignment:(Assignment *)assignment {
+    [self.database addAssignment:assignment];
+    self.assignments = [self.database getAllAssignmentsOrderedByDate];
+    [self.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) didCancelAssignment {
+    [self.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void) didDeleteAssignment:(NSNumber *)assignmentID {
+- (void) didDeleteAssignment:(Assignment *)assignment {
+    [self.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)updateStatusBar {
+    if([self.courseToShow integerValue] == -1)
+    {
+        [self.navigationController.navigationBar setBarTintColor:[UIColor devMainColor]];
+        self.navigationItem.title = @"All Courses";
+    }
+    else
+    {
+        Course *course = [self.database getCourseByID:(int)[self.courseToShow integerValue]];
+        [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:course.color]];
+        self.navigationItem.title = course.name;
+    }
 }
 
 @end

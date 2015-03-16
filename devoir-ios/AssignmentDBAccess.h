@@ -18,11 +18,8 @@
 - (NSArray*)getAllAssignmentsOrderedByDate;
 - (NSArray*)getAllAssignmentsOrderedByDateForCourse:(int)courseID;
 
-- (Assignment*)addAssignmentWithID:(int)ID Name:(NSString*)name DueDate:(NSDate*)dueDate
-                          Complete:(BOOL)complete Visible:(BOOL)visible
-                          CourseID:(int)courseID LastUpdated:(NSDate*)lastUpdated
-             AssignmentDescription:(NSString*)assignmentDescription ICalEventID:(NSString*)iCalEventID
-                     ICalEventName:(NSString*)iCalEventName iCalEventDescription:(NSString*)iCalEventDescription;
+- (Assignment*)addAssignment:(Assignment*)assignment;
+- (void)updateAssignment:(Assignment*)assignment;
 
 - (void)removeAssignmentByID:(int)ID;
 - (void)removeAllAssignmentsForCourse:(int)courseID;

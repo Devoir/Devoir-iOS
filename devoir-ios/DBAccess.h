@@ -28,10 +28,8 @@
 //Course Methods
 - (Course*)getCourseByID:(int)ID;
 - (NSArray*)getAllCoursesOrderedByName;
-- (void)updateCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color;
-- (Course*)addCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color UserID:(int)userID
-               LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
-                  ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID;
+- (void)updateCourse:(Course*)course;
+- (Course*)addCourse:(Course*)course;
 - (void)removeCourseByID:(int)ID;
 - (void)removeAllCourses;
 
@@ -39,5 +37,7 @@
 - (Assignment*)getAssignmentByID:(int)ID;
 - (NSArray*)getAllAssignmentsOrderedByDate;
 - (NSArray*)getAllAssignmentsOrderedByDateForCourse:(int)courseID;
+- (void)updateAssignment:(Assignment*)assignment;
+- (Assignment*)addAssignment:(Assignment*)assignment;
 
 @end

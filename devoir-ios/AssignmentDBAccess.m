@@ -338,4 +338,76 @@
     return [self sortAssignmentByDate:assignments];
 }
 
+#pragma mark - Update database
+
+- (void)updateAssignment:(Assignment*)assignment {
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
+    
+    sqlite3* db = nil;
+    int rc=0;
+    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    if (SQLITE_OK != rc)
+    {
+        sqlite3_close(db);
+        NSLog(@"Failed to open db connection");
+    }
+    else
+    {
+        NSString * query  = [NSString
+                             stringWithFormat:@"UPDATE Assignment SET "
+                             "Name = \"%@\", DueDate = \"%@\", Complete = %d, Visible = %d, CourseID = %d, LastUpdate = \"%@\", AssignmentDescription = \"%@ "
+                             "WHERE id = %d",
+                             assignment.name, assignment.dueDate, assignment.complete,
+                             assignment.visible, assignment.courseID, assignment.lastUpdated, assignment.assignmentDescription, assignment.ID];
+        
+        char * errMsg;
+        rc = sqlite3_exec(db, [query UTF8String], nil, NULL, &errMsg);
+        if(SQLITE_OK != rc)
+        {
+            NSLog(@"Failed to insert record  rc:%d, msg=%s",rc,errMsg);
+        }
+        sqlite3_close(db);
+    }
+}
+
+
+- (Assignment*)addAssignment:(Assignment *)assignment {
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
+    
+    sqlite3* db = nil;
+    int rc=0;
+    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    if (SQLITE_OK != rc)
+    {
+        sqlite3_close(db);
+        NSLog(@"Failed to open db connection");
+    }
+    else
+    {
+        NSString * query  = [NSString
+                             stringWithFormat:@"INSERT INTO Assignment"
+                             "(id, Name, DueDate, Complete, Visible, CourseID, LastUpdated, AssignmentDescription, "
+                             "ICalEventID, ICalEventName, ICalDescription) "
+                             "VALUES (%d, \"%@\",\"%@\",%d,%d,%d,\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",
+                             assignment.ID, assignment.name, assignment.dueDate, assignment.complete,
+                             assignment.visible, assignment.courseID, assignment.lastUpdated, assignment.assignmentDescription,
+                             assignment.iCalEventID, assignment.iCalEventName, assignment.iCalEventDescription];
+        
+        //NSLog(@"QUERY: %@", query);
+        char * errMsg;
+        rc = sqlite3_exec(db, [query UTF8String], nil, NULL, &errMsg);
+        if(SQLITE_OK != rc)
+        {
+            NSLog(@"Failed to insert record  rc:%d, msg=%s",rc,errMsg);
+        }
+        sqlite3_close(db);
+    }
+    
+    int insertedID = (int)sqlite3_last_insert_rowid(db);
+    
+    assignment.ID = insertedID;
+    
+    return assignment;
+}
+
 @end

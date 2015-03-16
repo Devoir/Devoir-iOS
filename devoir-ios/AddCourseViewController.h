@@ -21,8 +21,5 @@
 
 @property (strong, nonatomic) Course *course;
 @property (assign, nonatomic) id <AddCourseDelegate> delegate;
-@property (weak, nonatomic) IBOutlet UITextField *url;
-@property (weak, nonatomic) IBOutlet UITextField *name;
-@property (weak, nonatomic) IBOutlet UITextField *color;
 
 @end

@@ -32,9 +32,15 @@
     self.courses = [self.database getAllCoursesOrderedByName];
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+    [self.navigationController.navigationBar setBarTintColor:[UIColor devMainColor]];
+}
+
 #pragma mark - UI setup
 
 - (void)setupNavBar {
+    [self.navigationController.navigationBar setBarTintColor:[UIColor devMainColor]];
+
     UIBarButtonItem *addCourseButton = [[UIBarButtonItem alloc]
                                         initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
                                         target:self
@@ -178,21 +184,44 @@
 
 - (void)deleteButtonPressed:(id)sender {
     UIButton *senderButton = (UIButton*)sender;
-    Course *course = [self.courses objectAtIndex:senderButton.tag];
-    NSLog(@"PLEASE DELETE COURSE: %d", course.ID);
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete Course"
+                                                    message:@"Are you sure you want to permanently delete this course?"
+                                                   delegate:self
+                                          cancelButtonTitle:@"Cancel"
+                                          otherButtonTitles:@"Delete", nil];
+    alert.tag = senderButton.tag;
+    [alert show];
+
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 1)
+    {
+        Course *course = [self.courses objectAtIndex:alertView.tag];
+        [self.database removeCourseByID:course.ID];
+        self.courses = [self.database getAllCoursesOrderedByName];
+        [self.tableView reloadData];
+    }
 }
 
 #pragma mark - AddCourseDelegate methods
 
 - (void) didEditCourse:(Course *)course {
+    [self.database updateCourse:course];
+    self.courses = [self.database getAllCoursesOrderedByName];
+    [self.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) didAddCourse:(Course *)course {
-    [self.navigationController popViewControllerAnimated:YES];    
+    [self.database addCourse:course];
+    self.courses = [self.database getAllCoursesOrderedByName];
+    [self.tableView reloadData];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void) didCancelCourse {
+    [self.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

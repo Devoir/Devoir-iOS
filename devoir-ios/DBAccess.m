@@ -65,23 +65,14 @@
     return [courseAccess getAllCoursesOrderedByName];
 }
 
-- (void)updateCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color {
+- (void)updateCourse:(Course*)course {
     CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:self.dbName];
-    return [courseAccess updateCourseWithID:ID Name:name Color:color];
+    return [courseAccess updateCourse:course];
 }
 
-- (Course*) addCourseWithID:(int)ID Name:(NSString*)name Color:(DevColor)color UserID:(int)userID
-                LastUpdated:(NSDate*)lastUpdated Visible:(BOOL)visible
-                   ICalFeed:(NSString*)iCalFeed ICalID:(NSString*)iCalID {
+- (Course*) addCourse:(Course*)course{
     CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:self.dbName];
-    return [courseAccess addCourseWithID:ID
-                                    Name:name
-                                   Color:color
-                                  UserID:userID
-                             LastUpdated:lastUpdated
-                                 Visible:visible
-                                ICalFeed:iCalFeed
-                                  ICalID:iCalID];
+    return [courseAccess addCourse:course];
 }
 
 - (void) removeCourseByID:(int)ID {
@@ -110,4 +101,26 @@
     return [assignmentAccess getAllAssignmentsOrderedByDateForCourse:courseID];
 }
 
+- (Assignment*)addAssignment:(Assignment*)assignment {
+    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:self.dbName];
+    return [assignmentAccess addAssignment:assignment];
+}
+
+- (void)updateAssignment:(Assignment*)assignment {
+    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:self.dbName];
+    return [assignmentAccess updateAssignment:assignment];
+}
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
