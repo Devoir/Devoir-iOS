@@ -10,8 +10,6 @@
 
 @interface AssignmentDBAccess()
 @property (nonatomic, retain) NSString* dbName;
-- (NSArray *) sortAssignmentByDate:(NSArray *)unsortedAssignments;
-- (NSDate *)dateAtBeginningOfDayForDate:(NSDate *)inputDate;
 @end
 
 @implementation AssignmentDBAccess

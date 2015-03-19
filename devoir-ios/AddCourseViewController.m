@@ -82,6 +82,13 @@
         if(i == self.course.color)
         {
             [[colorButton layer] setBackgroundColor: [UIColor dbColor:i].CGColor];
+            
+            colorButton.tag = i;
+            
+            [colorButton addTarget:self
+                            action:@selector(ColorButtonPressed:)
+                  forControlEvents:UIControlEventTouchUpInside];
+            
             [[colorButton layer] setBorderWidth:1.0f];
             [[colorButton layer] setBorderColor: [UIColor blackColor].CGColor];
         }
