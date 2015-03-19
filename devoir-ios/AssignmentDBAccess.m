@@ -26,9 +26,10 @@
 
 #pragma mark - Utility Functions
 
-- (NSArray *) sortAssignmentByDate:(NSArray *)unsortedAssignments {
+- (NSMutableArray *) sortAssignmentByDate:(NSArray *)unsortedAssignments {
     NSMutableArray *tempArray = [[NSMutableArray alloc] init];
     NSMutableArray *orderedAssignments = [[NSMutableArray alloc] init];
+    NSMutableArray *completedAssignments = [[NSMutableArray alloc] init];
     
     NSDate *today = [NSDate date];
     NSDate *curDate = [self dateAtBeginningOfDayForDate:((Assignment*)[unsortedAssignments objectAtIndex:0]).dueDate];
@@ -39,6 +40,12 @@
     }
     for (Assignment *event in unsortedAssignments)
     {
+        if(event.complete)
+        {
+            [completedAssignments addObject:event];
+            continue;
+        }
+        
         NSDate *dateRepresentingThisDay = [self dateAtBeginningOfDayForDate:event.dueDate];
         if(late)
         {
@@ -50,7 +57,7 @@
             {
                 late = 0;
                 curDate = dateRepresentingThisDay;
-                [orderedAssignments addObject:[tempArray copy]];
+                [orderedAssignments addObject:tempArray];//[tempArray copy]];
                 tempArray = [[NSMutableArray alloc] init];
                 [tempArray addObject:event];
             }
@@ -65,13 +72,14 @@
         else
         {
             curDate = dateRepresentingThisDay;
-            [orderedAssignments addObject:[tempArray copy]];
+            [orderedAssignments addObject:tempArray];//[tempArray copy]];
             tempArray = [[NSMutableArray alloc] init];
             [tempArray addObject:event];
         }
     }
     [orderedAssignments addObject:tempArray];
-    return [orderedAssignments copy];
+    [orderedAssignments addObject:completedAssignments];
+    return orderedAssignments;
 }
 
 - (NSDate *)dateAtBeginningOfDayForDate:(NSDate *)inputDate {
@@ -172,7 +180,7 @@
     return assignment;
 }
 
-- (NSArray*) getAllAssignmentsOrderedByDate {
+- (NSMutableArray*) getAllAssignmentsOrderedByDate {
     NSMutableArray* assignments = [[NSMutableArray alloc] init];
     NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
@@ -255,7 +263,7 @@
     return [self sortAssignmentByDate:assignments];
 }
 
-- (NSArray*) getAllAssignmentsOrderedByDateForCourse:(int)courseID {
+- (NSMutableArray*) getAllAssignmentsOrderedByDateForCourse:(int)courseID {
     NSMutableArray* assignments = [[NSMutableArray alloc] init];
     NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     

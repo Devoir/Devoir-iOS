@@ -17,7 +17,7 @@
 @interface AssignmentListViewController () <UITableViewDataSource, UITableViewDelegate,
                                                 CourseListDelegate, AddAssignmentDelegate>
 @property (strong, nonatomic) DBAccess *database;
-@property (strong, nonatomic) NSArray *assignments;
+@property (strong, nonatomic) NSMutableArray *assignments;
 @property (retain) NSNumber *courseToShow;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
@@ -75,7 +75,11 @@
     NSDate *dateRepresentingThisDay = assignment.dueDate;
     NSDate *today = [NSDate date];
     
-    if([today earlierDate:dateRepresentingThisDay] == dateRepresentingThisDay)
+    if(assignment.complete)
+    {
+        sectionTitle = @"Complete";
+    }
+    else if([today earlierDate:dateRepresentingThisDay] == dateRepresentingThisDay)
     {
         sectionTitle = @"Overdue";
     }
@@ -116,11 +120,13 @@
     cell.assignmentLabel.text = assignment.name;
     
     Course *course = [self.database getCourseByID:assignment.courseID];
+    
     cell.courseLabel.text = course.name;
     
     cell.overdueDate.text = [assignment dueDateAsString];
     
     [[cell.colorLabel layer] setBackgroundColor: [UIColor dbColor:course.color].CGColor];
+    
     cell.checkbox.layer.cornerRadius = cell.checkbox.bounds.size.width / 2.0;
     [[cell.checkbox layer] setBorderWidth:1.0f];
     [[cell.checkbox layer] setBorderColor: [UIColor lightGrayColor].CGColor];
@@ -217,4 +223,15 @@
     }
 }
 
+- (IBAction)checkboxSelected:(id)sender {
+    UIButton* button = (UIButton*) sender;
+    UITableViewCell *cell = (UITableViewCell*)button.superview.superview;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    
+    [[self.assignments objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
+
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    NSLog(@"%@", assignment.name);
+}
 @end

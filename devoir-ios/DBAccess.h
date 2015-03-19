@@ -35,8 +35,8 @@
 
 //Assignment Methods
 - (Assignment*)getAssignmentByID:(int)ID;
-- (NSArray*)getAllAssignmentsOrderedByDate;
-- (NSArray*)getAllAssignmentsOrderedByDateForCourse:(int)courseID;
+- (NSMutableArray*)getAllAssignmentsOrderedByDate;
+- (NSMutableArray*)getAllAssignmentsOrderedByDateForCourse:(int)courseID;
 - (void)updateAssignment:(Assignment*)assignment;
 - (Assignment*)addAssignment:(Assignment*)assignment;
 

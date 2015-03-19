@@ -15,8 +15,8 @@
 - (id)initWithDatabase:(NSString*)db;
 
 - (Assignment*)getAssignmentByID:(int)ID;
-- (NSArray*)getAllAssignmentsOrderedByDate;
-- (NSArray*)getAllAssignmentsOrderedByDateForCourse:(int)courseID;
+- (NSMutableArray*)getAllAssignmentsOrderedByDate;
+- (NSMutableArray*)getAllAssignmentsOrderedByDateForCourse:(int)courseID;
 
 - (Assignment*)addAssignment:(Assignment*)assignment;
 - (void)updateAssignment:(Assignment*)assignment;
