@@ -229,9 +229,16 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
-    [[self.assignments objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
+    //[[self.assignments objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
+    //[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    assignment.complete = YES;
+    
+    [self.database markAsComplete:assignment];
+    
+    self.assignments = [self.database getAllAssignmentsOrderedByDate];
+    
+    [self.tableView reloadData];
 
-    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    NSLog(@"%@", assignment.name);
 }
 @end

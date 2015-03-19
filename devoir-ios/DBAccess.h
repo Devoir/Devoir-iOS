@@ -38,6 +38,7 @@
 - (NSMutableArray*)getAllAssignmentsOrderedByDate;
 - (NSMutableArray*)getAllAssignmentsOrderedByDateForCourse:(int)courseID;
 - (void)updateAssignment:(Assignment*)assignment;
+- (void)markAsComplete:(Assignment*)assignment;
 - (Assignment*)addAssignment:(Assignment*)assignment;
 
 @end

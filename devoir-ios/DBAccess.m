@@ -101,15 +101,21 @@
     return [assignmentAccess getAllAssignmentsOrderedByDateForCourse:courseID];
 }
 
+- (void)updateAssignment:(Assignment*)assignment {
+    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:self.dbName];
+    return [assignmentAccess updateAssignment:assignment];
+}
+
+- (void)markAsComplete:(Assignment*)assignment {
+    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:self.dbName];
+    return [assignmentAccess markAsComplete:assignment];
+}
+
 - (Assignment*)addAssignment:(Assignment*)assignment {
     AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:self.dbName];
     return [assignmentAccess addAssignment:assignment];
 }
 
-- (void)updateAssignment:(Assignment*)assignment {
-    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:self.dbName];
-    return [assignmentAccess updateAssignment:assignment];
-}
 
 @end
 

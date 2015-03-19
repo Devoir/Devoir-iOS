@@ -40,13 +40,14 @@
     }
     for (Assignment *event in unsortedAssignments)
     {
+        NSDate *dateRepresentingThisDay = [self dateAtBeginningOfDayForDate:event.dueDate];
+
         if(event.complete)
         {
             [completedAssignments addObject:event];
             continue;
         }
         
-        NSDate *dateRepresentingThisDay = [self dateAtBeginningOfDayForDate:event.dueDate];
         if(late)
         {
             if([today earlierDate:dateRepresentingThisDay] == dateRepresentingThisDay)
@@ -57,7 +58,8 @@
             {
                 late = 0;
                 curDate = dateRepresentingThisDay;
-                [orderedAssignments addObject:tempArray];//[tempArray copy]];
+                if([tempArray count] > 0)
+                    [orderedAssignments addObject:tempArray];//[tempArray copy]];
                 tempArray = [[NSMutableArray alloc] init];
                 [tempArray addObject:event];
             }
@@ -72,13 +74,16 @@
         else
         {
             curDate = dateRepresentingThisDay;
-            [orderedAssignments addObject:tempArray];//[tempArray copy]];
+            if([tempArray count] > 0)
+                [orderedAssignments addObject:tempArray];//[tempArray copy]];
             tempArray = [[NSMutableArray alloc] init];
             [tempArray addObject:event];
         }
     }
-    [orderedAssignments addObject:tempArray];
-    [orderedAssignments addObject:completedAssignments];
+    if([tempArray count] > 0)
+        [orderedAssignments addObject:tempArray];
+    if([completedAssignments count] > 0)
+        [orderedAssignments addObject:completedAssignments];
     return orderedAssignments;
 }
 
@@ -363,7 +368,7 @@
     {
         NSString * query  = [NSString
                              stringWithFormat:@"UPDATE Assignment SET "
-                             "Name = \"%@\", DueDate = \"%@\", Complete = %d, Visible = %d, CourseID = %d, LastUpdate = \"%@\", AssignmentDescription = \"%@ "
+                             "Name = \"%@\", DueDate = \"%@\", Complete = %d, Visible = %d, CourseID = %d, LastUpdated = \"%@\", AssignmentDescription = \"%@\" "
                              "WHERE id = %d",
                              assignment.name, assignment.dueDate, assignment.complete,
                              assignment.visible, assignment.courseID, assignment.lastUpdated, assignment.assignmentDescription, assignment.ID];
@@ -378,6 +383,36 @@
     }
 }
 
+- (void)markAsComplete:(Assignment*)assignment {
+    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
+    
+    sqlite3* db = nil;
+    int rc=0;
+    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    if (SQLITE_OK != rc)
+    {
+        sqlite3_close(db);
+        NSLog(@"Failed to open db connection");
+    }
+    else
+    {
+        NSString * query  = [NSString
+                             stringWithFormat:@"UPDATE Assignment SET "
+                             "Complete = %d "
+                             "WHERE id = %d",
+                             assignment.complete, assignment.ID];
+        
+        char * errMsg;
+        rc = sqlite3_exec(db, [query UTF8String], nil, NULL, &errMsg);
+        if(SQLITE_OK != rc)
+        {
+            NSLog(@"Failed to insert record  rc:%d, msg=%s",rc,errMsg);
+        }
+        sqlite3_close(db);
+    }
+}
+
+#pragma mark - Add to database
 
 - (Assignment*)addAssignment:(Assignment *)assignment {
     NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
