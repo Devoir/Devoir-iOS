@@ -137,26 +137,32 @@
     return 64;
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
     return YES;
 }
 
 //CHANGE THIS TO BE ANIMATED!!!!
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-        [self.database removeAssignmentByID:assignment.ID];
-        
-        //WILL BE CHANGED
-        [self courseDidChange:self.courseToShow];
-        //[[self.assignments objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
-        //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-}
-
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return UITableViewCellEditingStyleDelete;
+-(NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewRowAction *deleteButton =
+    [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
+                                       title:@"Delete"
+                                     handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
+                                          {
+                                              Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+                                              [self.database removeAssignmentByID:assignment.ID];
+                                              
+                                              //WILL BE CHANGED
+                                              [self courseDidChange:self.courseToShow];
+                                              //[[self.assignments objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
+                                              //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+                                          }];
+    deleteButton.backgroundColor = [UIColor colorWithRed:0.200 green:0.200 blue:0.200 alpha:1];
+    
+    return @[deleteButton];
 }
 
 #pragma mark - Segue

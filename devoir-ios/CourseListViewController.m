@@ -158,8 +158,22 @@
     return 70;
 }
 
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+}
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row == 0)
+        return NO;
+    else
+        return YES;
+}
+
 -(NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewRowAction *editButton = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Edit" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
+    UITableViewRowAction *editButton =
+    [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive
+                                       title:@"Edit"
+                                     handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
                                     {
                                         Course *course = [self.courses objectAtIndex:indexPath.row - 1];
                                         AddCourseViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addCourseViewController"];
@@ -167,9 +181,12 @@
                                         toViewController.delegate = self;
                                         [self.navigationController pushViewController:toViewController animated:YES];
                                     }];
-    editButton.backgroundColor = [UIColor colorWithRed:0.200 green:0.200 blue:0.200 alpha:1];//[UIColor colorWithPatternImage:[UIImage imageNamed:@"Edit-50.png"]];
+    editButton.backgroundColor = [UIColor colorWithRed:0.200 green:0.200 blue:0.200 alpha:1];
     
-    UITableViewRowAction *deleteButton = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Delete" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
+    UITableViewRowAction *deleteButton =
+    [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
+                                       title:@"Delete"
+                                     handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
                                      {
                                          UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete Course"
                                                                                          message:@"Are you sure you want to permanently delete this course?"
@@ -179,22 +196,9 @@
                                          alert.tag = indexPath.row - 1;
                                          [alert show];
                                      }];
-    deleteButton.backgroundColor = [UIColor colorWithRed:0.200 green:0.200 blue:0.200 alpha:1];//[UIColor colorWithPatternImage:[UIImage imageNamed:@"Trash-50.png"]];
+    deleteButton.backgroundColor = [UIColor colorWithRed:0.200 green:0.200 blue:0.200 alpha:1];
     
     return @[editButton, deleteButton];
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    // you need to implement this method too or nothing will work:
-    NSLog(@"I AM HERER");
-    
-}
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if(indexPath.row == 0)
-        return NO;
-    else
-        return YES;
 }
 
 #pragma mark - Button pressed actions
