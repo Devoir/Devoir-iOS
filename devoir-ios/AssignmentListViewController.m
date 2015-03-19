@@ -108,7 +108,7 @@
     NSDate *dateRepresentingThisDay = assignment.dueDate;
     NSDate *today = [NSDate date];
     
-    if([today earlierDate:dateRepresentingThisDay] == dateRepresentingThisDay)
+    if([today earlierDate:dateRepresentingThisDay] == dateRepresentingThisDay && !assignment.complete)
     {
         [cell setupCellWithWidth:tableView.frame.size.width Height:64 Overdue:YES];
     }
@@ -223,6 +223,7 @@
     }
 }
 
+//UPDATE THIS TO BE ANIMATED
 - (IBAction)checkboxSelected:(id)sender {
     UIButton* button = (UIButton*) sender;
     UITableViewCell *cell = (UITableViewCell*)button.superview.superview;
@@ -232,13 +233,14 @@
     //[[self.assignments objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
     //[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
     
-    assignment.complete = YES;
+    if(assignment.complete == NO)
+        assignment.complete = YES;
+    else
+        assignment.complete = NO;
     
     [self.database markAsComplete:assignment];
     
-    self.assignments = [self.database getAllAssignmentsOrderedByDate];
-    
-    [self.tableView reloadData];
-
+    //WILL BE CHANGED
+    [self courseDidChange:self.courseToShow];
 }
 @end
