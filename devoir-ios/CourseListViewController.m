@@ -108,6 +108,9 @@
     if(indexPath.row == 0)
     {
         [cell setupCellWithWidth:tableView.frame.size.width Height:tableView.frame.size.height ForRow:(int)indexPath.row];
+        cell.courseLabel.text = @"Show All Courses";
+        cell.courseLabel.backgroundColor = [UIColor devAccentColor];
+        cell.courseLabel.textColor = [UIColor devMainTextColor];
     }
     else
     {
@@ -115,20 +118,23 @@
 
         [cell setupCellWithWidth:tableView.frame.size.width Height:tableView.frame.size.height ForRow:(int)indexPath.row];
         
-        cell.courseScrollView.backgroundColor = [UIColor dbColor:course.color];
         cell.courseLabel.text = course.name;
+        cell.courseLabel.backgroundColor = [UIColor dbColor:course.color];
         
-        [cell.courseFilterButton addTarget:self
-                                    action:@selector(courseFilterButtonPressed:)
-                          forControlEvents:UIControlEventTouchUpInside];
+       // cell.courseScrollView.backgroundColor = [UIColor dbColor:course.color];
+       // cell.courseLabel.text = course.name;
         
-        [cell.editButton addTarget:self
-                            action:@selector(editButtonPressed:)
-                  forControlEvents:UIControlEventTouchUpInside];
-        
-        [cell.deleteButton addTarget:self
-                              action:@selector(deleteButtonPressed:)
-                    forControlEvents:UIControlEventTouchUpInside];
+       // [cell.courseFilterButton addTarget:self
+       //                             action:@selector(courseFilterButtonPressed:)
+       //                   forControlEvents:UIControlEventTouchUpInside];
+       //
+       // [cell.editButton addTarget:self
+       //                     action:@selector(editButtonPressed:)
+       //           forControlEvents:UIControlEventTouchUpInside];
+       //
+       // [cell.deleteButton addTarget:self
+       //                       action:@selector(deleteButtonPressed:)
+       //             forControlEvents:UIControlEventTouchUpInside];
     }
     
     return cell;
@@ -152,6 +158,45 @@
     return 70;
 }
 
+-(NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewRowAction *editButton = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDestructive title:@"Edit" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
+                                    {
+                                        Course *course = [self.courses objectAtIndex:indexPath.row - 1];
+                                        AddCourseViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addCourseViewController"];
+                                        toViewController.course = course;
+                                        toViewController.delegate = self;
+                                        [self.navigationController pushViewController:toViewController animated:YES];
+                                    }];
+    editButton.backgroundColor = [UIColor colorWithRed:0.200 green:0.200 blue:0.200 alpha:1];//[UIColor colorWithPatternImage:[UIImage imageNamed:@"Edit-50.png"]];
+    
+    UITableViewRowAction *deleteButton = [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault title:@"Delete" handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
+                                     {
+                                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete Course"
+                                                                                         message:@"Are you sure you want to permanently delete this course?"
+                                                                                        delegate:self
+                                                                               cancelButtonTitle:@"Cancel"
+                                                                               otherButtonTitles:@"Delete", nil];
+                                         alert.tag = indexPath.row - 1;
+                                         [alert show];
+                                     }];
+    deleteButton.backgroundColor = [UIColor colorWithRed:0.200 green:0.200 blue:0.200 alpha:1];//[UIColor colorWithPatternImage:[UIImage imageNamed:@"Trash-50.png"]];
+    
+    return @[editButton, deleteButton];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // you need to implement this method too or nothing will work:
+    NSLog(@"I AM HERER");
+    
+}
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(indexPath.row == 0)
+        return NO;
+    else
+        return YES;
+}
+
 #pragma mark - Button pressed actions
 
 - (void)addCourseButtonPressed:(id)sender {
@@ -161,28 +206,28 @@
     [self.navigationController pushViewController:toViewController animated:YES];
 }
 
-- (void)editButtonPressed:(id)sender {
+/*- (void)editButtonPressed:(id)sender {
     UIButton *senderButton = (UIButton*)sender;
     Course *course = [self.courses objectAtIndex:senderButton.tag];
     AddCourseViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addCourseViewController"];
     toViewController.course = course;
     toViewController.delegate = self;
     [self.navigationController pushViewController:toViewController animated:YES];
-}
+}*/
 
 - (void)settingsButtonPressed:(id)sender {
     SettingsViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsViewController"];
     [self.navigationController pushViewController:toViewController animated:YES];
 }
 
-- (void)courseFilterButtonPressed:(id)sender {
+/*- (void)courseFilterButtonPressed:(id)sender {
     UIButton *senderButton = (UIButton*)sender;
     int row = (int)senderButton.tag;
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
     [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
-}
+}*/
 
-- (void)deleteButtonPressed:(id)sender {
+/*- (void)deleteButtonPressed:(id)sender {
     UIButton *senderButton = (UIButton*)sender;
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete Course"
                                                     message:@"Are you sure you want to permanently delete this course?"
@@ -192,7 +237,7 @@
     alert.tag = senderButton.tag;
     [alert show];
 
-}
+}*/
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(buttonIndex == 1)

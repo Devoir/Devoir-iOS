@@ -14,15 +14,16 @@
 - (void)setupCellWithWidth:(int)width Height:(int)height ForRow:(int)row {
     self.courseLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 70)];
     self.courseLabel.textAlignment = NSTextAlignmentCenter;
-    if(row == 0)
+    [self.contentView addSubview:self.courseLabel];
+
+    /*if(row == 0)
     {
         self.courseLabel.text = @"Show All Courses";
         self.courseLabel.backgroundColor = [UIColor devAccentColor];
         self.courseLabel.textColor = [UIColor devMainTextColor];
-        [self.contentView addSubview:self.courseLabel];
     }
     else
-    {        
+    {
         //parent scroll view
         self.courseScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, width + 100, 70)];
         self.courseScrollView.contentSize = CGSizeMake(600, 70);
@@ -60,7 +61,7 @@
         [self.courseScrollView addSubview:self.courseDeleteEditView];
         
         [self.contentView addSubview:self.courseScrollView];
-    }
+    }*/
 }
 
 @end
