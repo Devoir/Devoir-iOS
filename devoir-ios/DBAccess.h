@@ -40,5 +40,8 @@
 - (void)updateAssignment:(Assignment*)assignment;
 - (void)markAsComplete:(Assignment*)assignment;
 - (Assignment*)addAssignment:(Assignment*)assignment;
+- (void)removeAssignmentByID:(int)ID;
+- (void)removeAllAssignmentsForCourse:(int)courseID;
+- (void)removeAllAssignments;
 
 @end

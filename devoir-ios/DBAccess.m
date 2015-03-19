@@ -77,11 +77,13 @@
 
 - (void) removeCourseByID:(int)ID {
     CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:self.dbName];
+    [self removeAllAssignmentsForCourse:ID];
     return [courseAccess removeCourseByID:ID];
 }
 
 - (void) removeAllCourses {
     CourseDBAccess* courseAccess = [[CourseDBAccess alloc] initWithDatabase:self.dbName];
+    [self removeAllAssignments];
     return [courseAccess removeAllCourses];
 }
 
@@ -114,6 +116,21 @@
 - (Assignment*)addAssignment:(Assignment*)assignment {
     AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:self.dbName];
     return [assignmentAccess addAssignment:assignment];
+}
+
+- (void)removeAssignmentByID:(int)ID {
+    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:self.dbName];
+    [assignmentAccess removeAssignmentByID:ID];
+}
+
+- (void)removeAllAssignmentsForCourse:(int)courseID {
+    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:self.dbName];
+    [assignmentAccess removeAllAssignmentsForCourse:courseID];
+}
+
+- (void)removeAllAssignments {
+    AssignmentDBAccess* assignmentAccess = [[AssignmentDBAccess alloc] initWithDatabase:self.dbName];
+    [assignmentAccess removeAllAssignments];
 }
 
 

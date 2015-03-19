@@ -21,7 +21,6 @@
 @property (retain) NSNumber *courseToShow;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
-- (IBAction)checkboxHit:(id)sender;
 @end
 
 @implementation AssignmentListViewController
@@ -138,9 +137,26 @@
     return 64;
 }
 
-- (IBAction)checkboxHit:(id)sender {
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    return YES;
+}
 
+//CHANGE THIS TO BE ANIMATED!!!!
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete)
+    {
+        Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        [self.database removeAssignmentByID:assignment.ID];
+        
+        //WILL BE CHANGED
+        [self courseDidChange:self.courseToShow];
+        //[[self.assignments objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
+        //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
 
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
 }
 
 #pragma mark - Segue
