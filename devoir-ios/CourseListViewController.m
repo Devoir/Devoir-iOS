@@ -19,6 +19,7 @@
 @property (strong, nonatomic) DBAccess *database;
 @property (strong, nonatomic)  UIButton *settingsButton;
 @property (strong, nonatomic) NSArray *courses;
+@property (strong, nonatomic) NSMutableArray *usedColors;
 @end
 
 @implementation CourseListViewController
@@ -30,6 +31,8 @@
     
     self.database = [[DBAccess alloc] init];
     self.courses = [self.database getAllCoursesOrderedByName];
+    
+    [self buildUsedColors];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -83,6 +86,14 @@
                 forControlEvents:UIControlEventTouchUpInside];
     [settingsButton addSubview:settingsLabel];
     [self.view addSubview:settingsButton];
+}
+
+- (void)buildUsedColors {
+    self.usedColors = [[NSMutableArray alloc] init];
+    for(Course *course in self.courses)
+    {
+        [self.usedColors addObject:[NSNumber numberWithInt:course.color]];
+    }
 }
 
 #pragma mark - tableview
@@ -178,6 +189,7 @@
                                         Course *course = [self.courses objectAtIndex:indexPath.row - 1];
                                         AddCourseViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addCourseViewController"];
                                         toViewController.course = course;
+                                        toViewController.usedColors = self.usedColors;
                                         toViewController.delegate = self;
                                         [self.navigationController pushViewController:toViewController animated:YES];
                                     }];
@@ -188,13 +200,8 @@
                                        title:@"Delete"
                                      handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
                                      {
-                                         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete Course"
-                                                                                         message:@"Are you sure you want to permanently delete this course?"
-                                                                                        delegate:self
-                                                                               cancelButtonTitle:@"Cancel"
-                                                                               otherButtonTitles:@"Delete", nil];
-                                         alert.tag = indexPath.row - 1;
-                                         [alert show];
+                                         Course *course = [self.courses objectAtIndex:indexPath.row - 1];
+                                         [self didDeleteCourse:course];
                                      }];
     deleteButton.backgroundColor = [UIColor colorWithRed:0.200 green:0.200 blue:0.200 alpha:1];
     
@@ -206,7 +213,13 @@
 - (void)addCourseButtonPressed:(id)sender {
     AddCourseViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addCourseViewController"];
     toViewController.course = nil;
+    toViewController.usedColors = self.usedColors;
     toViewController.delegate = self;
+    [self.navigationController pushViewController:toViewController animated:YES];
+}
+
+- (void)settingsButtonPressed:(id)sender {
+    SettingsViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsViewController"];
     [self.navigationController pushViewController:toViewController animated:YES];
 }
 
@@ -218,11 +231,6 @@
     toViewController.delegate = self;
     [self.navigationController pushViewController:toViewController animated:YES];
 }*/
-
-- (void)settingsButtonPressed:(id)sender {
-    SettingsViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsViewController"];
-    [self.navigationController pushViewController:toViewController animated:YES];
-}
 
 /*- (void)courseFilterButtonPressed:(id)sender {
     UIButton *senderButton = (UIButton*)sender;
@@ -243,30 +251,49 @@
 
 }*/
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if(buttonIndex == 1)
-    {
-        Course *course = [self.courses objectAtIndex:alertView.tag];
-        [self.database removeCourseByID:course.ID];
-        self.courses = [self.database getAllCoursesOrderedByName];
-        [self.tableView reloadData];
-    }
-}
-
 #pragma mark - AddCourseDelegate methods
 
+- (void) didAddCourse:(Course *)course {
+    [self.database addCourse:course];
+    self.courses = [self.database getAllCoursesOrderedByName];
+    [self buildUsedColors];
+    [self.tableView reloadData];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 - (void) didEditCourse:(Course *)course {
+    [self buildUsedColors];
     [self.database updateCourse:course];
     self.courses = [self.database getAllCoursesOrderedByName];
     [self.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void) didAddCourse:(Course *)course {
-    [self.database addCourse:course];
-    self.courses = [self.database getAllCoursesOrderedByName];
-    [self.tableView reloadData];
-    [self.navigationController popViewControllerAnimated:YES];
+- (void) didDeleteCourse:(Course*)course {
+    UIAlertView *alert =
+    [[UIAlertView alloc] initWithTitle:@"Delete Course"
+                               message:@"Are you sure you want to permanently delete this course?"
+                              delegate:self
+                     cancelButtonTitle:@"Cancel"
+                     otherButtonTitles:@"Delete", nil];
+    alert.tag = [self.courses indexOfObject:course];
+    [alert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 1)
+    {
+        Course *course = [self.courses objectAtIndex:alertView.tag];
+        [self.database removeCourseByID:course.ID];
+        self.courses = [self.database getAllCoursesOrderedByName];
+        [self buildUsedColors];
+        [self.tableView reloadData];
+        
+        if(self.navigationController.topViewController.class == NSClassFromString(@"AddCourseViewController"))
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+    }
 }
 
 - (void) didCancelCourse {

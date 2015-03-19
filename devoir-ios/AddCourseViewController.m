@@ -14,6 +14,7 @@
 @property (strong, nonatomic)  NSArray *colorButtons;
 @property (weak, nonatomic) IBOutlet UITextField *courseNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *iCalURLText;
+@property (weak, nonatomic) IBOutlet UIButton *deleteButton;
 
 @property DevColor origColor;
 @end
@@ -30,6 +31,10 @@
         [self.iCalURLText setEnabled:NO];
         
         self.origColor = self.course.color;
+        
+        [[self.deleteButton layer] setBorderWidth:1.0f];
+        [self.deleteButton.layer setCornerRadius:5.0f];
+        [self.deleteButton.layer setBorderColor: [UIColor devRed].CGColor];
     }
     else
     {
@@ -40,7 +45,7 @@
     self.view.backgroundColor = [UIColor devAccentColor];
     self.courseNameTextField.textColor = [UIColor devAccentTextColor];
     self.iCalURLText.textColor = [UIColor devAccentTextColor];
-
+    
     [self setupNavBar];
     [self setupColorButtons];
 }
@@ -58,22 +63,32 @@
             colorButton = [[UIButton alloc] initWithFrame:CGRectMake(4, 350, 40, 40)];
         else
             colorButton = [[UIButton alloc] initWithFrame:CGRectMake((i - 1) * 55, 350, 40, 40)];
+        
+        if([self.usedColors containsObject:[NSNumber numberWithInt:i]])
+        {
+            [[colorButton layer] setBackgroundColor: [UIColor lightGrayColor].CGColor];
+        }
+        else
+        {
+            [[colorButton layer] setBackgroundColor: [UIColor dbColor:i].CGColor];
+            colorButton.tag = i;
             
-        [[colorButton layer] setBackgroundColor: [UIColor dbColor:i].CGColor];
+            [colorButton addTarget:self
+                            action:@selector(ColorButtonPressed:)
+                  forControlEvents:UIControlEventTouchUpInside];
+        }
+            
         
         if(i == self.course.color)
         {
+            [[colorButton layer] setBackgroundColor: [UIColor dbColor:i].CGColor];
             [[colorButton layer] setBorderWidth:1.0f];
             [[colorButton layer] setBorderColor: [UIColor blackColor].CGColor];
         }
         
         colorButton.layer.cornerRadius = colorButton.bounds.size.width / 2.0;
         
-        colorButton.tag = i;
-        
-        [colorButton addTarget:self
-                   action:@selector(ColorButtonPressed:)
-              forControlEvents:UIControlEventTouchUpInside];
+
         
         [self.view addSubview:colorButton];
         buttons[i - 1] = colorButton;
@@ -126,6 +141,12 @@
             [[colorButton layer] setBorderWidth:0.0f];
             [[colorButton layer] setBorderColor: [UIColor clearColor].CGColor];
         }
+    }
+}
+- (IBAction)deleteButtonPressed:(id)sender {
+    if(!self.isNew)
+    {
+        [self.delegate didDeleteCourse:self.course];
     }
 }
 

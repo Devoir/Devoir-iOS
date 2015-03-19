@@ -350,11 +350,23 @@
                                     <outlet property="delegate" destination="bOA-0U-kLo" id="D8P-wm-4Zf"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="bhG-06-d0f">
+                                <rect key="frame" x="16" y="469" width="288" height="46"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="DELETE COURSE">
+                                    <color key="titleColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="deleteButtonPressed:" destination="bOA-0U-kLo" eventType="touchUpInside" id="DPy-ia-CeI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="courseNameTextField" destination="89f-OR-xGs" id="ovf-7T-5T2"/>
+                        <outlet property="deleteButton" destination="bhG-06-d0f" id="KPm-00-5if"/>
                         <outlet property="iCalURLText" destination="oDw-ZX-Bfk" id="mOP-BU-1uW"/>
                     </connections>
                 </viewController>

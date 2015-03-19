@@ -11,8 +11,9 @@
 
 @protocol AddCourseDelegate <NSObject>
 
-- (void) didEditCourse:(Course *)course;
 - (void) didAddCourse:(Course *)course;
+- (void) didEditCourse:(Course *)course;
+- (void) didDeleteCourse:(Course *)course;
 - (void) didCancelCourse;
 
 @end
@@ -20,6 +21,7 @@
 @interface AddCourseViewController : UIViewController
 
 @property (strong, nonatomic) Course *course;
+@property (strong, nonatomic) NSMutableArray *usedColors;
 @property (assign, nonatomic) id <AddCourseDelegate> delegate;
 
 @end
