@@ -227,6 +227,8 @@
 }
 
 - (void) didDeleteAssignment:(Assignment *)assignment {
+    [self.database removeAssignmentByID:assignment.ID];
+    self.assignments = [self.database getAllAssignmentsOrderedByDate];
     [self.tableView reloadData];
     [self.navigationController popViewControllerAnimated:YES];
 }

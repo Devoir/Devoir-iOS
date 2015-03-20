@@ -11,17 +11,18 @@
 #import "Course.h"
 #import "DBAccess.h"
 
-@interface AddAssignmentViewController () <UITextFieldDelegate, UITextViewDelegate>
+@interface AddAssignmentViewController () <UITextFieldDelegate, UITextViewDelegate, UIPickerViewDataSource, UIPickerViewDelegate>
 @property (strong, nonatomic) DBAccess *database;
 @property (nonatomic, assign) BOOL isNew;
+@property (strong, nonatomic) NSArray *courses;
 @property (weak, nonatomic) IBOutlet UIButton *colorButton;
 @property (weak, nonatomic) IBOutlet UITextField *assignmentText;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *reminderLabel;
 @property (weak, nonatomic) IBOutlet UITextView *noteText;
-@property (weak, nonatomic) IBOutlet UILabel *courseLabel;
 @property (weak, nonatomic) IBOutlet UIButton *deleteButton;
-@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UITextField *dateTextfield;
+@property (strong, nonatomic) IBOutlet UIPickerView *datePicker;
+@property (strong, nonatomic) IBOutlet UIPickerView *coursePicker;
+@property (weak, nonatomic) IBOutlet UITextField *courseTextfield;
 
 @end
 
@@ -29,20 +30,26 @@
 
 - (void)viewDidLoad {
     self.database = [[DBAccess alloc] init];
+    self.courses = [self.database getAllCoursesOrderedByName];
     
     // datepicker setup
-    self.datePicker = [[UIDatePicker alloc]init];
-    [self.datePicker setDatePickerMode:UIDatePickerModeDate];
-    [self.datePicker setDate:[NSDate date]];
-    self.datePicker.datePickerMode = UIDatePickerModeDate;
-    [self.datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
+    self.datePicker = [[UIPickerView alloc]init];
+    self.datePicker.dataSource = self;
+    self.datePicker.delegate = self;
+    self.dateTextfield.inputView = self.datePicker;
+    
+    // coursepicker setup
+    self.coursePicker = [[UIPickerView alloc]init];
+    self.coursePicker.dataSource = self;
+    self.coursePicker.delegate = self;
+    self.courseTextfield.inputView = self.coursePicker;
     
     if(self.assignment != nil) {
         Course *course = [self.database getCourseByID:self.assignment.courseID];
         self.assignmentText.text = self.assignment.name;
-        self.dateLabel.text = self.assignment.dueDateAsString;
+        self.dateTextfield.text = self.assignment.dueDateAsString;
         [[self.colorButton layer] setBackgroundColor: [UIColor dbColor:course.color].CGColor];
-        self.courseLabel.text = course.name;
+        self.courseTextfield.text = course.name;
         [[self.deleteButton layer] setBorderWidth:1.0f];
         [self.deleteButton.layer setCornerRadius:5.0f];
         [self.deleteButton.layer setBorderColor: [UIColor devRed].CGColor];
@@ -51,6 +58,27 @@
     [self setupNavBar];
     self.colorButton.layer.cornerRadius = self.colorButton.bounds.size.width / 2.0;
     
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    return [self.courses count];
+}
+
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    return  1;
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
+    Course *course = self.courses[row];
+    return course.name;
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component {
+    Course *course = self.courses[row];
+    self.courseTextfield.text = course.name;
+    [self.courseTextfield resignFirstResponder];
+    self.assignment.courseID = course.ID;
+    [[self.colorButton layer] setBackgroundColor: [UIColor dbColor:course.color].CGColor];
 }
 
 #pragma mark - UI setup
@@ -67,6 +95,12 @@
 
 }
 
+#pragma mark - Assignment values changed
+
+- (IBAction)assignmentNameChanged:(id)sender {
+    self.assignment.name = self.assignmentText.text;
+}
+
 #pragma mark - Button pressed actions
 
 - (IBAction)cancelButtonTapped:(id)sender {
@@ -78,12 +112,15 @@
 }
 
 - (IBAction)DoneButtonTapped:(id)sender {
+    self.assignment.name = self.assignmentText.text;
+//    self.assignment.dueDate = self.dateLabel.text;
+//    self.assignment.courseID = self.courseLabel.text;
+
     if(self.isNew) {
-        [self.delegate didEditAssignment: self.assignment];
+        [self.delegate didAddAssignment: self.assignment];
     }
     else {
-        
-        [self.delegate didAddAssignment: self.assignment];
+        [self.delegate didEditAssignment: self.assignment];
     }
 }
 
@@ -93,8 +130,7 @@
     return YES;
 }
 
--(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
     if([text isEqualToString:@"\n"])
         [textView resignFirstResponder];
     return YES;
@@ -108,15 +144,7 @@
     
 }
 
--(void) dateTextField:(id)sender
-{
-//    UIDatePicker *picker = (UIDatePicker*)txtFieldBranchYear.inputView;
-//    [picker setMaximumDate:[NSDate date]];
-//    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-//    NSDate *eventDate = picker.date;
-//    [dateFormat setDateFormat:@"dd/MM/yyyy"];
-//    
-//    NSString *dateString = [dateFormat stringFromDate:eventDate];
+-(void) dateTextField:(id)sender {
 
 }
 
