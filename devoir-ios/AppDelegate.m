@@ -9,12 +9,23 @@
 #import "AppDelegate.h"
 #import "VariableStore.h"
 #import "DBAccess.h"
+#import <GooglePlus/GooglePlus.h>
+
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
+
+- (BOOL)application: (UIApplication *)application
+            openURL: (NSURL *)url
+  sourceApplication: (NSString *)sourceApplication
+         annotation: (id)annotation {
+    return [GPPURLHandler handleURL:url
+                  sourceApplication:sourceApplication
+                         annotation:annotation];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     return YES;

@@ -40,10 +40,13 @@
 		4E7757251AB2B9010023F2F0 /* VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7757241AB2B9010023F2F0 /* VariableStore.m */; };
 		4E7757281AB2BB9A0023F2F0 /* NavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7757271AB2BB9A0023F2F0 /* NavigationBar.m */; };
 		4E77572B1AB2BF5F0023F2F0 /* NavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E77572A1AB2BF5F0023F2F0 /* NavigationController.m */; };
+		4E8FB0961ABD371E00D69F9C /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E8FB0951ABD371E00D69F9C /* SignInViewController.m */; };
 		4EB974DD1A9D390F00B4CDA9 /* devoir-ios-test.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 4EB974DC1A9D390F00B4CDA9 /* devoir-ios-test.sqlite */; };
 		4EB974DF1A9D3B9800B4CDA9 /* DatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */; };
 		4ED1DF581A89935C00D9F29D /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF571A89935C00D9F29D /* Course.m */; };
 		4ED1DF5B1A89936C00D9F29D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF5A1A89936C00D9F29D /* User.m */; };
+		A0328F6711EE5C60E01CEBB8 /* libPods-devoir-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCCED73AADA9EA51DDD1498 /* libPods-devoir-ios.a */; };
+		B4000E4BE315B92CBD5733EA /* libPods-devoir-iosTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3D795EA56AF8EE580B9729 /* libPods-devoir-iosTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +85,7 @@
 		32B9688D1AA38BCA00598AD5 /* CourseListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseListViewController.m; sourceTree = "<group>"; };
 		32B9688F1AA38C1300598AD5 /* AddCourseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddCourseViewController.h; sourceTree = "<group>"; };
 		32B968901AA38C1300598AD5 /* AddCourseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddCourseViewController.m; sourceTree = "<group>"; };
+		44BC88CBDCD167CFCC8F34EA /* Pods-devoir-iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devoir-iosTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-devoir-iosTests/Pods-devoir-iosTests.debug.xcconfig"; sourceTree = "<group>"; };
 		4E1ED7FD1A9E98A800E37759 /* AssignmentDBAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentDBAccess.h; sourceTree = "<group>"; };
 		4E1ED7FE1A9E98A800E37759 /* AssignmentDBAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentDBAccess.m; sourceTree = "<group>"; };
 		4E1ED8041A9EAE5100E37759 /* devoir-ios.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = "devoir-ios.sqlite"; sourceTree = "<group>"; };
@@ -115,12 +119,19 @@
 		4E7757271AB2BB9A0023F2F0 /* NavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationBar.m; sourceTree = "<group>"; };
 		4E7757291AB2BF5F0023F2F0 /* NavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavigationController.h; sourceTree = "<group>"; };
 		4E77572A1AB2BF5F0023F2F0 /* NavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavigationController.m; sourceTree = "<group>"; };
+		4E8FB0941ABD371E00D69F9C /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		4E8FB0951ABD371E00D69F9C /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
 		4EB974DC1A9D390F00B4CDA9 /* devoir-ios-test.sqlite */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file; path = "devoir-ios-test.sqlite"; sourceTree = SOURCE_ROOT; };
 		4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatabaseTests.m; sourceTree = "<group>"; };
 		4ED1DF561A89935C00D9F29D /* Course.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Course.h; sourceTree = "<group>"; };
 		4ED1DF571A89935C00D9F29D /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		4ED1DF591A89936C00D9F29D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		4ED1DF5A1A89936C00D9F29D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		5D3D795EA56AF8EE580B9729 /* libPods-devoir-iosTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-devoir-iosTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DCCED73AADA9EA51DDD1498 /* libPods-devoir-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-devoir-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D9876BD89CB2FEE78E5AB2E /* Pods-devoir-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devoir-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-devoir-ios/Pods-devoir-ios.release.xcconfig"; sourceTree = "<group>"; };
+		A7260327CF0C21D0E1B4C2DA /* Pods-devoir-ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devoir-ios.debug.xcconfig"; path = "Pods/Target Support Files/Pods-devoir-ios/Pods-devoir-ios.debug.xcconfig"; sourceTree = "<group>"; };
+		DDE6C995B143810198AE4B0E /* Pods-devoir-iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devoir-iosTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-devoir-iosTests/Pods-devoir-iosTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +140,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E3457A01A9CEDD80063EE1E /* libsqlite3.dylib in Frameworks */,
+				A0328F6711EE5C60E01CEBB8 /* libPods-devoir-ios.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +148,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4000E4BE315B92CBD5733EA /* libPods-devoir-iosTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +163,7 @@
 				4EB974DB1A9D386500B4CDA9 /* Frameworks */,
 				3219FF4B1A86C5070034C46E /* Products */,
 				3219FF661A86C5070034C46E /* devoir-iosTests */,
+				DE35CB1542DE0A839EBE3C74 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -260,6 +274,8 @@
 				4E77571E1AB2B74C0023F2F0 /* SettingsViewController.m */,
 				4E7757291AB2BF5F0023F2F0 /* NavigationController.h */,
 				4E77572A1AB2BF5F0023F2F0 /* NavigationController.m */,
+				4E8FB0941ABD371E00D69F9C /* SignInViewController.h */,
+				4E8FB0951ABD371E00D69F9C /* SignInViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -299,6 +315,8 @@
 			isa = PBXGroup;
 			children = (
 				4E34579F1A9CEDD80063EE1E /* libsqlite3.dylib */,
+				8DCCED73AADA9EA51DDD1498 /* libPods-devoir-ios.a */,
+				5D3D795EA56AF8EE580B9729 /* libPods-devoir-iosTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -316,6 +334,17 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		DE35CB1542DE0A839EBE3C74 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A7260327CF0C21D0E1B4C2DA /* Pods-devoir-ios.debug.xcconfig */,
+				9D9876BD89CB2FEE78E5AB2E /* Pods-devoir-ios.release.xcconfig */,
+				44BC88CBDCD167CFCC8F34EA /* Pods-devoir-iosTests.debug.xcconfig */,
+				DDE6C995B143810198AE4B0E /* Pods-devoir-iosTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -323,9 +352,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3219FF6D1A86C5070034C46E /* Build configuration list for PBXNativeTarget "devoir-ios" */;
 			buildPhases = (
+				EB10A0BF8779D905CB944CD2 /* Check Pods Manifest.lock */,
 				3219FF461A86C5070034C46E /* Sources */,
 				3219FF471A86C5070034C46E /* Frameworks */,
 				3219FF481A86C5070034C46E /* Resources */,
+				1989ED08352B351E0A22C38F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -340,9 +371,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3219FF701A86C5070034C46E /* Build configuration list for PBXNativeTarget "devoir-iosTests" */;
 			buildPhases = (
+				A2EB85D26F56195D451C40EB /* Check Pods Manifest.lock */,
 				3219FF5F1A86C5070034C46E /* Sources */,
 				3219FF601A86C5070034C46E /* Frameworks */,
 				3219FF611A86C5070034C46E /* Resources */,
+				9A49889F0233B00F3D14027F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -419,6 +452,69 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1989ED08352B351E0A22C38F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-devoir-ios/Pods-devoir-ios-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9A49889F0233B00F3D14027F /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-devoir-iosTests/Pods-devoir-iosTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A2EB85D26F56195D451C40EB /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EB10A0BF8779D905CB944CD2 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3219FF461A86C5070034C46E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -439,6 +535,7 @@
 				4E34579B1A9CE65E0063EE1E /* DBAccess.m in Sources */,
 				32B968821AA2C5F800598AD5 /* AssignmentTableViewCell.m in Sources */,
 				4E3960FC1A89C4DD00C0004C /* Assignment.m in Sources */,
+				4E8FB0961ABD371E00D69F9C /* SignInViewController.m in Sources */,
 				4E7757251AB2B9010023F2F0 /* VariableStore.m in Sources */,
 				3219FF501A86C5070034C46E /* main.m in Sources */,
 				32B9687F1AA2C5D100598AD5 /* CheckboxButton.m in Sources */,
@@ -568,6 +665,7 @@
 		};
 		3219FF6E1A86C5070034C46E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7260327CF0C21D0E1B4C2DA /* Pods-devoir-ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "devoir-ios/Info.plist";
@@ -578,6 +676,7 @@
 		};
 		3219FF6F1A86C5070034C46E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D9876BD89CB2FEE78E5AB2E /* Pods-devoir-ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = "devoir-ios/Info.plist";
@@ -588,6 +687,7 @@
 		};
 		3219FF711A86C5070034C46E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 44BC88CBDCD167CFCC8F34EA /* Pods-devoir-iosTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -607,6 +707,7 @@
 		};
 		3219FF721A86C5070034C46E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DDE6C995B143810198AE4B0E /* Pods-devoir-iosTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				FRAMEWORK_SEARCH_PATHS = (

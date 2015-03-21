@@ -33,4 +33,24 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)signOut:(id)sender {
+    [[GPPSignIn sharedInstance] signOut];
+    [self performSegueWithIdentifier:@"logout" sender:self];
+}
+
+- (IBAction)disconnect:(id)sender {
+    [[GPPSignIn sharedInstance] disconnect];
+}
+
+- (void)didDisconnectWithError:(NSError *)error {
+    if (error)
+    {
+        NSLog(@"Received error %@", error);
+    }
+    else
+    {
+        NSLog(@"Logged out");
+    }
+}
+
 @end
