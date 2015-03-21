@@ -223,13 +223,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="376px-Goat_cartoon_04.svg.png" id="9LP-zV-qfy">
+                                <rect key="frame" x="35" y="132" width="250" height="278"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Rv4-gu-MHx" userLabel="Sign In Button" customClass="GPPSignInButton">
-                                <rect key="frame" x="101" y="268" width="118" height="32"/>
+                                <rect key="frame" x="113" y="404" width="118" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.50439137984092719" green="0.2250963708119097" blue="0.98354828042328046" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <connections>
                         <segue destination="RHg-ew-d1G" kind="modal" identifier="login_with_course" id="7eL-qB-X53"/>
@@ -398,6 +402,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="376px-Goat_cartoon_04.svg.png" width="376" height="372"/>
         <image name="Down4-25.png" width="25" height="25"/>
         <image name="calendar.png" width="25" height="25"/>
         <image name="notes.png" width="25" height="25"/>
