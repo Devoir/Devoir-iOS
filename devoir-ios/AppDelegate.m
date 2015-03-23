@@ -11,7 +11,6 @@
 #import "DBAccess.h"
 #import <GooglePlus/GooglePlus.h>
 
-
 @interface AppDelegate ()
 
 @end
@@ -28,6 +27,30 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *rootViewController = nil;
+
+    GPPSignIn *signIn = [GPPSignIn sharedInstance];
+    signIn.shouldFetchGooglePlusUser = YES;
+    signIn.shouldFetchGoogleUserEmail = YES;
+    
+    signIn.clientID = @"668127864316-nsluq6k5g95ln93kmoe7cjg4ot482lth.apps.googleusercontent.com";
+    
+    signIn.scopes = @[ @"profile" ];            // "profile" scope
+    
+    BOOL look = [signIn trySilentAuthentication];
+    if(look)
+    {
+        rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"NavigationController"];
+
+    }
+    else
+    {
+        rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"SignInViewController"];   
+    }
+    self.window.rootViewController = rootViewController;
+    [self.window makeKeyAndVisible];
     return YES;
 }
 

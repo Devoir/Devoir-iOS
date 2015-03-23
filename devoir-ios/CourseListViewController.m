@@ -187,7 +187,7 @@
                                      handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
                                     {
                                         Course *course = [self.courses objectAtIndex:indexPath.row - 1];
-                                        AddCourseViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addCourseViewController"];
+                                        AddCourseViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddCourseViewController"];
                                         toViewController.course = course;
                                         toViewController.usedColors = self.usedColors;
                                         toViewController.delegate = self;
@@ -211,7 +211,7 @@
 #pragma mark - Button pressed actions
 
 - (void)addCourseButtonPressed:(id)sender {
-    AddCourseViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addCourseViewController"];
+    AddCourseViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"AddCourseViewController"];
     toViewController.course = nil;
     toViewController.usedColors = self.usedColors;
     toViewController.delegate = self;
@@ -219,7 +219,7 @@
 }
 
 - (void)settingsButtonPressed:(id)sender {
-    SettingsViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"settingsViewController"];
+    SettingsViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"SettingsViewController"];
     [self.navigationController pushViewController:toViewController animated:YES];
 }
 

@@ -39,13 +39,6 @@ NSString* const GPLUS_CLIENT_ID = @"668127864316-nsluq6k5g95ln93kmoe7cjg4ot482lt
     self.signIn.scopes = @[ @"profile" ];            // "profile" scope
     
     self.signIn.delegate = self;
-    
-    BOOL look = [self.signIn trySilentAuthentication];
-    if(look)
-    {
-        //ADD SOME SORT OF GRAPHIC SPINNER THING HERE
-        NSLog(@"LOGGING IN...");
-    }
 }
 
 - (void)didReceiveMemoryWarning {

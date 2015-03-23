@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="j7z-02-UTP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
@@ -7,7 +7,7 @@
         <!--Assignment List View Controller-->
         <scene sceneID="ygi-iX-d0z">
             <objects>
-                <viewController storyboardIdentifier="assignmentListViewController" id="Daq-IS-bwH" customClass="AssignmentListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AssignmentListViewController" id="Daq-IS-bwH" customClass="AssignmentListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5IJ-2b-nyN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -218,22 +218,29 @@
         <!--Sign In View Controller-->
         <scene sceneID="HoW-9a-dAX">
             <objects>
-                <viewController id="j7z-02-UTP" customClass="SignInViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SignInViewController" id="j7z-02-UTP" customClass="SignInViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xzj-qM-ObV">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="376px-Goat_cartoon_04.svg.png" id="9LP-zV-qfy">
-                                <rect key="frame" x="35" y="132" width="250" height="278"/>
+                                <rect key="frame" x="121" y="100" width="118" height="94"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Rv4-gu-MHx" userLabel="Sign In Button" customClass="GPPSignInButton">
-                                <rect key="frame" x="113" y="404" width="118" height="32"/>
+                                <rect key="frame" x="107" y="388" width="92" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Devoir" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Djb-Si-FGB">
+                                <rect key="frame" x="32" y="207" width="288" height="91"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="100"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.50439137984092719" green="0.2250963708119097" blue="0.98354828042328046" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <segue destination="RHg-ew-d1G" kind="modal" identifier="login_with_course" id="7eL-qB-X53"/>
@@ -246,7 +253,7 @@
         <!--Navigation Controller-->
         <scene sceneID="dL5-fW-kNx">
             <objects>
-                <navigationController id="RHg-ew-d1G" customClass="NavigationController" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" id="RHg-ew-d1G" customClass="NavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7hQ-V2-LjF" customClass="NavigationBar">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -265,7 +272,7 @@
         <!--Settings View Controller-->
         <scene sceneID="NQu-P4-hD4">
             <objects>
-                <viewController storyboardIdentifier="settingsViewController" id="zHX-Z3-Ajs" customClass="SettingsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SettingsViewController" id="zHX-Z3-Ajs" customClass="SettingsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hka-xZ-BvZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -306,7 +313,7 @@
         <!--Course List View Controller-->
         <scene sceneID="Tz8-ri-oQH">
             <objects>
-                <viewController storyboardIdentifier="courseListViewController" id="Aeq-rU-6zH" customClass="CourseListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CourseListViewController" id="Aeq-rU-6zH" customClass="CourseListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="faD-Hn-sRo">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -340,7 +347,7 @@
         <!--Add Course View Controller-->
         <scene sceneID="nCI-iB-rej">
             <objects>
-                <viewController storyboardIdentifier="addCourseViewController" id="bOA-0U-kLo" customClass="AddCourseViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddCourseViewController" id="bOA-0U-kLo" customClass="AddCourseViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UaJ-IU-cgT">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
