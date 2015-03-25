@@ -126,6 +126,15 @@
     
     [[cell.colorLabel layer] setBackgroundColor: [UIColor dbColor:course.color].CGColor];
     
+    if(assignment.complete)
+    {
+        cell.checkbox.backgroundColor = [UIColor greenColor];
+    }
+    else
+    {
+        cell.checkbox.backgroundColor = [UIColor whiteColor];
+    }
+    
     cell.checkbox.layer.cornerRadius = cell.checkbox.bounds.size.width / 2.0;
     [[cell.checkbox layer] setBorderWidth:1.0f];
     [[cell.checkbox layer] setBorderColor: [UIColor lightGrayColor].CGColor];
@@ -272,10 +281,12 @@
     if(assignment.complete == NO)
     {
         assignment.complete = YES;
+        button.backgroundColor = [UIColor greenColor];
     }
     else
     {
         assignment.complete = NO;
+        button.backgroundColor = [UIColor whiteColor];
     }
     [self.database markAsComplete:assignment];
     self.assignments = [self.database getAllAssignmentsOrderedByDate];
