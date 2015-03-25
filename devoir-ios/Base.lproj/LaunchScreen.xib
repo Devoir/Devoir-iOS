@@ -10,7 +10,7 @@
             <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="376px-Goat_cartoon_04.svg.png" translatesAutoresizingMaskIntoConstraints="NO" id="3um-eD-lhY">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Goat" translatesAutoresizingMaskIntoConstraints="NO" id="3um-eD-lhY">
                     <rect key="frame" x="8" y="52" width="322" height="358"/>
                 </imageView>
             </subviews>
@@ -21,6 +21,6 @@
         </view>
     </objects>
     <resources>
-        <image name="376px-Goat_cartoon_04.svg.png" width="376" height="372"/>
+        <image name="Goat" width="376" height="372"/>
     </resources>
 </document>

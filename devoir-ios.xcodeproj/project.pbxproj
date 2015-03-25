@@ -28,14 +28,8 @@
 		4E3457A01A9CEDD80063EE1E /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E34579F1A9CEDD80063EE1E /* libsqlite3.dylib */; };
 		4E3457A41A9CF5BC0063EE1E /* UserDBAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3457A31A9CF5BC0063EE1E /* UserDBAccess.m */; };
 		4E3960FC1A89C4DD00C0004C /* Assignment.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3960FB1A89C4DD00C0004C /* Assignment.m */; };
-		4E530BE51ABD593700CF67B1 /* 376px-Goat_cartoon_04.svg.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E530BE41ABD593700CF67B1 /* 376px-Goat_cartoon_04.svg.png */; };
-		4E72FDF31AAA52F700D3A7A7 /* Plus-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FDF01AAA52F700D3A7A7 /* Plus-50.png */; };
-		4E72FDF41AAA52F700D3A7A7 /* Trash-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FDF11AAA52F700D3A7A7 /* Trash-50.png */; };
-		4E72FDF51AAA52F700D3A7A7 /* Edit-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FDF21AAA52F700D3A7A7 /* Edit-50.png */; };
 		4E72FE0E1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E72FE0D1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.m */; };
 		4E72FE121AAADB7800D3A7A7 /* DropDownAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E72FE111AAADB7800D3A7A7 /* DropDownAnimator.m */; };
-		4E72FE141AAADF7500D3A7A7 /* Down4-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FE131AAADF7500D3A7A7 /* Down4-50.png */; };
-		4E72FE161AAAE1AE00D3A7A7 /* Down4-25.png in Resources */ = {isa = PBXBuildFile; fileRef = 4E72FE151AAAE1AE00D3A7A7 /* Down4-25.png */; };
 		4E77571F1AB2B74C0023F2F0 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E77571E1AB2B74C0023F2F0 /* SettingsViewController.m */; };
 		4E7757221AB2B7A20023F2F0 /* SlideAcrossAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7757211AB2B7A20023F2F0 /* SlideAcrossAnimation.m */; };
 		4E7757251AB2B9010023F2F0 /* VariableStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E7757241AB2B9010023F2F0 /* VariableStore.m */; };
@@ -101,16 +95,10 @@
 		4E3457A31A9CF5BC0063EE1E /* UserDBAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserDBAccess.m; sourceTree = "<group>"; };
 		4E3960FA1A89C4DD00C0004C /* Assignment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Assignment.h; sourceTree = "<group>"; };
 		4E3960FB1A89C4DD00C0004C /* Assignment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Assignment.m; sourceTree = "<group>"; };
-		4E530BE41ABD593700CF67B1 /* 376px-Goat_cartoon_04.svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "376px-Goat_cartoon_04.svg.png"; sourceTree = "<group>"; };
-		4E72FDF01AAA52F700D3A7A7 /* Plus-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Plus-50.png"; sourceTree = "<group>"; };
-		4E72FDF11AAA52F700D3A7A7 /* Trash-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Trash-50.png"; sourceTree = "<group>"; };
-		4E72FDF21AAA52F700D3A7A7 /* Edit-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Edit-50.png"; sourceTree = "<group>"; };
 		4E72FE0C1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentListSectionHeader.h; sourceTree = "<group>"; };
 		4E72FE0D1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentListSectionHeader.m; sourceTree = "<group>"; };
 		4E72FE101AAADB7800D3A7A7 /* DropDownAnimator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownAnimator.h; sourceTree = "<group>"; };
 		4E72FE111AAADB7800D3A7A7 /* DropDownAnimator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DropDownAnimator.m; sourceTree = "<group>"; };
-		4E72FE131AAADF7500D3A7A7 /* Down4-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Down4-50.png"; sourceTree = "<group>"; };
-		4E72FE151AAAE1AE00D3A7A7 /* Down4-25.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Down4-25.png"; sourceTree = "<group>"; };
 		4E77571D1AB2B74C0023F2F0 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		4E77571E1AB2B74C0023F2F0 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		4E7757201AB2B7A20023F2F0 /* SlideAcrossAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SlideAcrossAnimation.h; sourceTree = "<group>"; };
@@ -293,12 +281,6 @@
 		4E72FDEF1AAA52B500D3A7A7 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
-				4E530BE41ABD593700CF67B1 /* 376px-Goat_cartoon_04.svg.png */,
-				4E72FE151AAAE1AE00D3A7A7 /* Down4-25.png */,
-				4E72FE131AAADF7500D3A7A7 /* Down4-50.png */,
-				4E72FDF01AAA52F700D3A7A7 /* Plus-50.png */,
-				4E72FDF11AAA52F700D3A7A7 /* Trash-50.png */,
-				4E72FDF21AAA52F700D3A7A7 /* Edit-50.png */,
 			);
 			name = Icons;
 			sourceTree = "<group>";
@@ -433,17 +415,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E72FE141AAADF7500D3A7A7 /* Down4-50.png in Resources */,
-				4E72FDF41AAA52F700D3A7A7 /* Trash-50.png in Resources */,
 				4E1ED8051A9EAE5100E37759 /* devoir-ios.sqlite in Resources */,
 				3219FF591A86C5070034C46E /* Main.storyboard in Resources */,
-				4E72FDF31AAA52F700D3A7A7 /* Plus-50.png in Resources */,
 				3219FF5E1A86C5070034C46E /* LaunchScreen.xib in Resources */,
 				4EB974DD1A9D390F00B4CDA9 /* devoir-ios-test.sqlite in Resources */,
-				4E72FDF51AAA52F700D3A7A7 /* Edit-50.png in Resources */,
 				3219FF5B1A86C5070034C46E /* Images.xcassets in Resources */,
-				4E72FE161AAAE1AE00D3A7A7 /* Down4-25.png in Resources */,
-				4E530BE51ABD593700CF67B1 /* 376px-Goat_cartoon_04.svg.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
