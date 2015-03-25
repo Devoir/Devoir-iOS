@@ -254,17 +254,70 @@
     NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
     Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
-    //[[self.assignments objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
-    //[self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    [self.tableView beginUpdates];
     
+    UITableViewRowAnimation animation = UITableViewRowAnimationLeft;
+    
+    //Remove assignment from current position
+    [[self.assignments objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:animation];
+    
+    if([[self.assignments objectAtIndex:indexPath.section] count] == 0)
+    {
+        NSIndexSet *set = [[NSIndexSet alloc] initWithIndex:indexPath.section];
+        [self.tableView deleteSections:set withRowAnimation:animation];
+    }
+    
+    //update assignment in daabase
     if(assignment.complete == NO)
+    {
         assignment.complete = YES;
+    }
     else
+    {
         assignment.complete = NO;
-    
+    }
     [self.database markAsComplete:assignment];
+    self.assignments = [self.database getAllAssignmentsOrderedByDate];
+    
+    //add assignment to new position
+    [self insertAssignment:assignment InTableWithAnimation:animation];
+
+    [self.tableView endUpdates];
     
     //WILL BE CHANGED
-    [self courseDidChange:self.courseToShow];
+    //[self courseDidChange:self.courseToShow];
 }
+
+- (void)insertAssignment:(Assignment*)assignment InTableWithAnimation:(UITableViewRowAnimation)animation {
+    int row = 0;
+    int section = 0;
+    BOOL done = NO;
+    for(NSMutableArray *sec in self.assignments)
+    {
+        for(Assignment *cmp in sec)
+        {
+            if([cmp.name isEqual:assignment.name])
+            {
+                if([sec count] == 1)
+                {
+                    NSIndexSet *set = [[NSIndexSet alloc] initWithIndex:section];
+                    [self.tableView insertSections:set withRowAnimation:animation];
+                    return;
+                }
+                done = YES;
+                break;
+            }
+            row++;
+        }
+        if(done)
+            break;
+        row = 0;
+        section++;
+    }
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:animation];
+}
+
 @end
