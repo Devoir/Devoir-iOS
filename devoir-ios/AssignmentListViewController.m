@@ -291,7 +291,6 @@
     [self.database markAsComplete:assignment];
     
     //update list of assignments
-    self.assignments = [self.database getAllAssignmentsOrderedByDate];
     if([self.courseToShow integerValue] != -1)
     {
         self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
