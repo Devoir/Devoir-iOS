@@ -10,7 +10,7 @@
 
 @interface UserDBAccess()
 
-@property (nonatomic, retain) NSString* dbName;
+@property (nonatomic, retain) NSString* dbPath;
 
 @end
 
@@ -19,7 +19,7 @@
 - (id) initWithDatabase:(NSString*)db {
     if ((self = [super init]))
     {
-        self.dbName = db;
+        self.dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:db];
     }
     return self;
 }
@@ -29,16 +29,15 @@
 - (User*) getUser {
     User* user = nil;
     
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     sqlite3_stmt* stmt =nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath UTF8String], &db, SQLITE_OPEN_READONLY , nil);
+    rc = sqlite3_open_v2([self.dbPath UTF8String], &db, SQLITE_OPEN_READONLY , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
-        NSLog(@"Failed to open db connection: %@", self.dbName);
+        NSLog(@"Failed to open db connection: %@", self.dbPath);
     }
     else
     {
@@ -76,15 +75,14 @@
 
 - (User*) addUserWithID:(int)ID Name:(NSString *)name Email:(NSString *)email OAuthToken:(NSString *)oAuthToken
              ThemeColor:(UIThemeColor)themeColor{
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    rc = sqlite3_open_v2([self.dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
-        NSLog(@"Failed to open db connection: %@", self.dbName);
+        NSLog(@"Failed to open db connection: %@", self.dbPath);
     }
     else
     {
@@ -114,11 +112,10 @@
 #pragma mark - Update
 
 - (void)updateUser:(User*)user {
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    rc = sqlite3_open_v2([self.dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -146,15 +143,14 @@
 #pragma mark - Delete from database
 
 - (void) removeUser {
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    rc = sqlite3_open_v2([self.dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
-        NSLog(@"Failed to open db connection: %@", self.dbName);
+        NSLog(@"Failed to open db connection: %@", self.dbPath);
     }
     else
     {

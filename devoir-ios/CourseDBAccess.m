@@ -9,7 +9,7 @@
 #import "CourseDBAccess.h"
 
 @interface CourseDBAccess()
-@property (nonatomic, retain) NSString* dbName;
+@property (nonatomic, retain) NSString *dbPath;
 @end
 
 @implementation CourseDBAccess
@@ -17,7 +17,7 @@
 - (id) initWithDatabase:(NSString*)db {
     if ((self = [super init]))
     {
-        self.dbName = db;
+        self.dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:db];
     }
     return self;
 }
@@ -26,12 +26,11 @@
 
 - (Course*) getCourseByID:(int)ID {
     Course* course = nil;
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     sqlite3_stmt* stmt =nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath UTF8String], &db, SQLITE_OPEN_READONLY , nil);
+    rc = sqlite3_open_v2([self.dbPath UTF8String], &db, SQLITE_OPEN_READONLY , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -87,12 +86,11 @@
 
 - (NSArray*) getAllCoursesOrderedByName {
     NSMutableArray* courses = [[NSMutableArray alloc] init];
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     sqlite3_stmt* stmt =nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath UTF8String], &db, SQLITE_OPEN_READONLY , nil);
+    rc = sqlite3_open_v2([self.dbPath UTF8String], &db, SQLITE_OPEN_READONLY , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -151,11 +149,10 @@
 #pragma mark - Update database
 
 - (void)updateCourse:(Course*)course {
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    rc = sqlite3_open_v2([self.dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -182,11 +179,10 @@
 #pragma mark - Add to database
 
 - (Course*) addCourse:(Course*)course {
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    rc = sqlite3_open_v2([self.dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -221,11 +217,10 @@
 #pragma mark - Remove from database
 
 - (void) removeCourseByID:(int)ID {
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    rc = sqlite3_open_v2([self.dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -245,11 +240,10 @@
 }
 
 - (void) removeAllCourses {
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    rc = sqlite3_open_v2([self.dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);

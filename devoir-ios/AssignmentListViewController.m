@@ -71,16 +71,20 @@
     NSString *sectionTitle;
     Assignment *assignment = [[self.assignments objectAtIndex:section] objectAtIndex:0];
     
-    NSDate *dateRepresentingThisDay = assignment.dueDate;
-    NSDate *today = [NSDate date];
+    NSDate *dateRepresentingThisDay = [self dateAtBeginningOfDayForDate:assignment.dueDate];
+    NSDate *today = [self dateAtBeginningOfDayForDate:[NSDate date]];
     
     if(assignment.complete)
     {
         sectionTitle = @"Complete";
     }
-    else if([today earlierDate:dateRepresentingThisDay] == dateRepresentingThisDay)
+    else if([today compare:dateRepresentingThisDay] == NSOrderedDescending)
     {
         sectionTitle = @"Overdue";
+    }
+    else if([today compare:dateRepresentingThisDay] == NSOrderedSame)
+    {
+        sectionTitle = @"Due Today";
     }
     else
     {
@@ -104,10 +108,10 @@
     
     Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
-    NSDate *dateRepresentingThisDay = assignment.dueDate;
-    NSDate *today = [NSDate date];
+    NSDate *dateRepresentingThisDay = [self dateAtBeginningOfDayForDate:assignment.dueDate];
+    NSDate *today = [self dateAtBeginningOfDayForDate:[NSDate date]];
     
-    if([today earlierDate:dateRepresentingThisDay] == dateRepresentingThisDay && !assignment.complete)
+    if([today compare:dateRepresentingThisDay] == NSOrderedDescending && !assignment.complete)
     {
         [cell setupCellWithWidth:tableView.frame.size.width Height:64 Overdue:YES];
     }
@@ -154,24 +158,108 @@
     return YES;
 }
 
-//CHANGE THIS TO BE ANIMATED!!!!
 -(NSArray *)tableView:(UITableView *)tableView editActionsForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewRowAction *deleteButton =
-    [UITableViewRowAction rowActionWithStyle:UITableViewRowActionStyleDefault
-                                       title:@"Delete"
-                                     handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
-                                          {
-                                              Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-                                              [self.database removeAssignmentByID:assignment.ID];
+    UITableViewRowAction *deleteButton = [UITableViewRowAction
+                                          rowActionWithStyle:UITableViewRowActionStyleDefault
+                                          title:@"Delete"
+                                          handler:^(UITableViewRowAction *action, NSIndexPath *indexPath)
+    {
+        Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+        [self.database removeAssignmentByID:assignment.ID];
                                               
-                                              //WILL BE CHANGED
-                                              [self courseDidChange:self.courseToShow];
-                                              //[[self.assignments objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
-                                              //[tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-                                          }];
+        [self.tableView beginUpdates];
+        [self removeAssignmentAtIndex:indexPath WithAnimation:UITableViewRowAnimationLeft];
+        [self.tableView endUpdates];
+    }];
+    
     deleteButton.backgroundColor = [UIColor colorWithRed:0.200 green:0.200 blue:0.200 alpha:1];
     
     return @[deleteButton];
+}
+
+- (IBAction)checkboxSelected:(id)sender {
+    UIButton* button = (UIButton*) sender;
+    UITableViewCell *cell = (UITableViewCell*)button.superview.superview;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+    Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    
+    [self.tableView beginUpdates];
+    
+    UITableViewRowAnimation animation = UITableViewRowAnimationLeft;
+    
+    //update assignment in database
+    if(assignment.complete == NO)
+    {
+        assignment.complete = YES;
+        button.backgroundColor = [UIColor greenColor];
+    }
+    else
+    {
+        assignment.complete = NO;
+        button.backgroundColor = [UIColor whiteColor];
+    }
+    [self.database markAsComplete:assignment];
+    
+    //Remove assignment from current position
+    [self removeAssignmentAtIndex:indexPath WithAnimation:animation];
+    
+    //add assignment to new position
+    [self insertAssignment:assignment WithAnimation:animation];
+    
+    [self.tableView endUpdates];
+}
+
+- (void)removeAssignmentAtIndex:(NSIndexPath*)indexPath WithAnimation:(UITableViewRowAnimation)animation {
+    //Remove assignment from current position
+    [[self.assignments objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
+    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:animation];
+    
+    if([[self.assignments objectAtIndex:indexPath.section] count] == 0)
+    {
+        NSIndexSet *set = [[NSIndexSet alloc] initWithIndex:indexPath.section];
+        [self.tableView deleteSections:set withRowAnimation:animation];
+    }
+    
+    //update list of assignments
+    if([self.courseToShow integerValue] != -1)
+    {
+        self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
+    }
+    else
+    {
+        self.assignments = [self.database getAllAssignmentsOrderedByDate];
+    }
+}
+
+- (void)insertAssignment:(Assignment*)assignment WithAnimation:(UITableViewRowAnimation)animation {
+    int row = 0;
+    int section = 0;
+    BOOL done = NO;
+    for(NSMutableArray *sec in self.assignments)
+    {
+        for(Assignment *cmp in sec)
+        {
+            if([cmp.name isEqual:assignment.name])
+            {
+                if([sec count] == 1)
+                {
+                    NSIndexSet *set = [[NSIndexSet alloc] initWithIndex:section];
+                    [self.tableView insertSections:set withRowAnimation:animation];
+                    return;
+                }
+                done = YES;
+                break;
+            }
+            row++;
+        }
+        if(done)
+            break;
+        row = 0;
+        section++;
+    }
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:animation];
 }
 
 #pragma mark - Segue
@@ -256,88 +344,23 @@
     }
 }
 
-//UPDATE THIS TO BE ANIMATED
-- (IBAction)checkboxSelected:(id)sender {
-    UIButton* button = (UIButton*) sender;
-    UITableViewCell *cell = (UITableViewCell*)button.superview.superview;
-    NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
-    Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+- (NSDate *)dateAtBeginningOfDayForDate:(NSDate *)inputDate {
+    // Use the user's current calendar and time zone
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    NSTimeZone *timeZone = [NSTimeZone systemTimeZone];
+    [calendar setTimeZone:timeZone];
     
-    [self.tableView beginUpdates];
+    // Selectively convert the date components (year, month, day) of the input date
+    NSDateComponents *dateComps = [calendar components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:inputDate];
     
-    UITableViewRowAnimation animation = UITableViewRowAnimationLeft;
+    // Set the time components manually
+    [dateComps setHour:0];
+    [dateComps setMinute:0];
+    [dateComps setSecond:0];
     
-    //Remove assignment from current position
-    [[self.assignments objectAtIndex:indexPath.section] removeObjectAtIndex:indexPath.row];
-    [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:animation];
-    
-    if([[self.assignments objectAtIndex:indexPath.section] count] == 0)
-    {
-        NSIndexSet *set = [[NSIndexSet alloc] initWithIndex:indexPath.section];
-        [self.tableView deleteSections:set withRowAnimation:animation];
-    }
-    
-    //update assignment in daabase
-    if(assignment.complete == NO)
-    {
-        assignment.complete = YES;
-        button.backgroundColor = [UIColor greenColor];
-    }
-    else
-    {
-        assignment.complete = NO;
-        button.backgroundColor = [UIColor whiteColor];
-    }
-    [self.database markAsComplete:assignment];
-    
-    //update list of assignments
-    if([self.courseToShow integerValue] != -1)
-    {
-        self.assignments = [self.database getAllAssignmentsOrderedByDateForCourse:(int)[self.courseToShow integerValue]];
-    }
-    else
-    {
-        self.assignments = [self.database getAllAssignmentsOrderedByDate];
-    }
-    
-    //add assignment to new position
-    [self insertAssignment:assignment InTableWithAnimation:animation];
-
-    [self.tableView endUpdates];
-    
-    //WILL BE CHANGED
-    //[self courseDidChange:self.courseToShow];
-}
-
-- (void)insertAssignment:(Assignment*)assignment InTableWithAnimation:(UITableViewRowAnimation)animation {
-    int row = 0;
-    int section = 0;
-    BOOL done = NO;
-    for(NSMutableArray *sec in self.assignments)
-    {
-        for(Assignment *cmp in sec)
-        {
-            if([cmp.name isEqual:assignment.name])
-            {
-                if([sec count] == 1)
-                {
-                    NSIndexSet *set = [[NSIndexSet alloc] initWithIndex:section];
-                    [self.tableView insertSections:set withRowAnimation:animation];
-                    return;
-                }
-                done = YES;
-                break;
-            }
-            row++;
-        }
-        if(done)
-            break;
-        row = 0;
-        section++;
-    }
-    
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
-    [self.tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:animation];
+    // Convert back
+    NSDate *beginningOfDay = [calendar dateFromComponents:dateComps];
+    return beginningOfDay;
 }
 
 @end

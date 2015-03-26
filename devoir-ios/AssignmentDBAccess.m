@@ -9,7 +9,7 @@
 #import "AssignmentDBAccess.h"
 
 @interface AssignmentDBAccess()
-@property (nonatomic, retain) NSString* dbName;
+@property (nonatomic, retain) NSString *dbPath;
 @end
 
 @implementation AssignmentDBAccess
@@ -17,7 +17,7 @@
 - (id) initWithDatabase:(NSString*)db {
     if ((self = [super init]))
     {
-        self.dbName = db;
+        self.dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:db];
     }
     return self;
 }
@@ -29,10 +29,10 @@
     NSMutableArray *orderedAssignments = [[NSMutableArray alloc] init];
     NSMutableArray *completedAssignments = [[NSMutableArray alloc] init];
     
-    NSDate *today = [NSDate date];
+    NSDate *today = [self dateAtBeginningOfDayForDate:[NSDate date]];
     NSDate *curDate = [self dateAtBeginningOfDayForDate:((Assignment*)[unsortedAssignments objectAtIndex:0]).dueDate];
     BOOL late = 0;
-    if([today earlierDate:curDate] == curDate)
+    if([today compare:curDate] == NSOrderedDescending)
     {
         late = 1;
     }
@@ -48,7 +48,7 @@
         
         if(late)
         {
-            if([today earlierDate:dateRepresentingThisDay] == dateRepresentingThisDay)
+            if([today compare:dateRepresentingThisDay] == NSOrderedDescending)
             {
                 [tempArray addObject:event];
             }
@@ -57,14 +57,14 @@
                 late = 0;
                 curDate = dateRepresentingThisDay;
                 if([tempArray count] > 0)
-                    [orderedAssignments addObject:tempArray];//[tempArray copy]];
+                    [orderedAssignments addObject:tempArray];
                 tempArray = [[NSMutableArray alloc] init];
                 [tempArray addObject:event];
             }
             continue;
         }
 
-        if([curDate isEqual:dateRepresentingThisDay])
+        if([curDate compare:dateRepresentingThisDay] == NSOrderedSame)
         {
             
             [tempArray addObject:event];
@@ -73,7 +73,7 @@
         {
             curDate = dateRepresentingThisDay;
             if([tempArray count] > 0)
-                [orderedAssignments addObject:tempArray];//[tempArray copy]];
+                [orderedAssignments addObject:tempArray];
             tempArray = [[NSMutableArray alloc] init];
             [tempArray addObject:event];
         }
@@ -108,12 +108,11 @@
 
 - (Assignment*) getAssignmentByID:(int)ID {
     Assignment* assignment = nil;
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     sqlite3_stmt* stmt =nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath UTF8String], &db, SQLITE_OPEN_READONLY , nil);
+    rc = sqlite3_open_v2([self.dbPath UTF8String], &db, SQLITE_OPEN_READONLY , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -185,12 +184,11 @@
 
 - (NSMutableArray*) getAllAssignmentsOrderedByDate {
     NSMutableArray* assignments = [[NSMutableArray alloc] init];
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     sqlite3_stmt* stmt =nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath UTF8String], &db, SQLITE_OPEN_READONLY , nil);
+    rc = sqlite3_open_v2([self.dbPath UTF8String], &db, SQLITE_OPEN_READONLY , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -268,12 +266,11 @@
 
 - (NSMutableArray*) getAllAssignmentsOrderedByDateForCourse:(int)courseID {
     NSMutableArray* assignments = [[NSMutableArray alloc] init];
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     sqlite3_stmt* stmt =nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath UTF8String], &db, SQLITE_OPEN_READONLY , nil);
+    rc = sqlite3_open_v2([self.dbPath UTF8String], &db, SQLITE_OPEN_READONLY , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -352,11 +349,10 @@
 #pragma mark - Update database
 
 - (void)updateAssignment:(Assignment*)assignment {
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    rc = sqlite3_open_v2([self.dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -382,11 +378,10 @@
 }
 
 - (void)markAsComplete:(Assignment*)assignment {
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    rc = sqlite3_open_v2([self.dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -413,11 +408,10 @@
 #pragma mark - Add to database
 
 - (Assignment*)addAssignment:(Assignment *)assignment {
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    rc = sqlite3_open_v2([self.dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -454,11 +448,10 @@
 #pragma mark - Remove from database
 
 - (void) removeAssignmentByID:(int)ID {
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    rc = sqlite3_open_v2([self.dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -478,11 +471,10 @@
 }
 
 - (void)removeAllAssignmentsForCourse:(int)courseID {
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    rc = sqlite3_open_v2([self.dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
@@ -502,11 +494,10 @@
 }
 
 - (void)removeAllAssignments {
-    NSString* dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:self.dbName];
     
     sqlite3* db = nil;
     int rc=0;
-    rc = sqlite3_open_v2([dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
+    rc = sqlite3_open_v2([self.dbPath cStringUsingEncoding:NSUTF8StringEncoding], &db, SQLITE_OPEN_READWRITE , nil);
     if (SQLITE_OK != rc)
     {
         sqlite3_close(db);
