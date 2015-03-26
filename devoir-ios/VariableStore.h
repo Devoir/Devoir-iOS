@@ -17,6 +17,8 @@ typedef enum{
 
 // Place any "global" variables here
 @property UIThemeColor themeColor;
+@property NSString *dbPath;
+@property NSString *googleOAtuhClientID;
 
 // message from which our instance is obtained
 + (VariableStore *)sharedInstance;

@@ -15,9 +15,6 @@
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     if(self = [super initWithCoder:aDecoder]) {
-        DBAccess *databse = [[DBAccess alloc] init];
-        User *user = [databse getUser];
-        [VariableStore sharedInstance].themeColor = user.themeColor;
         [self setupNavigationBar];
     }
     return self;

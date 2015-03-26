@@ -27,6 +27,15 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    //try to get theme color from user
+    DBAccess *databse = [[DBAccess alloc] init];
+    User *user = [databse getUser];
+    if(user)
+    {
+        [VariableStore sharedInstance].themeColor = user.themeColor;
+    }
+    
+    //try to log user in
     self.window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *rootViewController = nil;
@@ -35,7 +44,7 @@
     signIn.shouldFetchGooglePlusUser = YES;
     signIn.shouldFetchGoogleUserEmail = YES;
     
-    signIn.clientID = @"668127864316-nsluq6k5g95ln93kmoe7cjg4ot482lth.apps.googleusercontent.com";
+    signIn.clientID = [VariableStore sharedInstance].googleOAtuhClientID;
     
     signIn.scopes = @[ @"profile" ];            // "profile" scope
     
@@ -43,11 +52,11 @@
     if(look)
     {
         rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"NavigationController"];
-
     }
     else
     {
-        rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"SignInViewController"];   
+        //!!!!!clear database!!!!!
+        rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"SignInViewController"];
     }
     self.window.rootViewController = rootViewController;
     [self.window makeKeyAndVisible];

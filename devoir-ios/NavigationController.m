@@ -23,7 +23,7 @@
     return self;
 }
 
-#pragma mark - ANIMATIONS: !!!!!THIS SECTION SHOULD GO IN THE NAVIGATION CONTROLLER ROOT VIEW!!!!!
+#pragma mark - Animations
 
 - (id<UIViewControllerAnimatedTransitioning>)navigationController:(UINavigationController *)navigationController
                                   animationControllerForOperation:(UINavigationControllerOperation)operation

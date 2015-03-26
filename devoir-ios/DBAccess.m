@@ -19,7 +19,7 @@
 - (id) init {
     if ((self = [super init]))
     {
-        self.dbName = @"devoir-ios.sqlite";
+        self.dbName = [VariableStore sharedInstance].dbPath;
     }
     return self;
 }

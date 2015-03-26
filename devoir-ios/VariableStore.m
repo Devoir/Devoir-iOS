@@ -10,8 +10,17 @@
 
 @implementation VariableStore
 
-+ (VariableStore *)sharedInstance
-{
+- (id)init {
+    if ((self = [super init]))
+    {
+        self.themeColor = LIGHT;
+        self.dbPath = @"devoir-ios.sqlite";
+        self.googleOAtuhClientID = @"668127864316-nsluq6k5g95ln93kmoe7cjg4ot482lth.apps.googleusercontent.com";
+    }
+    return self;
+}
+
++ (VariableStore *)sharedInstance {
     // the instance of this class is stored here
     static VariableStore *myInstance = nil;
     

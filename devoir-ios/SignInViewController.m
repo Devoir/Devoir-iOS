@@ -7,8 +7,7 @@
 //
 
 #import "SignInViewController.h"
-
-NSString* const GPLUS_CLIENT_ID = @"668127864316-nsluq6k5g95ln93kmoe7cjg4ot482lth.apps.googleusercontent.com";
+#import "VariableStore.h"
 
 @interface SignInViewController() <GPPSignInDelegate>
 @property (weak, nonatomic) GPPSignIn* signIn;
@@ -34,7 +33,7 @@ NSString* const GPLUS_CLIENT_ID = @"668127864316-nsluq6k5g95ln93kmoe7cjg4ot482lt
     self.signIn.shouldFetchGooglePlusUser = YES;
     self.signIn.shouldFetchGoogleUserEmail = YES;
     
-    self.signIn.clientID = GPLUS_CLIENT_ID;
+    self.signIn.clientID = [VariableStore sharedInstance].googleOAtuhClientID;
     
     self.signIn.scopes = @[ @"profile" ];            // "profile" scope
     
@@ -67,6 +66,7 @@ NSString* const GPLUS_CLIENT_ID = @"668127864316-nsluq6k5g95ln93kmoe7cjg4ot482lt
     else
     {
         //TRY TO LOGIN ON SERVER
+        //Set all needed user variables such as theme color
         NSLog(@"%@", [GPPSignIn sharedInstance].userEmail);
         GTLPlusPerson *person = [GPPSignIn sharedInstance].googlePlusUser;
         NSLog(@"%@", person.displayName);
