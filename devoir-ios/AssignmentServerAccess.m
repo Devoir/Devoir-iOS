@@ -47,7 +47,8 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
     [dateFormatter setLocale:enUSPOSIXLocale];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.sssZ"];
+    //[dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.sssZ"];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss+ssss"];
     DBAccess *database = [[DBAccess alloc] init];
     for(NSDictionary *iassignment in jsonData)
     {
