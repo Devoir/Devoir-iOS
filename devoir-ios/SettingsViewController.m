@@ -35,6 +35,13 @@
 
 - (IBAction)signOut:(id)sender {
     [[GPPSignIn sharedInstance] signOut];
+    
+    //REMOVE EBETYHING FROM DATABASE
+    DBAccess *database = [[DBAccess alloc] init];
+    [database removeUser];
+    [database removeAllAssignments];
+    [database removeAllCourses];
+    
     [self performSegueWithIdentifier:@"logout" sender:self];
 }
 

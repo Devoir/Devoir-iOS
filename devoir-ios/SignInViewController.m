@@ -8,10 +8,14 @@
 
 #import "SignInViewController.h"
 #import "VariableStore.h"
+#import "DBAccess.h"
+#import "ServerAccess.h"
+#import "UserServerAccess.h"
 
-@interface SignInViewController() <GPPSignInDelegate>
+@interface SignInViewController() <GPPSignInDelegate, UserServerAccessDelegate>
 @property (weak, nonatomic) GPPSignIn* signIn;
 @property (retain, nonatomic) IBOutlet GPPSignInButton* signInButton;
+@property (retain, nonatomic) ServerAccess *serverAccess;
 @end
 
 @implementation SignInViewController
@@ -40,17 +44,13 @@
     self.signIn.delegate = self;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+#pragma mark - GPPSignInDelegate methods
 
 -(void)refreshInterfaceBasedOnSignIn {
     if ([[GPPSignIn sharedInstance] authentication])
     {
         // The user is signed in.
         [self performSegueWithIdentifier:@"login_with_course" sender:self];
-        //[self performSegueWithIdentifier:@"login_no_course" sender:self];
     }
     else
     {
@@ -65,15 +65,33 @@
     }
     else
     {
-        //TRY TO LOGIN ON SERVER
-        //Set all needed user variables such as theme color
-        NSLog(@"%@", [GPPSignIn sharedInstance].userEmail);
-        GTLPlusPerson *person = [GPPSignIn sharedInstance].googlePlusUser;
-        NSLog(@"%@", person.displayName);
-        NSLog(@"%@", [auth accessToken]);
-        
+        //INVERT THIS COMMENTING TO USE SERVER STUFF
+        [self refreshInterfaceBasedOnSignIn];
+        //self.serverAccess = [[ServerAccess alloc] init];
+        //[self.serverAccess loginUserWithEmail:[GPPSignIn sharedInstance].userEmail Sender:self];
+    }
+}
+
+#pragma mark - UserServerAccessDelegate methods
+
+- (void)didLogin:(NSNumber*)loginValue {
+    BOOL success = [loginValue boolValue];
+    if(success)
+    {
+        [self.serverAccess addCoursesFromServer];
+        [self.serverAccess addAssignmentsFromServer];
         [self refreshInterfaceBasedOnSignIn];
     }
+    else
+    {
+        [[GPPSignIn sharedInstance] signOut];
+        [self refreshInterfaceBasedOnSignIn];
+    }
+}
+
+- (void)connectionDidFail:(NSError *)error {
+    [[GPPSignIn sharedInstance] signOut];
+    [self refreshInterfaceBasedOnSignIn];
 }
 
 @end

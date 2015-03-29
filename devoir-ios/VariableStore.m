@@ -16,6 +16,7 @@
         self.themeColor = LIGHT;
         self.dbPath = @"devoir-ios.sqlite";
         self.googleOAtuhClientID = @"668127864316-nsluq6k5g95ln93kmoe7cjg4ot482lth.apps.googleusercontent.com";
+        self.serverBaseURL = @"http://localhost:3000";
     }
     return self;
 }

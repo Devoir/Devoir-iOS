@@ -26,6 +26,7 @@
 @implementation AssignmentListViewController
 
 - (void) viewDidLoad {
+    
 
     [self setupNavBar];
     [self setupTableView];

@@ -40,6 +40,11 @@
 		4EB974DF1A9D3B9800B4CDA9 /* DatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */; };
 		4ED1DF581A89935C00D9F29D /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF571A89935C00D9F29D /* Course.m */; };
 		4ED1DF5B1A89936C00D9F29D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF5A1A89936C00D9F29D /* User.m */; };
+		4EE9115B1AC76EB600B03159 /* AsyncHTTPHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9115A1AC76EB600B03159 /* AsyncHTTPHandler.m */; };
+		4EE911601AC789AD00B03159 /* ServerAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9115F1AC789AD00B03159 /* ServerAccess.m */; };
+		4EE911631AC789C200B03159 /* UserServerAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE911621AC789C200B03159 /* UserServerAccess.m */; };
+		4EE911661AC7992B00B03159 /* CourseServerAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE911651AC7992B00B03159 /* CourseServerAccess.m */; };
+		4EE911691AC7A1EE00B03159 /* AssignmentServerAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE911681AC7A1EE00B03159 /* AssignmentServerAccess.m */; };
 		A0328F6711EE5C60E01CEBB8 /* libPods-devoir-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8DCCED73AADA9EA51DDD1498 /* libPods-devoir-ios.a */; };
 		B4000E4BE315B92CBD5733EA /* libPods-devoir-iosTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D3D795EA56AF8EE580B9729 /* libPods-devoir-iosTests.a */; };
 /* End PBXBuildFile section */
@@ -117,6 +122,16 @@
 		4ED1DF571A89935C00D9F29D /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		4ED1DF591A89936C00D9F29D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		4ED1DF5A1A89936C00D9F29D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		4EE911591AC76EB600B03159 /* AsyncHTTPHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncHTTPHandler.h; sourceTree = "<group>"; };
+		4EE9115A1AC76EB600B03159 /* AsyncHTTPHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncHTTPHandler.m; sourceTree = "<group>"; };
+		4EE9115E1AC789AD00B03159 /* ServerAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerAccess.h; sourceTree = "<group>"; };
+		4EE9115F1AC789AD00B03159 /* ServerAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ServerAccess.m; sourceTree = "<group>"; };
+		4EE911611AC789C200B03159 /* UserServerAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserServerAccess.h; sourceTree = "<group>"; };
+		4EE911621AC789C200B03159 /* UserServerAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserServerAccess.m; sourceTree = "<group>"; };
+		4EE911641AC7992B00B03159 /* CourseServerAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CourseServerAccess.h; sourceTree = "<group>"; };
+		4EE911651AC7992B00B03159 /* CourseServerAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CourseServerAccess.m; sourceTree = "<group>"; };
+		4EE911671AC7A1EE00B03159 /* AssignmentServerAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssignmentServerAccess.h; sourceTree = "<group>"; };
+		4EE911681AC7A1EE00B03159 /* AssignmentServerAccess.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssignmentServerAccess.m; sourceTree = "<group>"; };
 		5D3D795EA56AF8EE580B9729 /* libPods-devoir-iosTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-devoir-iosTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DCCED73AADA9EA51DDD1498 /* libPods-devoir-ios.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-devoir-ios.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D9876BD89CB2FEE78E5AB2E /* Pods-devoir-ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-devoir-ios.release.xcconfig"; path = "Pods/Target Support Files/Pods-devoir-ios/Pods-devoir-ios.release.xcconfig"; sourceTree = "<group>"; };
@@ -175,11 +190,13 @@
 				4E7757241AB2B9010023F2F0 /* VariableStore.m */,
 				4E72FE0F1AAADB2D00D3A7A7 /* Animations */,
 				4E3457A11A9CF3F30063EE1E /* Database */,
+				4EE9115C1AC76EBC00B03159 /* HTTP Handlers */,
+				4EE9115D1AC7898000B03159 /* Server */,
 				4ED1DF5C1A89937600D9F29D /* Models */,
 				4E6AC1BA1AA8E22C00BAD7AE /* Views */,
 				4E6AC1BB1AA8E23600BAD7AE /* Controllers */,
-				3219FF571A86C5070034C46E /* Main.storyboard */,
 				3219FF5C1A86C5070034C46E /* LaunchScreen.xib */,
+				3219FF571A86C5070034C46E /* Main.storyboard */,
 				3219FF5A1A86C5070034C46E /* Images.xcassets */,
 				3219FF4D1A86C5070034C46E /* Supporting Files */,
 			);
@@ -317,6 +334,30 @@
 				4ED1DF5A1A89936C00D9F29D /* User.m */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		4EE9115C1AC76EBC00B03159 /* HTTP Handlers */ = {
+			isa = PBXGroup;
+			children = (
+				4EE911591AC76EB600B03159 /* AsyncHTTPHandler.h */,
+				4EE9115A1AC76EB600B03159 /* AsyncHTTPHandler.m */,
+			);
+			name = "HTTP Handlers";
+			sourceTree = "<group>";
+		};
+		4EE9115D1AC7898000B03159 /* Server */ = {
+			isa = PBXGroup;
+			children = (
+				4EE9115E1AC789AD00B03159 /* ServerAccess.h */,
+				4EE9115F1AC789AD00B03159 /* ServerAccess.m */,
+				4EE911611AC789C200B03159 /* UserServerAccess.h */,
+				4EE911621AC789C200B03159 /* UserServerAccess.m */,
+				4EE911641AC7992B00B03159 /* CourseServerAccess.h */,
+				4EE911651AC7992B00B03159 /* CourseServerAccess.m */,
+				4EE911671AC7A1EE00B03159 /* AssignmentServerAccess.h */,
+				4EE911681AC7A1EE00B03159 /* AssignmentServerAccess.m */,
+			);
+			name = Server;
 			sourceTree = "<group>";
 		};
 		DE35CB1542DE0A839EBE3C74 /* Pods */ = {
@@ -505,6 +546,7 @@
 				32B968851AA2DA5700598AD5 /* UIColor+DevoirColors.m in Sources */,
 				4E72FE0E1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.m in Sources */,
 				3219FF531A86C5070034C46E /* AppDelegate.m in Sources */,
+				4EE911631AC789C200B03159 /* UserServerAccess.m in Sources */,
 				4E1ED7FF1A9E98A800E37759 /* AssignmentDBAccess.m in Sources */,
 				4E72FE121AAADB7800D3A7A7 /* DropDownAnimator.m in Sources */,
 				4E77571F1AB2B74C0023F2F0 /* SettingsViewController.m in Sources */,
@@ -522,7 +564,11 @@
 				32B968911AA38C1300598AD5 /* AddCourseViewController.m in Sources */,
 				4E7757281AB2BB9A0023F2F0 /* NavigationBar.m in Sources */,
 				32B9688E1AA38BCA00598AD5 /* CourseListViewController.m in Sources */,
+				4EE911601AC789AD00B03159 /* ServerAccess.m in Sources */,
+				4EE911661AC7992B00B03159 /* CourseServerAccess.m in Sources */,
+				4EE9115B1AC76EB600B03159 /* AsyncHTTPHandler.m in Sources */,
 				4E77572B1AB2BF5F0023F2F0 /* NavigationController.m in Sources */,
+				4EE911691AC7A1EE00B03159 /* AssignmentServerAccess.m in Sources */,
 				32B968761AA2AC8000598AD5 /* AddAssignmentViewController.m in Sources */,
 				4E1F6DAB1AA80426006DE857 /* CourseTableViewCell.m in Sources */,
 			);
