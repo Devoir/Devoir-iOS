@@ -19,6 +19,8 @@
 
 @property (assign, nonatomic) id <AsyncHTTPHandlerDelegate> delegate;
 
+- (void)synchronusGetURL:(NSString*)url;
+
 - (void)sendPostURL:(NSString*)url Body:(NSString*)body;
 - (void)sendGetURL:(NSString*)url;
 

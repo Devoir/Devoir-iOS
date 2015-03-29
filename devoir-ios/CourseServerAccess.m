@@ -27,7 +27,7 @@
     [url appendString:@"/api/users/"];
     [url appendFormat:@"%d", user.ID];
     [url appendString:@"/courses/"];
-    [httpPost sendGetURL:url];
+    [httpPost synchronusGetURL:url];
 }
 
 #pragma mark - AsyncHTTPHandlerDelegate methods

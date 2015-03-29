@@ -24,6 +24,34 @@
     return self;
 }
 
+// Sends an synchronous HTTP GET request
+- (void)synchronusGetURL:(NSString*)url {
+    
+    NSMutableString* requestURL = [[NSMutableString alloc] init];
+    [requestURL appendString:url];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString: [NSString stringWithString:requestURL]]];
+    
+    [request setHTTPMethod: @"GET"];
+    [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
+    
+    NSURLResponse * response = nil;
+    NSError * error = nil;
+    NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    
+    if(error)
+    {
+        [self.delegate performSelector:@selector(connectionDidFail:) withObject:error];
+    }
+    else
+    {
+        NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] copy];
+    
+        [self.delegate performSelector:@selector(didRecieveResponse:FromRequest:) withObject:responseString
+                        withObject:request];
+    }
+}
+
 // Sends an asynchronous HTTP POST request
 - (void)sendPostURL:(NSString*)url Body:(NSString*)body {
     
@@ -45,6 +73,7 @@
     [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
+// Sends an asynchronous HTTP GET request
 - (void)sendGetURL:(NSString*)url{
     
     NSMutableString* requestURL = [[NSMutableString alloc] init];

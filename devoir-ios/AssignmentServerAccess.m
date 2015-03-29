@@ -19,16 +19,20 @@
 @implementation AssignmentServerAccess
 
 - (void)addAssignmentsFromServer {
-    AsyncHTTPHandler *httpPost = [[AsyncHTTPHandler alloc] init];
-    httpPost.delegate = self;
-    
-    NSMutableString *url = [[NSMutableString alloc] initWithString:[[VariableStore sharedInstance] serverBaseURL]];
     DBAccess *database = [[DBAccess alloc] init];
-    User *user = [database getUser];
-    [url appendString:@"/api/courses/"];
-    [url appendFormat:@"%d", user.ID];
-    [url appendString:@"/tasks/"];
-    [httpPost sendGetURL:url];
+
+    NSArray *courses = [database getAllCoursesOrderedByName];
+    for(Course *course in courses)
+    {
+        AsyncHTTPHandler *httpPost = [[AsyncHTTPHandler alloc] init];
+        httpPost.delegate = self;
+    
+        NSMutableString *url = [[NSMutableString alloc] initWithString:[[VariableStore sharedInstance] serverBaseURL]];
+        [url appendString:@"/api/courses/"];
+        [url appendFormat:@"%d", course.ID];
+        [url appendString:@"/tasks/"];
+        [httpPost synchronusGetURL:url];
+    }
 }
 
 #pragma mark - AsyncHTTPHandlerDelegate methods
@@ -40,10 +44,27 @@
                          JSONObjectWithData:data
                          options:NSJSONReadingMutableContainers
                          error:&error];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+    [dateFormatter setLocale:enUSPOSIXLocale];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd'T'HH:mm:ss.sssZ"];
     DBAccess *database = [[DBAccess alloc] init];
-    for(NSDictionary *assignment in jsonData)
+    for(NSDictionary *iassignment in jsonData)
     {
-        NSLog(@"NO TASKS ARE BEING ADDED: WAITING ON SERVER TEAM");
+        int assignmentID = (int)[iassignment[@"id"] integerValue];
+        NSString *name = iassignment[@"name"];
+        NSString *dueDate = iassignment[@"end_date"];
+        BOOL complete = (int)[iassignment[@"complete"] integerValue];
+        BOOL visible = (int)[iassignment[@"visible"] integerValue];
+        int courseID = (int)[iassignment[@"course_id"] integerValue];
+        NSString *lastUpdated = iassignment[@"last_updated"];
+        NSString *description = iassignment[@"description"];
+        
+        Assignment* assignment = [[Assignment alloc] initWithID:assignmentID Name:name
+                                                        DueDate:[dateFormatter dateFromString:dueDate] Complete:complete Visible:visible
+                                                       CourseID:courseID LastUpated:[dateFormatter dateFromString:lastUpdated]
+                                          AssignmentDescription:description ICalEventID:nil ICalEventName:nil ICalDescription:nil];
+        [database addAssignment:assignment];
     }
 }
 

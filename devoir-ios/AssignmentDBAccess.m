@@ -314,6 +314,8 @@
                     iCalEventDescription = @(temp);
                 
                 NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+                NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+                [formatter setLocale:enUSPOSIXLocale];
                 formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
                 
                 Assignment *assignment = [[Assignment alloc] initWithID:ID
@@ -419,13 +421,18 @@
     }
     else
     {
+        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+        NSLocale *enUSPOSIXLocale = [NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"];
+        [formatter setLocale:enUSPOSIXLocale];
+        formatter.dateFormat = @"yyyy-MM-dd HH:mm:ss";
+        
         NSString * query  = [NSString
                              stringWithFormat:@"INSERT INTO Assignment"
                              "(id, Name, DueDate, Complete, Visible, CourseID, LastUpdated, AssignmentDescription, "
-                             "ICalEventID, ICalEventName, ICalDescription) "
+                             "ICalEventID, ICalEventName, ICalEventDescription) "
                              "VALUES (%d, \"%@\",\"%@\",%d,%d,%d,\"%@\",\"%@\",\"%@\",\"%@\",\"%@\")",
-                             assignment.ID, assignment.name, assignment.dueDate, assignment.complete,
-                             assignment.visible, assignment.courseID, assignment.lastUpdated, assignment.assignmentDescription,
+                             assignment.ID, assignment.name, [formatter stringFromDate:assignment.dueDate], assignment.complete,
+                             assignment.visible, assignment.courseID, [formatter stringFromDate:assignment.lastUpdated], assignment.assignmentDescription,
                              assignment.iCalEventID, assignment.iCalEventName, assignment.iCalEventDescription];
         
         //NSLog(@"QUERY: %@", query);
