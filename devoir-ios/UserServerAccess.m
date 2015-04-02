@@ -26,12 +26,25 @@
     
     NSMutableString *url = [[NSMutableString alloc] initWithString:[[VariableStore sharedInstance] serverBaseURL]];
     [url appendString:@"/api/login"];
-    [httpPost sendPostURL:url Body:requestBody];
+    [httpPost sendPostURL:url Body:requestBody Endpoint:LoginUserWithEmail];
 }
 
 #pragma mark - AsyncHTTPHandlerDelegate methods
 
-- (void)didRecieveResponse:(NSString *)responseBody FromRequest:(NSURLRequest *)request {
+- (void)didRecieveResponse:(NSString *)responseBody FromEndpoint:(NSNumber *)endpoint {
+    if((DevoirAPIEndpoint)[endpoint intValue] == LoginUserWithEmail)
+    {
+        [self handleLoginWithEmailResponse:responseBody];
+    }
+}
+
+- (void)connectionDidFail:(NSError *)error {
+    [self.delegate performSelector:@selector(connectionDidFail:) withObject:error];
+}
+
+#pragma mark - Response handlers
+
+- (void)handleLoginWithEmailResponse:(NSString*)responseBody {
     if(![responseBody isEqual:@"null"])
     {
         NSData* data = [responseBody dataUsingEncoding:NSUTF8StringEncoding];
@@ -50,18 +63,13 @@
         [VariableStore sharedInstance].themeColor = DARK;
         
         
-       [self.delegate performSelector:@selector(didLogin:) withObject:[NSNumber numberWithBool:YES]];
+        [self.delegate performSelector:@selector(didLogin:) withObject:[NSNumber numberWithBool:YES]];
     }
     else
     {
-        //FIRST TIME LOGGING IN FOR NOW JUST LOGS OUT...
         [self.delegate performSelector:@selector(didLogin:) withObject:[NSNumber numberWithBool:NO]];
         
     }
-}
-
-- (void)connectionDidFail:(NSError *)error {
-    [self.delegate performSelector:@selector(connectionDidFail:) withObject:error];
 }
 
 @end

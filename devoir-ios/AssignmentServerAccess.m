@@ -31,13 +31,26 @@
         [url appendString:@"/api/courses/"];
         [url appendFormat:@"%d", course.ID];
         [url appendString:@"/tasks/"];
-        [httpPost synchronusGetURL:url];
+        [httpPost synchronusGetURL:url Endpoint:GetAllAssignmentsForCourse];
     }
 }
 
 #pragma mark - AsyncHTTPHandlerDelegate methods
 
-- (void)didRecieveResponse:(NSString *)responseBody FromRequest:(NSURLRequest *)request {
+- (void)didRecieveResponse:(NSString *)responseBody FromEndpoint:(NSNumber *)endpoint {
+    if((DevoirAPIEndpoint)[endpoint intValue] == GetAllAssignmentsForCourse)
+    {
+        [self handleAddAssignmentsFromServerResponse:responseBody];
+    }
+}
+
+- (void)connectionDidFail:(NSError *)error {
+    
+}
+
+#pragma mark - Response handlers
+
+- (void)handleAddAssignmentsFromServerResponse:(NSString*)responseBody {
     NSData* data = [responseBody dataUsingEncoding:NSUTF8StringEncoding];
     NSError* error = [[NSError alloc] init];
     NSArray* jsonData = [NSJSONSerialization
@@ -67,10 +80,6 @@
                                           AssignmentDescription:description ICalEventID:nil ICalEventName:nil ICalDescription:nil];
         [database addAssignment:assignment];
     }
-}
-
-- (void)connectionDidFail:(NSError *)error {
-    
 }
 
 @end

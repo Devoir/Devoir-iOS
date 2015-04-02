@@ -27,18 +27,31 @@
     [url appendString:@"/api/users/"];
     [url appendFormat:@"%d", user.ID];
     [url appendString:@"/courses/"];
-    [httpPost synchronusGetURL:url];
+    [httpPost synchronusGetURL:url Endpoint:GetAllCoursesForUser];
 }
 
 #pragma mark - AsyncHTTPHandlerDelegate methods
 
-- (void)didRecieveResponse:(NSString *)responseBody FromRequest:(NSURLRequest *)request {
+- (void)didRecieveResponse:(NSString *)responseBody FromEndpoint:(NSNumber *)endpoint {
+    if((DevoirAPIEndpoint)[endpoint intValue] == GetAllCoursesForUser)
+    {
+        [self handleAddCoursesFromServerResponse:responseBody];
+    }
+}
+
+- (void)connectionDidFail:(NSError *)error {
+    
+}
+
+#pragma mark - Response handlers
+
+- (void)handleAddCoursesFromServerResponse:(NSString*)responseBody {
     NSData* data = [responseBody dataUsingEncoding:NSUTF8StringEncoding];
     NSError* error = [[NSError alloc] init];
     NSArray* jsonData = [NSJSONSerialization
-                                JSONObjectWithData:data
-                                options:NSJSONReadingMutableContainers
-                                error:&error];
+                         JSONObjectWithData:data
+                         options:NSJSONReadingMutableContainers
+                         error:&error];
     DBAccess *database = [[DBAccess alloc] init];
     for(NSDictionary *course in jsonData)
     {
@@ -62,10 +75,6 @@
                                              ICalID:nil];
         [database addCourse:course];
     }
-}
-
-- (void)connectionDidFail:(NSError *)error {
-    
 }
 
 @end

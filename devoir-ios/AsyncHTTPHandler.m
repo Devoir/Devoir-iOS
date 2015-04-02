@@ -7,6 +7,7 @@
 //
 
 #import "AsyncHTTPHandler.h"
+#import "DevoirAPIConnection.h"
 
 @interface AsyncHTTPHandler() <NSURLConnectionDelegate, NSURLConnectionDataDelegate>
 @property NSMutableData *httpResponse;
@@ -25,7 +26,7 @@
 }
 
 // Sends an synchronous HTTP GET request
-- (void)synchronusGetURL:(NSString*)url {
+- (void)synchronusGetURL:(NSString*)url Endpoint:(DevoirAPIEndpoint)endpoint {
     
     NSMutableString* requestURL = [[NSMutableString alloc] init];
     [requestURL appendString:url];
@@ -37,7 +38,7 @@
     
     NSURLResponse * response = nil;
     NSError * error = nil;
-    NSData * data = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
+    NSData * data = [DevoirAPIConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
     if(error)
     {
@@ -47,13 +48,13 @@
     {
         NSString* responseString = [[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding] copy];
     
-        [self.delegate performSelector:@selector(didRecieveResponse:FromRequest:) withObject:responseString
-                        withObject:request];
+        [self.delegate performSelector:@selector(didRecieveResponse:FromEndpoint:) withObject:responseString
+                        withObject:[NSNumber numberWithInt:endpoint]];
     }
 }
 
 // Sends an asynchronous HTTP POST request
-- (void)sendPostURL:(NSString*)url Body:(NSString*)body {
+- (void)sendPostURL:(NSString*)url Body:(NSString*)body Endpoint:(DevoirAPIEndpoint)endpoint {
     
     NSMutableString* requestURL = [[NSMutableString alloc] init];
     [requestURL appendString:url];
@@ -70,11 +71,12 @@
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
     [request setHTTPBody: requestData];
     
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [[DevoirAPIConnection alloc] initWithRequest:request delegate:self endpoint:endpoint];
+    //[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 // Sends an asynchronous HTTP GET request
-- (void)sendGetURL:(NSString*)url{
+- (void)sendGetURL:(NSString*)url Endpoint:(DevoirAPIEndpoint)endpoint {
     
     NSMutableString* requestURL = [[NSMutableString alloc] init];
     [requestURL appendString:url];
@@ -84,7 +86,8 @@
     [request setHTTPMethod: @"GET"];
     [request setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"content-type"];
     
-    [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [[DevoirAPIConnection alloc] initWithRequest:request delegate:self endpoint:endpoint];
+    //[[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 #pragma mark - NSURLConnectionDelegate methods
@@ -104,11 +107,11 @@
     [self.httpResponse appendData:data];
 }
 
-- (void)connectionDidFinishLoading:(NSURLConnection *)connection {
+- (void)connectionDidFinishLoading:(DevoirAPIConnection *)connection {
     NSString* responseString = [[[NSString alloc] initWithData:self.httpResponse encoding:NSUTF8StringEncoding] copy];
     
-    [self.delegate performSelector:@selector(didRecieveResponse:FromRequest:) withObject:responseString
-                        withObject:[connection originalRequest]];
+    [self.delegate performSelector:@selector(didRecieveResponse:FromEndpoint:) withObject:responseString
+                        withObject:[NSNumber numberWithInt:connection.endpoint]];
     
 }
 

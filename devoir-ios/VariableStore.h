@@ -13,6 +13,10 @@ typedef enum{
     
 } UIThemeColor;
 
+typedef enum {
+    LoginUserWithEmail, GetAllCoursesForUser, GetAllAssignmentsForCourse
+} DevoirAPIEndpoint;
+
 @interface VariableStore : NSObject
 
 // Place any "global" variables here

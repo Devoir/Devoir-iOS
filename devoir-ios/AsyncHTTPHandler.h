@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "VariableStore.h"
 
 @protocol AsyncHTTPHandlerDelegate <NSObject>
 
-- (void)didRecieveResponse:(NSString*)responseBody FromRequest:(NSURLRequest*)request;
+- (void)didRecieveResponse:(NSString*)responseBody FromEndpoint:(NSNumber *)endpoint;
 - (void)connectionDidFail:(NSError*)error;
 
 @end
@@ -19,9 +20,9 @@
 
 @property (assign, nonatomic) id <AsyncHTTPHandlerDelegate> delegate;
 
-- (void)synchronusGetURL:(NSString*)url;
+- (void)synchronusGetURL:(NSString*)url Endpoint:(DevoirAPIEndpoint)endpoint;
 
-- (void)sendPostURL:(NSString*)url Body:(NSString*)body;
-- (void)sendGetURL:(NSString*)url;
+- (void)sendPostURL:(NSString*)url Body:(NSString*)body Endpoint:(DevoirAPIEndpoint)endpoint;
+- (void)sendGetURL:(NSString*)url Endpoint:(DevoirAPIEndpoint)endpoint;
 
 @end

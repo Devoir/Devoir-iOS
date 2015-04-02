@@ -40,6 +40,7 @@
 		4EB974DF1A9D3B9800B4CDA9 /* DatabaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EB974DE1A9D3B9800B4CDA9 /* DatabaseTests.m */; };
 		4ED1DF581A89935C00D9F29D /* Course.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF571A89935C00D9F29D /* Course.m */; };
 		4ED1DF5B1A89936C00D9F29D /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED1DF5A1A89936C00D9F29D /* User.m */; };
+		4ED29C5B1ACCCE6200DD104D /* DevoirAPIConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ED29C5A1ACCCE6200DD104D /* DevoirAPIConnection.m */; };
 		4EE9115B1AC76EB600B03159 /* AsyncHTTPHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9115A1AC76EB600B03159 /* AsyncHTTPHandler.m */; };
 		4EE911601AC789AD00B03159 /* ServerAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE9115F1AC789AD00B03159 /* ServerAccess.m */; };
 		4EE911631AC789C200B03159 /* UserServerAccess.m in Sources */ = {isa = PBXBuildFile; fileRef = 4EE911621AC789C200B03159 /* UserServerAccess.m */; };
@@ -122,6 +123,8 @@
 		4ED1DF571A89935C00D9F29D /* Course.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Course.m; sourceTree = "<group>"; };
 		4ED1DF591A89936C00D9F29D /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		4ED1DF5A1A89936C00D9F29D /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		4ED29C591ACCCE6200DD104D /* DevoirAPIConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DevoirAPIConnection.h; sourceTree = "<group>"; };
+		4ED29C5A1ACCCE6200DD104D /* DevoirAPIConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DevoirAPIConnection.m; sourceTree = "<group>"; };
 		4EE911591AC76EB600B03159 /* AsyncHTTPHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncHTTPHandler.h; sourceTree = "<group>"; };
 		4EE9115A1AC76EB600B03159 /* AsyncHTTPHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncHTTPHandler.m; sourceTree = "<group>"; };
 		4EE9115E1AC789AD00B03159 /* ServerAccess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ServerAccess.h; sourceTree = "<group>"; };
@@ -341,6 +344,8 @@
 			children = (
 				4EE911591AC76EB600B03159 /* AsyncHTTPHandler.h */,
 				4EE9115A1AC76EB600B03159 /* AsyncHTTPHandler.m */,
+				4ED29C591ACCCE6200DD104D /* DevoirAPIConnection.h */,
+				4ED29C5A1ACCCE6200DD104D /* DevoirAPIConnection.m */,
 			);
 			name = "HTTP Handlers";
 			sourceTree = "<group>";
@@ -544,6 +549,7 @@
 				4ED1DF5B1A89936C00D9F29D /* User.m in Sources */,
 				4ED1DF581A89935C00D9F29D /* Course.m in Sources */,
 				32B968851AA2DA5700598AD5 /* UIColor+DevoirColors.m in Sources */,
+				4ED29C5B1ACCCE6200DD104D /* DevoirAPIConnection.m in Sources */,
 				4E72FE0E1AAABC2B00D3A7A7 /* AssignmentListSectionHeader.m in Sources */,
 				3219FF531A86C5070034C46E /* AppDelegate.m in Sources */,
 				4EE911631AC789C200B03159 /* UserServerAccess.m in Sources */,
