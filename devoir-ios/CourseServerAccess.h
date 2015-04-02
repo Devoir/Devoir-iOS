@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Course.h"
 
 @interface CourseServerAccess : NSObject
 
-- (void)addCoursesFromServer;
+- (void)getCourses;
+-(void)addCourse:(Course*)course;
 
 @end

@@ -36,12 +36,16 @@
     return [self.userServerAccess loginWithEmail:email];
 }
 
-- (void)addCoursesFromServer {
-    return [self.courseServerAccess addCoursesFromServer];
+- (void)getCourses {
+    return [self.courseServerAccess getCourses];
 }
 
-- (void)addAssignmentsFromServer {
-    return [self.assignmentServerAccess addAssignmentsFromServer];
+-(void)addCourse:(Course*)course {
+    return [self.courseServerAccess addCourse:course];
+}
+
+- (void)getAssignments {
+    return [self.assignmentServerAccess getAssignments];
 }
 
 @end

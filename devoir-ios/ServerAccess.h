@@ -7,12 +7,15 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Course.h"
 
 @interface ServerAccess : NSObject
 
 - (void)loginUserWithEmail:(NSString *)email Sender:(NSObject*)sender;
 
-- (void)addCoursesFromServer;
-- (void)addAssignmentsFromServer;
+- (void)getCourses;
+-(void)addCourse:(Course*)course;
+
+- (void)getAssignments;
 
 @end

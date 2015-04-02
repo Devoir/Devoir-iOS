@@ -17,7 +17,7 @@
 
 @implementation CourseServerAccess
 
-- (void)addCoursesFromServer {
+- (void)getCourses {
     AsyncHTTPHandler *httpPost = [[AsyncHTTPHandler alloc] init];
     httpPost.delegate = self;
     
@@ -30,12 +30,39 @@
     [httpPost synchronusGetURL:url Endpoint:GetAllCoursesForUser];
 }
 
+-(void)addCourse:(Course*)course {
+    AsyncHTTPHandler *httpPost = [[AsyncHTTPHandler alloc] init];
+    httpPost.delegate = self;
+    NSMutableString* requestBody = [[NSMutableString alloc] init];
+    [requestBody appendString:@"name="];
+    [requestBody appendString:course.name];
+    [requestBody appendString:@"&color="];
+    [requestBody appendString:[NSString stringWithFormat:@"%d", course.color]];
+    [requestBody appendString:@"&visible="];
+    [requestBody appendString:[NSString stringWithFormat:@"%d", course.visible]];
+    [requestBody appendString:@"&ical_feed_url="];
+    if(course.iCalFeed)
+    {
+        [requestBody appendString:course.iCalFeed];
+    }
+    [requestBody appendString:@"&user_id="];
+    [requestBody appendString:[NSString stringWithFormat:@"%d", course.userID]];
+    
+    NSMutableString *url = [[NSMutableString alloc] initWithString:[[VariableStore sharedInstance] serverBaseURL]];
+    [url appendString:@"/api/courses"];
+    [httpPost sendPostURL:url Body:requestBody Endpoint:AddCourse];
+}
+
 #pragma mark - AsyncHTTPHandlerDelegate methods
 
 - (void)didRecieveResponse:(NSString *)responseBody FromEndpoint:(NSNumber *)endpoint {
     if((DevoirAPIEndpoint)[endpoint intValue] == GetAllCoursesForUser)
     {
-        [self handleAddCoursesFromServerResponse:responseBody];
+        [self handleGetCoursesResponse:responseBody];
+    }
+    else if((DevoirAPIEndpoint)[endpoint intValue] == AddCourse)
+    {
+        [self handleAddCourseResponse:responseBody];
     }
 }
 
@@ -45,7 +72,7 @@
 
 #pragma mark - Response handlers
 
-- (void)handleAddCoursesFromServerResponse:(NSString*)responseBody {
+- (void)handleGetCoursesResponse:(NSString*)responseBody {
     NSData* data = [responseBody dataUsingEncoding:NSUTF8StringEncoding];
     NSError* error = [[NSError alloc] init];
     NSArray* jsonData = [NSJSONSerialization
@@ -75,6 +102,10 @@
                                              ICalID:nil];
         [database addCourse:course];
     }
+}
+
+- (void)handleAddCourseResponse:(NSString*)responseBody {
+    
 }
 
 @end

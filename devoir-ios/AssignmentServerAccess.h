@@ -10,6 +10,6 @@
 
 @interface AssignmentServerAccess : NSObject
 
-- (void)addAssignmentsFromServer;
+- (void)getAssignments;
 
 @end

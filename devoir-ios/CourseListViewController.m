@@ -13,6 +13,7 @@
 #import "AssignmentListViewController.h"
 #import "AddCourseViewController.h"
 #import "SettingsViewController.h"
+#import "ServerAccess.h"
 
 @interface CourseListViewController () <UITableViewDataSource, UITableViewDelegate, AddCourseDelegate>
 @property (strong, nonatomic) UITableView *tableView;
@@ -20,6 +21,8 @@
 @property (strong, nonatomic)  UIButton *settingsButton;
 @property (strong, nonatomic) NSArray *courses;
 @property (strong, nonatomic) NSMutableArray *usedColors;
+@property (retain, nonatomic) ServerAccess *server;
+
 @end
 
 @implementation CourseListViewController
@@ -29,6 +32,7 @@
     [self setupTableView];
     [self setupSettingsButton];
     
+    self.server = [[ServerAccess alloc] init];
     self.database = [[DBAccess alloc] init];
     self.courses = [self.database getAllCoursesOrderedByName];
     
@@ -131,21 +135,6 @@
         
         cell.courseLabel.text = course.name;
         cell.courseLabel.backgroundColor = [UIColor dbColor:course.color];
-        
-       // cell.courseScrollView.backgroundColor = [UIColor dbColor:course.color];
-       // cell.courseLabel.text = course.name;
-        
-       // [cell.courseFilterButton addTarget:self
-       //                             action:@selector(courseFilterButtonPressed:)
-       //                   forControlEvents:UIControlEventTouchUpInside];
-       //
-       // [cell.editButton addTarget:self
-       //                     action:@selector(editButtonPressed:)
-       //           forControlEvents:UIControlEventTouchUpInside];
-       //
-       // [cell.deleteButton addTarget:self
-       //                       action:@selector(deleteButtonPressed:)
-       //             forControlEvents:UIControlEventTouchUpInside];
     }
     
     return cell;
@@ -223,37 +212,15 @@
     [self.navigationController pushViewController:toViewController animated:YES];
 }
 
-/*- (void)editButtonPressed:(id)sender {
-    UIButton *senderButton = (UIButton*)sender;
-    Course *course = [self.courses objectAtIndex:senderButton.tag];
-    AddCourseViewController *toViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"addCourseViewController"];
-    toViewController.course = course;
-    toViewController.delegate = self;
-    [self.navigationController pushViewController:toViewController animated:YES];
-}*/
-
-/*- (void)courseFilterButtonPressed:(id)sender {
-    UIButton *senderButton = (UIButton*)sender;
-    int row = (int)senderButton.tag;
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:0];
-    [self tableView:self.tableView didSelectRowAtIndexPath:indexPath];
-}*/
-
-/*- (void)deleteButtonPressed:(id)sender {
-    UIButton *senderButton = (UIButton*)sender;
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Delete Course"
-                                                    message:@"Are you sure you want to permanently delete this course?"
-                                                   delegate:self
-                                          cancelButtonTitle:@"Cancel"
-                                          otherButtonTitles:@"Delete", nil];
-    alert.tag = senderButton.tag;
-    [alert show];
-
-}*/
-
 #pragma mark - AddCourseDelegate methods
 
 - (void) didAddCourse:(Course *)course {
+    User *user = [self.database getUser];
+    course.userID = user.ID;
+    course.visible = YES;
+    
+    [self.server addCourse:course];
+
     [self.database addCourse:course];
     self.courses = [self.database getAllCoursesOrderedByName];
     [self buildUsedColors];

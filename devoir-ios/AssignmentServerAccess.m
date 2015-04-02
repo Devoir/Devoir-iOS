@@ -18,7 +18,7 @@
 
 @implementation AssignmentServerAccess
 
-- (void)addAssignmentsFromServer {
+- (void)getAssignments {
     DBAccess *database = [[DBAccess alloc] init];
 
     NSArray *courses = [database getAllCoursesOrderedByName];
@@ -40,7 +40,7 @@
 - (void)didRecieveResponse:(NSString *)responseBody FromEndpoint:(NSNumber *)endpoint {
     if((DevoirAPIEndpoint)[endpoint intValue] == GetAllAssignmentsForCourse)
     {
-        [self handleAddAssignmentsFromServerResponse:responseBody];
+        [self handleGetAssignmentsResponse:responseBody];
     }
 }
 
@@ -50,7 +50,7 @@
 
 #pragma mark - Response handlers
 
-- (void)handleAddAssignmentsFromServerResponse:(NSString*)responseBody {
+- (void)handleGetAssignmentsResponse:(NSString*)responseBody {
     NSData* data = [responseBody dataUsingEncoding:NSUTF8StringEncoding];
     NSError* error = [[NSError alloc] init];
     NSArray* jsonData = [NSJSONSerialization

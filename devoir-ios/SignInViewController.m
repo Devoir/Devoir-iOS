@@ -78,8 +78,8 @@
     BOOL success = [loginValue boolValue];
     if(success)
     {
-        [self.serverAccess addCoursesFromServer];
-        [self.serverAccess addAssignmentsFromServer];
+        [self.serverAccess getCourses];
+        [self.serverAccess getAssignments];
         [self refreshInterfaceBasedOnSignIn];
     }
     else

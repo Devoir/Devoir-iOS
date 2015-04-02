@@ -14,7 +14,7 @@ typedef enum{
 } UIThemeColor;
 
 typedef enum {
-    LoginUserWithEmail, GetAllCoursesForUser, GetAllAssignmentsForCourse
+    LoginUserWithEmail, GetAllCoursesForUser, GetAllAssignmentsForCourse, AddCourse
 } DevoirAPIEndpoint;
 
 @interface VariableStore : NSObject
