@@ -29,7 +29,7 @@
         
         tempLabel.text = title;
         tempLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
-        tempLabel.textColor = [UIColor devMainTextColor];
+        tempLabel.textColor = [UIColor whiteColor];
         
         [self addSubview:tempLabel];
     }

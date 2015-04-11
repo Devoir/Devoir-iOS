@@ -48,7 +48,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Ic-OX-De8">
                                                     <rect key="frame" x="233" y="2" width="76" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -89,7 +89,7 @@
                                 <segue destination="Aeq-rU-6zH" kind="push" identifier="courseList" id="P8m-oS-qTG"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fv0-XG-Mie">
+                        <barButtonItem key="rightBarButtonItem" image="Plus" id="fv0-XG-Mie">
                             <connections>
                                 <segue destination="bUN-KO-0wi" kind="push" identifier="toAddAssignment" id="QRY-p3-17h"/>
                             </connections>
@@ -422,6 +422,7 @@
     <resources>
         <image name="DownArrow" width="25" height="25"/>
         <image name="Goat" width="376" height="372"/>
+        <image name="Plus" width="30" height="30"/>
         <image name="calendar.png" width="25" height="25"/>
         <image name="notes.png" width="25" height="25"/>
     </resources>
