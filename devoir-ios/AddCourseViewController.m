@@ -31,7 +31,6 @@
         [self.iCalURLText setEnabled:NO];
         
         self.origColor = self.course.color;
-        
         [[self.deleteButton layer] setBorderWidth:1.0f];
         [self.deleteButton.layer setCornerRadius:5.0f];
         [self.deleteButton.layer setBorderColor: [UIColor devRed].CGColor];
@@ -40,7 +39,9 @@
     {
         self.isNew = YES;
         self.course = [[Course alloc] init];
+        self.deleteButton.hidden = YES;
     }
+    
     
     self.view.backgroundColor = [UIColor devAccentColor];
     self.courseNameTextField.textColor = [UIColor devAccentTextColor];

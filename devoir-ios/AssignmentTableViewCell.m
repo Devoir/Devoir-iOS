@@ -26,8 +26,8 @@
     self.colorLabel.frame = CGRectMake(0, 0, 15, height);
     self.overdueDate.backgroundColor = [UIColor clearColor];
     
-    self.courseLabel.textColor = [UIColor devAccentTextColor];
-    self.overdueDate.textColor = [UIColor devAccentTextColor];
+    self.courseLabel.textColor = [UIColor devMainTextColor];
+    self.overdueDate.textColor = [UIColor devMainTextColor];
     self.assignmentLabel.textColor = [UIColor devMainTextColor];
     
     self.selectionStyle = UITableViewCellSelectionStyleNone;

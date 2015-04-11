@@ -21,10 +21,10 @@
 }
 
 - (void)setupNavigationBar {
-    [self setBarTintColor:[UIColor devMainColor]];
+    [self setBarTintColor:[UIColor devAccentColor]];
     self.translucent = NO;
-    self.tintColor = [UIColor devMainTextColor];
-    self.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor devMainTextColor]};
+    self.tintColor = [UIColor devAccentTextColor];
+    self.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor devAccentTextColor]};
     if([VariableStore sharedInstance].themeColor == DARK)
         [self setBarStyle:UIStatusBarStyleLightContent];
     else

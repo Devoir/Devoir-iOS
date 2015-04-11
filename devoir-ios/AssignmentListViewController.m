@@ -47,7 +47,7 @@
 }
 
 - (void)setupTableView {
-    self.tableView.backgroundColor = [UIColor devAccentColor];
+    self.tableView.backgroundColor = [UIColor whiteColor];
     self.tableView.separatorColor = [UIColor devAccentColor];
     self.courseToShow = [[NSNumber alloc] initWithInt:-1];
 }
@@ -105,7 +105,7 @@
     static NSString *CellIdentifier = @"cell";
     AssignmentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    cell.backgroundColor = [UIColor devMainColor];
+    cell.backgroundColor = [UIColor whiteColor];
     
     Assignment *assignment = [[self.assignments objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     
@@ -133,7 +133,7 @@
     
     if(assignment.complete)
     {
-        cell.checkbox.backgroundColor = [UIColor greenColor];
+        cell.checkbox.backgroundColor = [UIColor devMainColor];
     }
     else
     {
@@ -142,7 +142,7 @@
     
     cell.checkbox.layer.cornerRadius = cell.checkbox.bounds.size.width / 2.0;
     [[cell.checkbox layer] setBorderWidth:1.0f];
-    [[cell.checkbox layer] setBorderColor: [UIColor lightGrayColor].CGColor];
+    [[cell.checkbox layer] setBorderColor: [UIColor devMainColor].CGColor];
 
     return cell;
 }
@@ -192,7 +192,7 @@
     if(assignment.complete == NO)
     {
         assignment.complete = YES;
-        button.backgroundColor = [UIColor greenColor];
+        button.backgroundColor = [UIColor devMainColor];
     }
     else
     {

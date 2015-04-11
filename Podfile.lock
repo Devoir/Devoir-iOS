@@ -5,6 +5,6 @@ DEPENDENCIES:
   - google-plus-ios-sdk (~> 1.7.1)
 
 SPEC CHECKSUMS:
-  google-plus-ios-sdk: bb7b918c2ee0d5f5e389c4fddc06d71995481f67
+  google-plus-ios-sdk: 47adbe03ea904bdb7aa1c0eca282a23c4686e1bc
 
-COCOAPODS: 0.35.0
+COCOAPODS: 0.36.3

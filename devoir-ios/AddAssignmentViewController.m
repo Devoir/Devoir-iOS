@@ -53,6 +53,8 @@
         [[self.deleteButton layer] setBorderWidth:1.0f];
         [self.deleteButton.layer setCornerRadius:5.0f];
         [self.deleteButton.layer setBorderColor: [UIColor devRed].CGColor];
+    } else {
+        self.deleteButton.hidden = YES;
     }
     
     [self setupNavBar];
