@@ -19,9 +19,17 @@
 - (id) initWithDatabase:(NSString*)db {
     if ((self = [super init]))
     {
-        self.dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:db];
+        //self.dbPath = [[[NSBundle mainBundle] resourcePath ]stringByAppendingPathComponent:db];
+        self.dbPath = [[self GetDocumentDirectory] stringByAppendingPathComponent:db];
+
     }
     return self;
+}
+
+-(NSString *)GetDocumentDirectory{
+    //NSFileManager *fileMgr = [NSFileManager defaultManager];
+    NSString *homeDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    return homeDir;
 }
 
 #pragma mark - Retrieve from database

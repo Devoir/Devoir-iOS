@@ -27,6 +27,8 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [self checkAndCreateDatabase];
+
     //try to get theme color from user
     DBAccess *databse = [[DBAccess alloc] init];
     User *user = [databse getUser];
@@ -61,6 +63,31 @@
     self.window.rootViewController = rootViewController;
     [self.window makeKeyAndVisible];
     return YES;
+}
+
+-(NSString *)GetDocumentDirectory {
+    self.fileMgr = [NSFileManager defaultManager];
+    self.homeDir = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
+    return self.homeDir;
+}
+
+-(void) checkAndCreateDatabase {
+    BOOL success;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *databasePath = [self.GetDocumentDirectory stringByAppendingPathComponent:[VariableStore sharedInstance].dbPath];
+    success = [fileManager fileExistsAtPath:databasePath];
+    if(success)
+    {
+        NSLog(@"working");
+        return;
+    }
+    else
+    {
+        NSLog(@"notworking");
+        NSString *databasePathFromApp =
+        [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:[VariableStore sharedInstance].dbPath];
+        [fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];
+    }
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
