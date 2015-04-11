@@ -16,6 +16,10 @@
                                 <rect key="frame" x="0.0" y="-10" width="320" height="578"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                                <view key="tableFooterView" contentMode="scaleToFill" id="xWt-Lj-SIS">
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="66" id="mJF-lH-y5V" customClass="AssignmentTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -25,7 +29,7 @@
                                             <subviews>
                                                 <view contentMode="scaleToFill" id="BhF-z4-wfF">
                                                     <rect key="frame" x="0.0" y="0.0" width="8" height="66"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8rg-ek-ggj">
@@ -44,7 +48,7 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Ic-OX-De8">
                                                     <rect key="frame" x="233" y="2" width="76" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
@@ -85,7 +89,7 @@
                                 <segue destination="Aeq-rU-6zH" kind="push" identifier="courseList" id="P8m-oS-qTG"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="fv0-XG-Mie">
+                        <barButtonItem key="rightBarButtonItem" image="Plus" id="fv0-XG-Mie">
                             <connections>
                                 <segue destination="bUN-KO-0wi" kind="push" identifier="toAddAssignment" id="QRY-p3-17h"/>
                             </connections>
@@ -401,10 +405,24 @@
             </objects>
             <point key="canvasLocation" x="978" y="-315"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="xzt-oP-Kjz">
+            <objects>
+                <viewController id="duA-1y-R9u" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VE9-wi-9ZC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y9B-Cg-5io" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
     </scenes>
     <resources>
         <image name="DownArrow" width="25" height="25"/>
         <image name="Goat" width="376" height="372"/>
+        <image name="Plus" width="30" height="30"/>
         <image name="calendar.png" width="25" height="25"/>
         <image name="notes.png" width="25" height="25"/>
     </resources>

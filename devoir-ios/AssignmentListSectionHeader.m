@@ -24,12 +24,12 @@
         else {
             tempLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 15, width, 18)];
         }
-        tempLabel.backgroundColor = [UIColor clearColor];
-        tempLabel.textColor = [UIColor blackColor];
+        tempLabel.backgroundColor = [UIColor devAccentColor];
+        tempLabel.textColor = [UIColor whiteColor];
         
         tempLabel.text = title;
-        tempLabel.font = [UIFont fontWithName:@"Helvetica" size:12];
-        tempLabel.textColor = [UIColor devMainTextColor];
+        tempLabel.font = [UIFont fontWithName:@"Helvetica" size:14];
+        tempLabel.textColor = [UIColor whiteColor];
         
         [self addSubview:tempLabel];
     }

@@ -2,13 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "check-30.png"
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "check-60.png"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",

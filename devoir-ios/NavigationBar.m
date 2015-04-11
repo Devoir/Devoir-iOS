@@ -26,9 +26,10 @@
     self.tintColor = [UIColor devAccentTextColor];
     self.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor devAccentTextColor]};
     if([VariableStore sharedInstance].themeColor == DARK)
-        [self setBarStyle:UIStatusBarStyleLightContent];
+        [self setBarStyle:UIBarStyleDefault];
     else
         [self setBarStyle:UIBarStyleDefault];
+    
 }
 
 @end
