@@ -128,12 +128,14 @@
     cell.courseLabel.text = course.name;
     
     cell.overdueDate.text = [assignment dueDateAsString];
+    cell.overdueDate.textColor = [UIColor devRed];
     
     [[cell.colorLabel layer] setBackgroundColor: [UIColor dbColor:course.color].CGColor];
     
     if(assignment.complete)
     {
-        cell.checkbox.backgroundColor = [UIColor devAccentColor];
+        cell.checkbox.backgroundColor = [UIColor devMainColor];
+        [[cell.checkbox layer] setBorderColor: [UIColor devMainColor].CGColor];
     }
     else
     {
@@ -340,7 +342,7 @@
     else
     {
         Course *course = [self.database getCourseByID:(int)[self.courseToShow integerValue]];
-        [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:course.color]];
+        //[self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:course.color]];
         self.navigationItem.title = @"DEVOIR";
     }
 }

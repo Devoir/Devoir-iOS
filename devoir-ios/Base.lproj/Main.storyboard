@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
     </dependencies>
     <scenes>
         <!--Assignment List View Controller-->
@@ -17,14 +17,16 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="xWt-Lj-SIS">
+                                    <rect key="frame" x="0.0" y="210" width="320" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="66" id="mJF-lH-y5V" customClass="AssignmentTableViewCell">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="114" width="320" height="66"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mJF-lH-y5V" id="q1h-PS-fQw">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" id="BhF-z4-wfF">
@@ -48,10 +50,10 @@
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5Ic-OX-De8">
                                                     <rect key="frame" x="233" y="2" width="76" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ovO-rL-YJv" customClass="CheckboxButton">
                                                     <rect key="frame" x="24" y="20" width="25" height="25"/>
@@ -138,11 +140,11 @@
                                 </connections>
                             </textView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar.png" id="Wnb-7L-Ag6">
-                                <rect key="frame" x="16" y="212" width="20" height="20"/>
+                                <rect key="frame" x="16" y="209" width="25" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="notes.png" id="iWo-up-IYU">
-                                <rect key="frame" x="16" y="268" width="20" height="20"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Note" id="iWo-up-IYU">
+                                <rect key="frame" x="16" y="262" width="30" height="30"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="haK-jw-M6P">
                                 <rect key="frame" x="16" y="142" width="25" height="25"/>
@@ -189,12 +191,12 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="cMO-Wr-V7k">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="ow0-57-Xr0">
+                        <barButtonItem key="leftBarButtonItem" image="cancel" id="ow0-57-Xr0">
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="bUN-KO-0wi" id="gYL-QJ-7dz"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="D8u-Ys-xn0">
+                        <barButtonItem key="rightBarButtonItem" image="check" id="D8u-Ys-xn0">
                             <connections>
                                 <action selector="DoneButtonTapped:" destination="bUN-KO-0wi" id="poU-EL-PuZ"/>
                             </connections>
@@ -405,26 +407,15 @@
             </objects>
             <point key="canvasLocation" x="978" y="-315"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="xzt-oP-Kjz">
-            <objects>
-                <viewController id="duA-1y-R9u" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="VE9-wi-9ZC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="y9B-Cg-5io" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-        </scene>
     </scenes>
     <resources>
         <image name="DownArrow" width="25" height="25"/>
         <image name="Goat" width="376" height="372"/>
-        <image name="Plus" width="30" height="30"/>
+        <image name="Note" width="25" height="25"/>
+        <image name="Plus" width="25" height="25"/>
         <image name="calendar.png" width="25" height="25"/>
-        <image name="notes.png" width="25" height="25"/>
+        <image name="cancel" width="25" height="25"/>
+        <image name="check" width="25" height="25"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

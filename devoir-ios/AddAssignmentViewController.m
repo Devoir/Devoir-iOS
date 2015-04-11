@@ -53,6 +53,7 @@
         [[self.deleteButton layer] setBorderWidth:1.0f];
         [self.deleteButton.layer setCornerRadius:5.0f];
         [self.deleteButton.layer setBorderColor: [UIColor devRed].CGColor];
+        [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:course.color]];
     } else {
         self.deleteButton.hidden = YES;
     }
@@ -81,6 +82,8 @@
     [self.courseTextfield resignFirstResponder];
     self.assignment.courseID = course.ID;
     [[self.colorButton layer] setBackgroundColor: [UIColor dbColor:course.color].CGColor];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:course.color]];
+
 }
 
 #pragma mark - UI setup
@@ -91,7 +94,7 @@
         self.navigationItem.title = self.assignment.name;
         self.isNew = FALSE;
     } else {
-         self.navigationItem.title = @"Add Assignment";
+         self.navigationItem.title = @"ADD ASSIGNMENT";
         self.isNew = TRUE;
     }
 

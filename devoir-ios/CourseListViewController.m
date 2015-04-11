@@ -49,12 +49,12 @@
     [self.navigationController.navigationBar setBarTintColor:[UIColor devMainColor]];
 
     UIBarButtonItem *addCourseButton = [[UIBarButtonItem alloc]
-                                        initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                        initWithImage:[UIImage imageNamed:@"plus.png"] style:UIStatusBarStyleDefault
                                         target:self
                                         action:@selector(addCourseButtonPressed:)];
     self.navigationItem.rightBarButtonItem = addCourseButton;
     [self.navigationItem setHidesBackButton:YES];
-    self.navigationItem.title = @"Filter";
+    self.navigationItem.title = @"FILTER";
 }
 
 - (void)setupTableView {
@@ -64,7 +64,7 @@
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, navBarHeight, self.view.frame.size.width,
                                       self.view.frame.size.height - navBarHeight - 70) style:UITableViewStylePlain];
     
-    self.tableView.backgroundColor = [UIColor devAccentColor];
+    self.tableView.backgroundColor = [UIColor whiteColor];
     
     self.tableView.scrollEnabled = YES;
     self.tableView.showsVerticalScrollIndicator = YES;
@@ -82,9 +82,9 @@
     UIButton *settingsButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - 70, self.view.frame.size.width, 70)];
     UILabel *settingsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 70)];
     settingsLabel.backgroundColor = [UIColor devMainColor];
-    settingsLabel.text = @"Settings";
+    settingsLabel.text = @"SETTINGS";
     settingsLabel.textAlignment = NSTextAlignmentCenter;
-    settingsLabel.textColor = [UIColor devMainTextColor];
+    settingsLabel.textColor = [UIColor whiteColor];
     [settingsButton addTarget:self
                           action:@selector(settingsButtonPressed:)
                 forControlEvents:UIControlEventTouchUpInside];
@@ -125,7 +125,7 @@
         [cell setupCellWithWidth:tableView.frame.size.width Height:tableView.frame.size.height ForRow:(int)indexPath.row];
         cell.courseLabel.text = @"Show All Courses";
         cell.courseLabel.backgroundColor = [UIColor devAccentColor];
-        cell.courseLabel.textColor = [UIColor devMainTextColor];
+        cell.courseLabel.textColor = [UIColor whiteColor];
     }
     else
     {
@@ -135,6 +135,7 @@
         
         cell.courseLabel.text = course.name;
         cell.courseLabel.backgroundColor = [UIColor dbColor:course.color];
+        cell.courseLabel.textColor = [UIColor whiteColor];
     }
     
     return cell;

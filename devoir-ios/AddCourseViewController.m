@@ -43,9 +43,9 @@
     }
     
     
-    self.view.backgroundColor = [UIColor devAccentColor];
-    self.courseNameTextField.textColor = [UIColor devAccentTextColor];
-    self.iCalURLText.textColor = [UIColor devAccentTextColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+    self.courseNameTextField.textColor = [UIColor devMainTextColor];
+    self.iCalURLText.textColor = [UIColor devMainTextColor];
     
     [self setupNavBar];
     [self setupColorButtons];
@@ -108,7 +108,7 @@
     if(self.isNew)
     {
         [self.navigationController.navigationBar setBarTintColor:[UIColor devMainColor]];
-        self.navigationItem.title = @"Add Course";
+        self.navigationItem.title = @"ADD COURSE";
     }
     else
     {
@@ -120,13 +120,13 @@
     [self.navigationItem setHidesBackButton:YES];
     
     UIBarButtonItem *doneButton = [[UIBarButtonItem alloc]
-                                   initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                   initWithImage:[UIImage imageNamed:@"check.png"] style:UIStatusBarStyleDefault
                                    target:self
                                    action:@selector(DoneButtonPressed:)];
     self.navigationItem.rightBarButtonItem = doneButton;
     
     UIBarButtonItem *cancelButton = [[UIBarButtonItem alloc]
-                                     initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                     initWithImage:[UIImage imageNamed:@"x.png"] style:UIStatusBarStyleDefault
                                      target:self
                                      action:@selector(cancelButtonPressed:)];
     self.navigationItem.leftBarButtonItem = cancelButton;
