@@ -75,7 +75,7 @@
     switch ([VariableStore sharedInstance].themeColor)
     {
         case LIGHT:
-            return [UIColor whiteColor]; /*#64718d*/;
+            return [UIColor colorWithRed:0.392 green:0.443 blue:0.553 alpha:1]; /*#64718d*/
         case DARK:
             return [UIColor colorWithRed:0.392 green:0.443 blue:0.553 alpha:1]; /*#64718d*/
         default:

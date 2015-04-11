@@ -42,13 +42,13 @@
 #pragma mark - UI setup
 
 - (void)setupNavBar {
-    self.navigationItem.title = @"All Courses";
+    self.navigationItem.title = @"DEVOIR";
     [self.navigationController.navigationBar setBarTintColor:[UIColor devMainColor]];
 }
 
 - (void)setupTableView {
     self.tableView.backgroundColor = [UIColor whiteColor];
-    self.tableView.separatorColor = [UIColor devAccentColor];
+    self.tableView.separatorColor = [UIColor clearColor];
     self.courseToShow = [[NSNumber alloc] initWithInt:-1];
 }
 
@@ -133,7 +133,7 @@
     
     if(assignment.complete)
     {
-        cell.checkbox.backgroundColor = [UIColor devMainColor];
+        cell.checkbox.backgroundColor = [UIColor devAccentColor];
     }
     else
     {
@@ -142,7 +142,7 @@
     
     cell.checkbox.layer.cornerRadius = cell.checkbox.bounds.size.width / 2.0;
     [[cell.checkbox layer] setBorderWidth:1.0f];
-    [[cell.checkbox layer] setBorderColor: [UIColor devMainColor].CGColor];
+    [[cell.checkbox layer] setBorderColor: [UIColor devAccentColor].CGColor];
 
     return cell;
 }
@@ -335,13 +335,13 @@
     if([self.courseToShow integerValue] == -1)
     {
         [self.navigationController.navigationBar setBarTintColor:[UIColor devMainColor]];
-        self.navigationItem.title = @"All Courses";
+        self.navigationItem.title = @"DEVOIR";
     }
     else
     {
         Course *course = [self.database getCourseByID:(int)[self.courseToShow integerValue]];
         [self.navigationController.navigationBar setBarTintColor:[UIColor dbColor:course.color]];
-        self.navigationItem.title = course.name;
+        self.navigationItem.title = @"DEVOIR";
     }
 }
 
